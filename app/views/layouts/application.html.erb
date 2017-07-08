@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tripflex</title>
+
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <script>
+  $('ul.nav li.dropdown').hover(function() {
+  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+}, function() {
+  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+});
+</script>
+
+   <script>
+  $( function() {
+    
+    $( "#datepicker" ).datepicker( {dateFormat: "dd/mm/yy"});
+    $( "#datepicker1" ).datepicker( {dateFormat: "dd/mm/yy"});
+
+  });
+</script>
+  </head>
+  <body>
+
+<div class="body-wrap">
+  <div class="container">
+
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">TripFlex-!</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">How it works</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Admin</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Affiliates<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Hotel Admins</a></li>
+                <li><a href="#">Fligths Admins</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Be our Partner</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+
+<div class="row" style="margin-left:800px;">
+<div class="col-md-6">
+<button class="button button1" style="width: 120px;" >Log in</button>
+</div>
+<div class="col-md-4">
+<button class="button button2" style="width: 140px;">Sign up</button>
+</div>
+</div>
+
+
+<div class="container-fluid">
+
+<!-- Square search engine    -->
+
+
+
+<div class="row" >
+    <div class="col-sm-6">
+            <div class="col-sm-12">
+               <div class="thumbnail" style="width:750px; margin-left:-25px; margin-top:-60px;">
+                    <div class="frontpage_square" >
+                    <%= yield %>
+                        <img src="" class="img img-responsive full-width" />
+                    </div>
+                </div>    
+
+
+<!-- end -->
+
+            </div>
+    </div>
+   
+</div>
+
+      
+
+    <br><h5> <%= notice %> </h5>
+    <h5> <%= alert %></h5>
+    <!--<%= link_to "Log in", new_admin_session_path %><br />-->
+    
+<!--<% if user_signed_in? %>
+<br><li><%= link_to('Logout', destroy_user_session_path, :method  => 'delete',  data: { confirm: 'Are you sure?' }) %> </li>
+<%end%>
+<li><%= link_to('Logout', destroy_admin_session_path, :method  => 'delete',  data: { confirm: 'Are you sure?' }) %> </li>-->
+
+
+
+
+
+  </div>
+</div>
+
+
+
+  </body>
+</html>

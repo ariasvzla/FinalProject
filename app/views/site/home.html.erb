@@ -1,0 +1,157 @@
+<div class="panel panel-primary" style="height: 500px; width: 740px;">
+              <div class="panel-heading">Find your Destination</div>
+                   <div class="panel-body">
+                           <form onsubmit="return verify()">
+                                <div class="easy-autocomplete">
+                                    <div class="col-md-4">
+                                       <input type="text" id="origin" required class="cities-comp"  placeholder="Enter Origen"></input>
+                                    </div>
+                                </div>
+                                <div class="easy-autocomplete">
+                                  <div class="col-md-4">
+                                      <input type="text" id="dest" class="cities-comp" required placeholder="Enter Destination"></input>
+                                  </div>
+                                </div>
+                                    <div class="col-md-4">
+                                      <div class="input-group">
+                                        <div class="input-group-addon">‎€</div>
+                                           <input type="text" class="form-control" id="exampleInputAmount" placeholder="Set Budget"   onkeypress="return isNumber(event)" >
+                                        <div class="input-group-addon">.00</div>
+                                       </div>
+                                    </div>
+                                         <br>
+                                         <br> 
+                                         <br>
+                             <div class="col-md-4">
+                                <span class="label label-primary">Departure </span>
+                             </div>
+                             <div class="col-md-4">
+                                 <span class="label label-primary">Returning </span>
+                             </div>
+                                           <br>
+                              <div class="col-md-4">
+                                <input type="text" id="datepicker" required placeholder="Departure Date"></input>
+                              </div>
+                              <div class="col-md-4">
+                                <input type="text" id="datepicker1" required placeholder="Returning Date"></input>
+                              </div>
+                             <div class="col-sm-6">
+                                              <br>
+                             <table>
+                            <td><div class="col-md-4">
+                            <label for="Adults">Adults</label>
+                                <select id="Rooms" class="form-control" style="width: 80px;">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                </select></td></div>
+                                <td><div class="col-md-4><label for="Kids">Kids</label>
+                                <select id="Rooms" class="form-control" style="width: 80px;">
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                </select></td></div>
+                                  <td><div class="col-md-4">
+                                  <label for="Rooms">Rooms</label>
+                                <select id="Rooms" class="form-control" style="width: 80px;">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                </select></td></div>
+                                </div>
+                            </table><br>
+                           <div class="col-md-4">
+                           <input type="submit" id="search" value="Find" class="btn btn-default"> </input></div>
+                        
+                        </form>
+                          <div id="validatedate">   </div>
+                          <br>
+                          <br>
+                    </div>
+            </div>
+
+<script>
+    $(document).ready(function(){
+      var options = {
+        url: "https://api.myjson.com/bins/v2n3r",
+        listLocation: "response",
+         getValue: "name",
+         list: {  
+            match: {
+            enabled: true
+            },
+            maxNumberOfElements: 4,
+          showAnimation: {
+            type: "fade", //normal|slide|fade
+            time: 300,
+            callback: function() {}
+        },
+
+        hideAnimation: {
+            type: "slide", //normal|slide|fade
+            time: 200,
+            callback: function() {}
+        }
+
+         }
+      
+      };
+              $(".cities-comp").easyAutocomplete(options);
+       });
+</script>
+<script>
+
+
+
+var verify = (function(){
+    $("#validatedate").hide();
+     var startDate= $( "#datepicker" ).datepicker( "getDate" );
+     var endDate= $( "#datepicker1" ).datepicker( "getDate" );
+     
+     //var d1 = new Date(startDate);
+     //var d2 = new Date(endDate);
+     if (startDate > endDate){
+          $("#validatedate").show();
+         $("#validatedate").html("Check your returning Date please");
+         return false;
+       }
+       else{
+        $("#validatedate").hide();
+        
+        return true;
+       }
+
+ });
+    </script>
+<script>
+function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+</script>
