@@ -38,13 +38,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">TripFlex-!</a>
+          <a class="navbar-brand" href="home">TripFlex-!</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="home">Home</a></li>
             <li><a href="#">How it works</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services<b class="caret"></b></a>
@@ -80,10 +80,12 @@
 
 <div class="row" style="margin-left:800px;">
 <div class="col-md-6">
-<button class="button button1" style="width: 120px;" >Log in</button>
+<%= button_to "Log in", new_user_session_path, :class => "button button1"%>
+<!--<button class="button button1"  style="width: 120px;" >Log in</button>-->
 </div>
 <div class="col-md-4">
-<button class="button button2" style="width: 140px;">Sign up</button>
+<%= button_to "Sign Up", new_user_registration_path, :class => "button button1", :method => :get %>
+</a>
 </div>
 </div>
 
