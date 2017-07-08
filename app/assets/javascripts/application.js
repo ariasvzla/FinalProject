@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require turbolinks
+//= require angular
+//= require angular-animate
+//= require angular-resource
 //= require jquery.easy-autocomplete.min
 //= require bootstrap
 //= require_tree .
