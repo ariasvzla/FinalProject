@@ -22,13 +22,18 @@ class Sessions::SessionsController < Devise::SessionsController
   # end
   def after_sign_in_path_for(resource)
     if admin_signed_in?
-       contactus_path
-    else
-       userprofile_path
-   end
-  end
-
-
+           adminprofile_path
+        else if hoteladmin_signed_in?
+           hotelprofile_path
+        else if fligthadmin_signed_in?
+           fligthprofile_path
+          else
+            userprofile_path
+          end 
+        end 
+       end
+    end
+  
  def after_sign_out_path_for(resource)
   aboutus_path
   end
