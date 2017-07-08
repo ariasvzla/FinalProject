@@ -15,7 +15,7 @@
                                     <div class="col-md-4">
                                       <div class="input-group">
                                         <div class="input-group-addon">‎€</div>
-                                           <input type="text" class="form-control" id="exampleInputAmount" placeholder="Set Budget"   onkeypress="return isNumber(event)" >
+                                           <input type="text" class="form-control" id="exampleInputAmount" placeholder="Set Budget"   onkeypress="return isNumber(event)" required >
                                         <div class="input-group-addon">.00</div>
                                        </div>
                                     </div>
@@ -93,7 +93,7 @@
             </div>
 
 <script>
-    $(document).ready(function(){
+  $(document).ready(function(){
       var options = {
         url: "https://api.myjson.com/bins/v2n3r",
         listLocation: "response",
@@ -115,16 +115,14 @@
             callback: function() {}
         }
 
-         }
+    }
       
-      };
+  };
               $(".cities-comp").easyAutocomplete(options);
-       });
+});
 </script>
+
 <script>
-
-
-
 var verify = (function(){
     $("#validatedate").hide();
      var startDate= $( "#datepicker" ).datepicker( "getDate" );
