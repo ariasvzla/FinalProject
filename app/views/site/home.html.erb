@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="height: 500px; width: 740px;">
+<div class="panel panel-primary" style="height: 500px; width: 740px;" ng-controller="HelloWorldController">
               <div class="panel-heading">Find your Destination</div>
                    <div class="panel-body">
                            <form onsubmit="return verify()">
@@ -7,7 +7,7 @@
                                        <input type="text" id="origin" required class="cities-comp"  placeholder="Enter Origen"></input>
                                     </div>
                                 </div>
-                                <div class="easy-autocomplete">
+                                <div class="easy-autocomplete" ng-controller="HelloWorldController">
                                   <div class="col-md-4">
                                       <input type="text" id="dest" class="cities-comp" required placeholder="Enter Destination"></input>
                                   </div>
