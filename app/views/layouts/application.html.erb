@@ -14,16 +14,7 @@
   $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
 });
 </script>
-<style>
-         .datepickerdemo md-content {
-            padding-bottom: 200px; 
-         }
-        .datepickerdemo .validation-messages {
-            font-size: 11px;
-            color: darkred;
-            margin: 10px 0 0 25px; 
-         }
-      </style>
+
 
    <script>
   /*$( function() {
@@ -38,6 +29,7 @@
 
 <div class="body-wrap">
   <div class="container">
+  <!--<%= button_to "test", home_path, :class => "button button1", :method => :get %>-->
 
     <nav class="navbar navbar-inverse" role="navigation">
       <div class="container-fluid">
@@ -70,6 +62,8 @@
             </li>
           </ul>
 
+ 
+
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Admin</a></li>
             <li class="dropdown">
@@ -85,12 +79,12 @@
         </div>
         <!-- /.navbar-collapse -->
       </div>
-      <!-- /.container-fluid -->
+     
     </nav>
 
 <div class="row" style="margin-left:800px;">
 <div class="col-md-6">
-<%= button_to "Log in", new_user_session_path, :class => "button button1"%>
+<%= button_to "Log in", new_user_session_path, :class => "button button1", :method => :get%>
 <!--<button class="button button1"  style="width: 120px;" >Log in</button>-->
 </div>
 <div class="col-md-4">
@@ -98,50 +92,21 @@
 </a>
 </div>
 </div>
-
+   <br><h5> <%= notice %> </h5>
+    <h5> <%= alert %></h5>
 
 <div class="container-fluid">
-
+ <%= yield %>
+ </div>
 <!-- Square search engine    -->
-
-
-
-<div class="row" >
-    <div class="col-sm-6">
-            <div class="col-sm-12">
-               <div class="thumbnail" style="width:750px; margin-left:-25px; margin-top:-60px;">
-                    <div class="frontpage_square" >
-                    <%= yield %>
-                        <img src="" class="img img-responsive full-width" />
-                    </div>
-                </div>    
-
-
-<!-- end -->
-
-            </div>
-    </div>
-   
-</div>
-
       
 
-    <br><h5> <%= notice %> </h5>
-    <h5> <%= alert %></h5>
     <!--<%= link_to "Log in", new_admin_session_path %><br />-->
     
 <!--<% if user_signed_in? %>
 <br><li><%= link_to('Logout', destroy_user_session_path, :method  => 'delete',  data: { confirm: 'Are you sure?' }) %> </li>
 <%end%>
 <li><%= link_to('Logout', destroy_admin_session_path, :method  => 'delete',  data: { confirm: 'Are you sure?' }) %> </li>-->
-
-
-
-
-
-  </div>
-</div>
-
 
 
   </body>

@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="height: 500px; width: 740px;" ng-app="firstApplication" >
+<div class="panel panel-primary" style="height: 100%; width: 740px; margin-top:-60px;" ng-app="firstApplication" >
               <div class="panel-heading">Find your Destination</div>
                    <div class="panel-body" ng-controller="dateController as ctrl">
                            <form onsubmit="return verify()">
@@ -33,12 +33,12 @@
                                            <br>
                               <div class="col-md-4" >
                               
-                              <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+                              <md-datepicker ng-model="myDate" ></md-datepicker>
                             
                                 <!--<input type="text" id="datepicker" required placeholder="Departure Date"></input>-->
                               </div>
                               <div class="col-md-4">
-                              <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+                              <md-datepicker ng-model="myDate2"  ></md-datepicker>
                                 <!--<input type="text" id="datepicker1" required placeholder="Returning Date"></input>-->
                               </div>
                               </div>
@@ -101,7 +101,7 @@
                           <br>
                     </div>
             </div>
-         
+
 
 <script>
   $(document).ready(function(){
