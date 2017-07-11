@@ -1,15 +1,18 @@
 <div class="panel panel-primary" style="height: 100%; width: 740px; margin-top:-60px;" ng-app="firstApplication" >
               <div class="panel-heading">Find your Destination</div>
-                   <div class="panel-body" ng-controller="dateController as ctrl">
-                           <form onsubmit="return verify()">
+                   <div class="panel-body" ng-controller="dateController">
+                       
                                 <div class="easy-autocomplete">
                                     <div class="col-md-4">
                                        <input type="text" id="origin" required class="cities-comp"  placeholder="Enter Origen"></input>
+
                                     </div>
                                 </div>
                                 <div class="easy-autocomplete" >
+
                                   <div class="col-md-4">
                                       <input type="text" id="dest" class="cities-comp" required placeholder="Enter Destination"></input>
+
                                   </div>
 
                                 </div>
@@ -33,12 +36,12 @@
                                            <br>
                               <div class="col-md-4" >
                               
-                              <md-datepicker ng-model="myDate" ></md-datepicker>
+                              <md-datepicker id="startDate" ng-model="startDate" md-placeholder="Enter a Date" required></md-datepicker>
                             
                                 <!--<input type="text" id="datepicker" required placeholder="Departure Date"></input>-->
                               </div>
                               <div class="col-md-4">
-                              <md-datepicker ng-model="myDate2"  ></md-datepicker>
+                              <md-datepicker id="endDate" ng-model="endDate" md-placeholder="Enter a Date" required></md-datepicker>
                                 <!--<input type="text" id="datepicker1" required placeholder="Returning Date"></input>-->
                               </div>
                               </div>
@@ -93,14 +96,19 @@
                        
                             <br>
                            <div class="col-md-4">
-                           <input type="submit" id="search" value="Find" class="btn btn-default"> </input></div>
-                        
-                        </form>
-                          <div id="validatedate">   </div>
+                  <button id="search" value="Find" class="btn btn-default" ng-click="validation(startDate,endDate)">Find </button>
+
+                  </div>
+                  <div class="col-md-6">
+       <div id="errorHand" >   </div>
+       </div>
+                            
+
                           <br>
                           <br>
                     </div>
             </div>
+
 
 
 <script>
@@ -113,10 +121,10 @@
             match: {
             enabled: true
             },
-            maxNumberOfElements: 4,
+            maxNumberOfElements: 3,
           showAnimation: {
-            type: "fade", //normal|slide|fade
-            time: 300,
+            type: "slide", //normal|slide|fade
+            time: 200,
             callback: function() {}
         },
 
@@ -133,27 +141,7 @@
 });
 </script>
 
-<script>
-/*var verify = (function(){
-    $("#validatedate").hide();
-     var startDate= $( "#datepicker" ).datepicker( "getDate" );
-     var endDate= $( "#datepicker1" ).datepicker( "getDate" );
-     
-     //var d1 = new Date(startDate);
-     //var d2 = new Date(endDate);
-     if (startDate > endDate){
-          $("#validatedate").show();
-         $("#validatedate").html("Check your returning Date please");
-         return false;
-       }
-       else{
-        $("#validatedate").hide();
-        
-        return true;
-       }
 
- });*/
-    </script>
 <script>
 function isNumber(evt) {
     evt = (evt) ? evt : window.event;
