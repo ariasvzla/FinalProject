@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html >
+<html ng-app="firstApplication" >
   <head>
-    <title>Tripflex</title>
+    <title  >Tripflex</title>
 
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -15,17 +15,8 @@
 });
 </script>
 
-
-   <script>
-  /*$( function() {
-    
-    $( "#datepicker" ).datepicker( {dateFormat: "dd/mm/yy"});
-    $( "#datepicker1" ).datepicker( {dateFormat: "dd/mm/yy"});
-
-  });*/
-</script>
   </head>
-  <body>
+  <body  >
 
 <div class="body-wrap">
   <div class="container">
@@ -80,24 +71,40 @@
         <!-- /.navbar-collapse -->
       </div>
      
+
     </nav>
 
-<div class="row" style="margin-left:800px;">
+<div class="row" style="float:right;width:390px;">
 <div class="col-md-6">
-<%= button_to "Log in", new_user_session_path, :class => "button button1", :method => :get%>
-<!--<button class="button button1"  style="width: 120px;" >Log in</button>-->
+<button class="button button1"  style="width: 120px;" >Log in</button>
 </div>
-<div class="col-md-4">
+<div class="col-md-6">
 <%= button_to "Sign Up", new_user_registration_path, :class => "button button1", :method => :get %>
-</a>
 </div>
-</div>
-   <br><h5> <%= notice %> </h5>
+
+ <div class="col-md-12" style="float: right; margin-top: 54px;">
+<ul class="nav nav-pills nav-stacked">
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+ <h5> <%= notice %> </h5>
     <h5> <%= alert %></h5>
 
-<div class="container-fluid">
- <%= yield %>
- </div>
+
+</div>
+</div>
+
+ <%= yield  %>
+
+</div>
+
+</div>
+
+</div>
 <!-- Square search engine    -->
       
 

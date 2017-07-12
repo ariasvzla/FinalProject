@@ -1,6 +1,7 @@
-<div class="panel panel-primary" style="height: 100%; width: 740px; margin-top:-60px;" ng-app="firstApplication" >
+
+<div class="panel panel-primary" style="height: 100%; width: 740px;" ng-controller="dateController" >
               <div class="panel-heading">Find your Destination</div>
-                   <div class="panel-body" ng-controller="dateController">
+                   <div class="panel-body" >
                        
                                 <div class="easy-autocomplete">
                                     <div class="col-md-4">
@@ -26,7 +27,6 @@
                                          <br>
                                          <br> 
                                          <br>
-                                         <div class="container">
                              <div class="col-md-4">
                                 <span class="label label-primary">Departure </span>
                              </div>
@@ -41,10 +41,12 @@
                                 <!--<input type="text" id="datepicker" required placeholder="Departure Date"></input>-->
                               </div>
                               <div class="col-md-4">
-                              <md-datepicker id="endDate" ng-model="endDate" md-placeholder="Enter a Date" required></md-datepicker>
+                              <md-datepicker id="endDate" ng-model="endDate" md-placeholder="Enter a Date" required>
+                                
+                              </md-datepicker>
                                 <!--<input type="text" id="datepicker1" required placeholder="Returning Date"></input>-->
                               </div>
-                              </div>
+                              
                            
                              <div class="col-sm-6">
                                <br>
@@ -96,7 +98,12 @@
                        
                             <br>
                            <div class="col-md-4">
-                  <button id="search" value="Find" class="btn btn-default" ng-click="validation(startDate,endDate)">Find </button>
+                    <md-button id="search" class="md-raised" ng-click="validation(startDate,endDate)">Go
+                      <md-tooltip>Find Destination</md-tooltip>
+                    </md-button>
+
+
+ 
 
                   </div>
                   <div class="col-md-6">

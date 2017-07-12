@@ -25,13 +25,13 @@ if ($("#exampleInputAmount").val()=="") {
       $("#errorHand").hide(1121);
      return false;
   }
-    else if ($("#exampleInputAmount").val()<100){
+    else if ($("#exampleInputAmount").val()<200){
       $("#errorHand").show(300 );
       $("#errorHand").html("Budget too low!");
       $("#errorHand").hide(1121);
          return false;
       }
-
+   var nigths = d1-d2;
   
 if (endDate == undefined && startDate==undefined){
   $("#errorHand").show(300 );
@@ -54,11 +54,12 @@ if (endDate == undefined && startDate==undefined){
      $("#errorHand").html("Start date must be before the End date");
       $("#errorHand").hide(3121);
        return false;
-  }else {
+  }
+
+
+  else {
      
     return true;
   }
  }
-
-    
 });
