@@ -112,3 +112,22 @@ nav {
   margin-top: 30px;
   box-shadow: 5px 4px 5px #000;
 }
+.errorHand {
+  /* font */
+  font-family: Helvetica;
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+  line-height: 20px;
+  /* background */
+  background-color: black;
+  border: 1px solid #fcc2c3;
+  border-radius: 7px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  /* positioning */
+  float: left;
+  position: relative;
+  padding: 7px 11px 4px;
+  margin-left: 10px; /* distance between error tip and element it points to */
+}
