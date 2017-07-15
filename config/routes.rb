@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  resources :profiles
   resources :places
   resources :flights
   resources :hotels
@@ -10,8 +10,7 @@ Rails.application.routes.draw do
         registrations: 'sessions/registrations',
         sessions: 'sessions/sessions'
      }  
-     root to: 'site#home'
-     resources :profiles
+    root to: 'site#home'
 
   get '/adminprofile' => 'site#adminprofile'
 
@@ -21,10 +20,12 @@ Rails.application.routes.draw do
 
   get '/contactus' => 'site#contactus'
 
-  get '/home' => 'site#home'
+   get '/home' => 'site#home'
+
 
   get '/userprofile' => 'profiles#userprofile'
 
- 
+  
+   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -111,4 +111,10 @@ if (endDate == undefined && startDate==undefined){
     return true;
   }
  }
+
+
+ $scope.linkCtrl= function(){
+
+    location.href = new_user_session_path;
+ }
 });
