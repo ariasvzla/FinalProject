@@ -115,6 +115,5 @@ if (endDate == undefined && startDate==undefined){
 
  $scope.linkCtrl= function(){
 
-    location.href = new_user_session_path;
  }
 });

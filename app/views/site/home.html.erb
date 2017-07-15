@@ -1,7 +1,4 @@
 
-<div class="panel panel-primary" style="height: 100%; width: 740px;"  ng-controller="dateController" >
-             
-<div class="row">
 <div class="col-md-4">
 <md-input-container >
         <label>Origin</label>
@@ -69,22 +66,76 @@
              <md-option value="plate">7</md-option>
         </md-select>
         </md-input-container>
+
           </div>
-     </div>
-      
-         <div class="col-md-2">
+     <div class="col-md-4">
             <md-button id="search" class="md-raised" ng-click="validation(startDate,endDate)">Go
               <md-tooltip>Find Destination</md-tooltip>
               </md-button>
-              </div>
-                <div class="col-md-4" style="margin-top: 9px;">
+             
                      <div class="errorHand" > 
                      </div>
-             
- 
-         
+                </div>
+                </div>
 
-
+                <md-toolbar class="md-hue-2">
+<div class="md-toolbar-tools">
+ <h2 flex md-truncate>Most popular hotels</h2>
+       </div>
+</md-toolbar>
+        
+ <div flex-xs flex-gt-xs="100" layout="column">
+      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Card with image</span>
+            <span class="md-subhead">Large</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Action 1</md-button>
+          <md-button>Action 2</md-button>
+        </md-card-actions>
+      </md-card>
+      </div>
+      <div flex-xs flex-gt-xs="100" layout="column">
+      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Card with image</span>
+            <span class="md-subhead">Large</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Action 1</md-button>
+          <md-button>Action 2</md-button>
+        </md-card-actions>
+      </md-card>
+      </div>
+      <div flex-xs flex-gt-xs="100" layout="column">
+      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Card with image</span>
+            <span class="md-subhead">Large</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Action 1</md-button>
+          <md-button>Action 2</md-button>
+        </md-card-actions>
+      </md-card>
+      </div>
+      </div>
 
 <script>
  $(".errorHand").hide();
