@@ -1,27 +1,20 @@
 Rails.application.routes.draw do
+  resources :rooms
   resources :profiles
   resources :places
   resources :flights
   resources :hotels
-     devise_for :hoteladmins
-     devise_for :flightadmins
-    
-     devise_for :users, :admins, controllers: {
+     devise_for :users, :admins, :hoteladmins, :flightadmins, controllers: {
         registrations: 'sessions/registrations',
         sessions: 'sessions/sessions'
      }  
     root to: 'site#home'
 
   get '/adminprofile' => 'site#adminprofile'
-
   get '/booking' => 'site#bookingpage'
-
   get '/aboutus' => 'site#aboutus'
-
   get '/contactus' => 'site#contactus'
-
   get '/home' => 'site#home'
-
   get '/hotelprofile' => 'site#hotelprofile'
   get '/airlineprofile' => 'site#airlineprofile'
   get '/adminpage' => 'site#adminpage'

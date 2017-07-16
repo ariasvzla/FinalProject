@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713192933) do
+ActiveRecord::Schema.define(version: 20170716214411) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -113,6 +113,14 @@ ActiveRecord::Schema.define(version: 20170713192933) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string   "roomtype"
+    t.integer  "romnum"
+    t.decimal  "pricepn"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
