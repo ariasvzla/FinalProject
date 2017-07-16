@@ -20,9 +20,11 @@ Rails.application.routes.draw do
 
   get '/contactus' => 'site#contactus'
 
-   get '/home' => 'site#home'
+  get '/home' => 'site#home'
 
-
+  get '/hotelprofile' => 'site#hotelprofile'
+  get '/airlineprofile' => 'site#airlineprofile'
+  get '/adminpage' => 'site#adminpage'
   get '/userprofile' => 'profiles#userprofile'
 
   

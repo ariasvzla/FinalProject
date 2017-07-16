@@ -43,10 +43,10 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Affiliates<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Hotel Admins</a></li>
-                <li><a href="#">Fligths Admins</a></li>
+                <li><a href="/hotelprofile">Hotel Admins</a></li>
+                <li><a href="/airlineprofile">Fligths Admins</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Be our Partner</a></li>
+                <li><a href="/adminprofile">Be our Partner</a></li>
               </ul>
             </li>
           </ul>
@@ -63,6 +63,18 @@
 
 <%if current_page?(new_user_registration_path)%>
        <h2 flex md-truncate>Become a member</h2>
+        <%end%>
+        <%if current_page?(hotelprofile_path)%>
+       <h2 flex md-truncate>Hotel Managment </h2>
+        <%end%>
+         <%if current_page?(airlineprofile_path)%>
+       <h2 flex md-truncate>Airline Managment</h2>
+        <%end%>
+         <%if current_page?(adminprofile_path)%>
+       <h2 flex md-truncate>Administrator identifier </h2>
+        <%end%>
+          <%if current_page?(adminpage_path)%>
+       <h2 flex md-truncate>Tripflex Administrator </h2>
         <%end%>
 
         <%if current_page?('/')%>
