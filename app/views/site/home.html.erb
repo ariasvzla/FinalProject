@@ -1,117 +1,145 @@
-<div class="panel panel-primary" style="height: 100%; width: 740px; margin-top:-60px;" ng-app="firstApplication" >
-              <div class="panel-heading">Find your Destination</div>
-                   <div class="panel-body" ng-controller="dateController">
-                       
-                                <div class="easy-autocomplete">
-                                    <div class="col-md-4">
-                                       <input type="text" id="origin" required class="cities-comp"  placeholder="Enter Origen"></input>
+<div class="col-md-4">
+<md-input-container >
+        <label>Origin</label>
+        <input id="origin" required class="cities-comp">
+      </md-input-container>
+      </div>
+      <div class="col-md-4">
+<md-input-container >
+        <label>Destination</label>
+        <input id="dest" required class="cities-comp" >
+      </md-input-container>
+      </div>
+<div class="col-md-4">
+<md-input-container >
+        <label>Budget (Euros)</label>
+        <input id="exampleInputAmount"  onkeypress="return isNumber(event)" required  >
+      </md-input-container>
 
-                                    </div>
-                                </div>
-                                <div class="easy-autocomplete" >
+</div>
+        <div class="row">
+                             <div class="col-md-4">  
+                             <md-input-container>
+                            <label><Strong>Departure</Strong></label>
+                             <md-datepicker id="startDate" ng-model="startDate" md-placeholder="Enter a Date" required></md-datepicker>
+                            </md-input-container>
 
-                                  <div class="col-md-4">
-                                      <input type="text" id="dest" class="cities-comp" required placeholder="Enter Destination"></input>
+             
 
-                                  </div>
+                              </div>
 
-                                </div>
-                                    <div class="col-md-4">
-                                      <div class="input-group">
-                                        <div class="input-group-addon">‎€</div>
-                                           <input type="text" class="form-control" id="exampleInputAmount" placeholder="Set Budget"   onkeypress="return isNumber(event)" required >
-                                        <div class="input-group-addon"></div>
-                                       </div>
-                                    </div>
-                                         <br>
-                                         <br> 
-                                         <br>
-                                         <div class="container">
+
                              <div class="col-md-4">
-                                <span class="label label-primary">Departure </span>
-                             </div>
-                             <div class="col-md-4">
-                                 <span class="label label-primary">Returning </span>
-                             </div>
-                                           <br>
-                              <div class="col-md-4" >
-                              
-                              <md-datepicker id="startDate" ng-model="startDate" md-placeholder="Enter a Date" required></md-datepicker>
-                            
-                                <!--<input type="text" id="datepicker" required placeholder="Departure Date"></input>-->
+                                <md-input-container>
+                                <label><Strong>Returning</Strong></label>
+                                <md-datepicker id="endDate" ng-model="endDate" md-placeholder="Enter a Date" required></md-datepicker>
+                                </md-input-container>
+                               </div>
+                        
+                              <div class="col-md-2">
+                               <md-input-container>
+                               <label><Strong>Adults</Strong></label>
+                        <md-select ng-model="adults" placeholder="Adults" >
+          <md-option value="cloth">1</md-option>
+          <md-option value="leather">2</md-option>
+          <md-option value="chain">3</md-option>
+          <md-option value="plate">4</md-option>
+           <md-option value="plate">5</md-option>
+            <md-option value="plate">6</md-option>
+             <md-option value="plate">7</md-option>
+        </md-select>
+        </md-input-container>
+                         
                               </div>
-                              <div class="col-md-4">
-                              <md-datepicker id="endDate" ng-model="endDate" md-placeholder="Enter a Date" required></md-datepicker>
-                                <!--<input type="text" id="datepicker1" required placeholder="Returning Date"></input>-->
-                              </div>
-                              </div>
-                           
-                             <div class="col-sm-6">
-                               <br>
-                             <table>
-                            <td><div class="col-md-4">
-                            <label for="Adults">Adults</label>
-                                <select id="Rooms" class="form-control" style="width: 80px;">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                                </select></td></div>
-                                <td><div class="col-md-4><label for="Kids">Kids</label>
-                                <select id="Rooms" class="form-control" style="width: 80px;">
-                                <option>0</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                                </select></td></div>
-                                  <td><div class="col-md-4">
-                                  <label for="Rooms">Rooms</label>
-                                <select id="Rooms" class="form-control" style="width: 80px;">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                                </select></td></div>
-                                </div>
-                            </table>
-                       
-                            <br>
-                           <div class="col-md-4">
-                  <button id="search" value="Find" class="btn btn-default" ng-click="validation(startDate,endDate)">Find </button>
+                                                    <div class="col-md-2">
+        <md-input-container>
+          <label><Strong>Kids</Strong></label>
+                        <md-select ng-model="kids" placeholder="Kids" >
+                        <md-option value="cloth">0</md-option>
+          <md-option value="cloth">1</md-option>
+          <md-option value="leather">2</md-option>
+          <md-option value="chain">3</md-option>
+          <md-option value="plate">4</md-option>
+           <md-option value="plate">5</md-option>
+            <md-option value="plate">6</md-option>
+             <md-option value="plate">7</md-option>
+        </md-select>
+        </md-input-container>
 
-                  </div>
-                  <div class="col-md-6">
-       <div id="errorHand" >   </div>
+          </div>
+     <div class="col-md-4">
+            <md-button id="search" class="md-raised" ng-click="validation(startDate,endDate)">Go
+              <md-tooltip>Find Destination</md-tooltip>
+              </md-button>
+             
+                     <div class="errorHand" > 
+                     </div>
+                </div>
+                </div>
+
+                <md-toolbar class="md-hue-2">
+<div class="md-toolbar-tools">
+ <h2 flex md-truncate>Most popular hotels</h2>
        </div>
-                            
-
-                          <br>
-                          <br>
-                    </div>
-            </div>
-
-
-
+</md-toolbar>
+        
+ <div flex-xs flex-gt-xs="100" layout="column">
+      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+      <img src="https://images.trvl-media.com/media/content/expus/graphics/launch/hotel1320x742.jpg" class="md-card-image" alt="image caption">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Hotel Name here</span>
+            <span class="md-subhead">Description here</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Book now</md-button>
+          <md-button>See details</md-button>
+        </md-card-actions>
+      </md-card>
+      </div>
+      <div flex-xs flex-gt-xs="100" layout="column">
+      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+      <img src="https://exp.cdn-hotels.com/hotels/1000000/150000/140600/140596/140596_275_z.jpg" class="md-card-image" alt="image caption">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Hotel Name here</span>
+            <span class="md-subhead">Description here</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Book now</md-button>
+          <md-button>See details</md-button>
+        </md-card-actions>
+      </md-card>
+      </div>
+      <div flex-xs flex-gt-xs="100" layout="column">
+      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+      <img src="https://www.barcelo.com/en-gb/images/385-swimming-pool-4-hotel-barcelo-royal-hideaway-playacar-resort_tcm20-34268_w1600_h611_n.jpg" class="md-card-image" alt="image caption">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Hotel Name here</span>
+            <span class="md-subhead">Description here</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Book now</md-button>
+          <md-button>See details</md-button>
+        </md-card-actions>
+      </md-card>
+      </div>
+      </div>
 <script>
+ $(".errorHand").hide();
   $(document).ready(function(){
       var options = {
         url: "https://api.myjson.com/bins/v2n3r",

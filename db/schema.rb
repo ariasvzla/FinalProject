@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621203807) do
+ActiveRecord::Schema.define(version: 20170716214613) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -46,6 +46,21 @@ ActiveRecord::Schema.define(version: 20170621203807) do
     t.index ["reset_password_token"], name: "index_flightadmins_on_reset_password_token", unique: true
   end
 
+  create_table "flights", force: :cascade do |t|
+    t.string   "fligthcode"
+    t.string   "airline"
+    t.integer  "stopsn"
+    t.integer  "seatn"
+    t.datetime "timestart"
+    t.datetime "timeend"
+    t.decimal  "price"
+    t.string   "planeimg"
+    t.string   "origin"
+    t.string   "dest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "hoteladmins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -63,6 +78,30 @@ ActiveRecord::Schema.define(version: 20170621203807) do
     t.index ["reset_password_token"], name: "index_hoteladmins_on_reset_password_token", unique: true
   end
 
+  create_table "hotels", force: :cascade do |t|
+    t.string   "name"
+    t.string   "location"
+    t.string   "roomtype"
+    t.integer  "numroom"
+    t.boolean  "avaibility"
+    t.string   "hotelimg"
+    t.decimal  "pricepn"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string   "name"
+    t.string   "location"
+    t.string   "interest"
+    t.decimal  "price"
+    t.datetime "open"
+    t.datetime "close"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string   "firstname"
     t.string   "lastname"
@@ -74,6 +113,14 @@ ActiveRecord::Schema.define(version: 20170621203807) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string   "roomtype"
+    t.integer  "romnum"
+    t.decimal  "pricepn"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

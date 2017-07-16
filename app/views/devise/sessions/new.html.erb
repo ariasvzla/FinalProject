@@ -1,14 +1,21 @@
-<h2>Log in</h2>
+<h2 ng-controller="dateController">Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
+    <md-input-container >
+     <label>Email</label>
+    
     <%= f.email_field :email, autofocus: true %>
+    </md-input-container>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <md-input-container >
+     <label>Password</label>
+    
+    <%= f.label :password %>
     <%= f.password_field :password, autocomplete: "off" %>
+    </md-input-container>
   </div>
 
   <% if devise_mapping.rememberable? -%>

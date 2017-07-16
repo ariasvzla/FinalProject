@@ -9,7 +9,7 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
 def after_sign_up_path_for(resource)
     if user_signed_in? or hoteladmin_signed_in? or fligthadmin_signed_in?
       session.clear
-      home_path
+      root_path
   end
 end
   # POST /resource

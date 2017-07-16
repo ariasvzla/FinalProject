@@ -1,0 +1,12 @@
+<%if current_user_signed_in?%>
+    <h1> You are not allowed to see this page</h1>
+    <%end%>
+    <%if current_flightadmin_signed_in?%>
+    <h1> You are not allowed to see this page</h1>
+     <%end%>
+     
+<h1>New Hotel</h1>
+
+<%= render 'form', hotel: @hotel %>
+
+<%= link_to 'Back', hotels_path %>
