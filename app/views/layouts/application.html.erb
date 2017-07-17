@@ -46,7 +46,7 @@
                 <li><a href="/hotelprofile">Hotel Admins</a></li>
                 <li><a href="/airlineprofile">Fligths Admins</a></li>
                 <li class="divider"></li>
-                <li><a href="/adminprofile">Be our Partner</a></li>
+                <li><a href="/partner">Be our Partner</a></li>
               </ul>
             </li>
           </ul>
@@ -70,7 +70,10 @@
          <%if current_page?(airlineprofile_path)%>
        <h2 flex md-truncate>Airline Managment</h2>
         <%end%>
-         <%if current_page?(adminprofile_path)%>
+        <%if current_page?(new_profile_path)%>
+       <h2 flex md-truncate>Create a Profile before to continue</h2>
+        <%end%>
+         <%if current_page?(adminpage_path)%>
        <h2 flex md-truncate>Administrator identifier </h2>
         <%end%>
           <%if current_page?(adminpage_path)%>
@@ -84,24 +87,25 @@
    <h2 flex md-truncate>Find your Destination</h2>
    <%end%>
     <%if (notice!=""&& alert!="")%>
-    <h2  style="float:right;"><%= notice %> </h2>
+    <h2  style="float:right;"><%= notice %><%=alert%> </h2>
     <%end%>
 
        <%if current_page?(new_hoteladmin_registration_path)%>
 
-    <h2 flex md-truncate>Hotel Admin Registration</h2>
+    <h2 flex md-truncate>  Hotel Admin Registration</h2>
     <%end%>
            <%if current_page?(new_hoteladmin_session_path)%>
 
-    <h2 flex md-truncate>Hotel Admin Log In</h2>
+    <h2 flex md-truncate>  Hotel Admin Log In</h2>
     <%end%>
+  
             <%if current_page?(new_flightadmin_session_path)%>
 
-    <h2 flex md-truncate>Airline Admin Sign Up</h2>
+    <h2 flex md-truncate>  Airline Admin Log In</h2>
     <%end%>
-            <%if current_page?(new_flightadmin_registration_path)%>
+           <%if current_page?(new_flightadmin_registration_path)%>
 
-    <h2 flex md-truncate>Airline Admin Log In</h2>
+    <h2 flex md-truncate>  Airline Admin Sing Up</h2>
     <%end%>
 <!-- <h5> <%= notice %> </h5>
     <h5> <%= alert %></h5> -->
@@ -109,8 +113,39 @@
 <h2 flex md-truncate>Log in</h2>
 <%end%>
 
+
+<% if user_signed_in?%>
+<%= link_to('Logout', destroy_user_session_path, :class => "btn-danger", :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
+<%elsif%>
+<% if hoteladmin_signed_in?%>
+<%= link_to('Logout', destroy_hoteladmin_session_path, :class => "btn-danger", :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
+<%elsif%>
+<% if flightadmin_signed_in?%>
+<%= link_to('Logout', destroy_flightadmin_session_path, :class => "btn-danger", :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
+<%elsif%>
+<% if current_page?(partner_path)%>
+<h2 flex md-truncate>Who are you?</h2>
+<%elsif%>
+<% if current_page?(new_hoteladmin_session_path) or current_page?(new_hoteladmin_registration_path)%>
+<md-button class=" md-raised" href="/hoteladmins/sign_in">Log In</md-button>
+<md-button class="md-accent md-raised md-hue-4" href="/hoteladmins/sign_up">Sgn Up</md-button>
+<%elsif%>
+<% if current_page?(new_flightadmin_session_path) or current_page?(new_flightadmin_registration_path)%>
+<md-button class=" md-raised" href="/flightadmins/sign_in">Log In</md-button>
+<md-button class="md-accent md-raised md-hue-4" href="/flightadmins/sign_up">Sgn Up</md-button>
+<%else%>
+
 <md-button class=" md-raised" href="/users/sign_in">Log In</md-button>
 <md-button class="md-accent md-raised md-hue-4" href="/users/sign_up">Sgn Up</md-button>
+
+<%end%>
+<%end%>
+<%end%>
+<%end%>
+<%end%>
+<%end%>
+
+
       </div>
 </md-toolbar>
 </div>

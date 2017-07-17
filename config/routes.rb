@@ -12,7 +12,7 @@ Rails.application.routes.draw do
      }  
     root to: 'site#home'
 
-  get '/adminprofile' => 'site#adminprofile'
+
   get '/booking' => 'site#bookingpage'
   get '/aboutus' => 'site#aboutus'
   get '/contactus' => 'site#contactus'
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/airlineprofile' => 'site#airlineprofile'
   get '/adminpage' => 'site#adminpage'
   get '/userprofile' => 'profiles#userprofile'
+  get '/partner' => 'site#partner'
 
   
    
