@@ -10,6 +10,7 @@ before_action :authenticate_user!, :except => [:home, :aboutus, :contactus, :air
   end
 
   def bookingpage
+    @hotel= Hotels.all
   end
 
   def aboutus
@@ -29,4 +30,5 @@ before_action :authenticate_user!, :except => [:home, :aboutus, :contactus, :air
   end
   def partner
   end
+
 end
