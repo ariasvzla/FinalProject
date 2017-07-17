@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170716214613) do
+ActiveRecord::Schema.define(version: 20170717171049) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20170716214613) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.decimal  "totalcost"
+    t.datetime "start"
+    t.datetime "end"
+    t.integer  "numpeople"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "flightadmins", force: :cascade do |t|
@@ -86,8 +95,10 @@ ActiveRecord::Schema.define(version: 20170716214613) do
     t.boolean  "avaibility"
     t.string   "hotelimg"
     t.decimal  "pricepn"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "hoteladmin_id"
+    t.index ["hoteladmin_id"], name: "index_hotels_on_hoteladmin_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -121,6 +132,18 @@ ActiveRecord::Schema.define(version: 20170716214613) do
     t.decimal  "pricepn"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "hotels_id"
+    t.integer  "quantity"
+    t.index ["hotels_id"], name: "index_rooms_on_hotels_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.datetime "date"
+    t.decimal  "earnings"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "booking_id"
+    t.index ["booking_id"], name: "index_transactions_on_booking_id"
   end
 
   create_table "users", force: :cascade do |t|

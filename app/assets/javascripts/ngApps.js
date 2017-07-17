@@ -111,9 +111,19 @@ if (endDate == undefined && startDate==undefined){
     return true;
   }
  }
+$scope.adults= 1;
 
 
- $scope.linkCtrl= function(){
+  $scope.clear = function(){
+    $scope.interests = undefined;
+   $scope.origin= undefined;
+     $scope.dest= undefined;
+      $scope.budget= undefined;
+      $scope.adults= undefined;
+      $scope.kids= undefined;
+      $scope.startDate = undefined;
+      $scope.endDate= undefined;
+  };
 
- }
+
 });

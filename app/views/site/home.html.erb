@@ -1,27 +1,27 @@
 <div class="col-md-4">
 <md-input-container >
         <label>Origin</label>
-        <input id="origin" required class="cities-comp">
+        <input ng-model="origin" id="origin" required class="cities-comp">
       </md-input-container>
       </div>
       <div class="col-md-4">
 <md-input-container >
         <label>Destination</label>
-        <input id="dest" required class="cities-comp" >
+        <input ng-model="dest" id="dest" required class="cities-comp" >
       </md-input-container>
       </div>
 <div class="col-md-4">
 <md-input-container >
         <label>Budget (Euros)</label>
-        <input id="exampleInputAmount"  onkeypress="return isNumber(event)" required  >
+        <input ng-model="budget" id="exampleInputAmount"  onkeypress="return isNumber(event)" required  >
       </md-input-container>
 
 </div>
         <div class="row">
                              <div class="col-md-4">  
-                             <md-input-container>
+                             <md-input-container >
                             <label><Strong>Departure</Strong></label>
-                             <md-datepicker id="startDate" ng-model="startDate" md-placeholder="Enter a Date" required></md-datepicker>
+                             <md-datepicker  id="startDate" ng-model="startDate" md-placeholder="Enter a Date" required></md-datepicker>
                             </md-input-container>
 
              
@@ -30,9 +30,9 @@
 
 
                              <div class="col-md-4">
-                                <md-input-container>
+                                <md-input-container >
                                 <label><Strong>Returning</Strong></label>
-                                <md-datepicker id="endDate" ng-model="endDate" md-placeholder="Enter a Date" required></md-datepicker>
+                                <md-datepicker   id="endDate" ng-model="endDate" md-placeholder="Enter a Date" required></md-datepicker>
                                 </md-input-container>
                                </div>
                         
@@ -67,11 +67,23 @@
         </md-input-container>
 
           </div>
+                 <div class="col-md-5">
+
+<md-select placeholder="Select Interests" ng-model="interests" multiple>
+        <md-option value="1">One</md-option>
+        <md-option value="2">Two</md-option>
+      </md-select>
+    {{myModel}}
+  <md-button ng-click="clear()">Reset</md-button>
+</div>
+
+
      <div class="col-md-4">
             <md-button id="search" class="md-raised" ng-click="validation(startDate,endDate)">Go
               <md-tooltip>Find Destination</md-tooltip>
               </md-button>
-             
+             </div>
+             <div class="col-md-4">
                      <div class="errorHand" > 
                      </div>
                 </div>
