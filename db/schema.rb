@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170718205917) do
+ActiveRecord::Schema.define(version: 20170718210827) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -144,9 +144,8 @@ ActiveRecord::Schema.define(version: 20170718205917) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "quantity"
-    t.integer  "hotels_id"
-    t.         "hotel"
-    t.index ["hotels_id"], name: "index_rooms_on_hotels_id"
+    t.integer  "hotel_id"
+    t.index ["hotel_id"], name: "index_rooms_on_hotel_id"
   end
 
   create_table "transactions", force: :cascade do |t|
