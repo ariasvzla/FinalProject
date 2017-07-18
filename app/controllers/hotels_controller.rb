@@ -16,6 +16,7 @@ class HotelsController < ApplicationController
   # GET /hotels/new
   def new
     @hotel = Hotel.new
+  hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)
   end
 
   # GET /hotels/1/edit
@@ -70,6 +71,6 @@ class HotelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hotel_params
-      params.require(:hotel).permit(:name, :location, :roomtype, :numroom, :avaibility, :hotelimg, :pricepn)
+      params.require(:hotel).permit(:hoteladmin_id,:name, :location, :roomtype, :numroom, :avaibility, :hotelimg, :pricepn)
     end
 end

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :transactions
   resources :bookings
   resources :rooms
-  resources :profiles
+
   resources :places
   resources :flights
   resources :hotels
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
         sessions: 'sessions/sessions'
      }  
     root to: 'site#home'
-
+  resources :profiles
 
   get '/booking' => 'site#bookingpage'
   get '/aboutus' => 'site#aboutus'
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/airlineprofile' => 'site#airlineprofile'
   get '/adminpage' => 'site#adminpage'
   get '/userprofile' => 'profiles#userprofile'
+  get '/memberprofile' => 'site#memberprofile'
   get '/partner' => 'site#partner'
 
   

@@ -1,4 +1,16 @@
-<md-button class="md-raised">Add rooms</md-button>
-<md-button href="/hotels/new" class="md-raised">Add new branch</md-button>
+<%if user_signed_in? %>
+    <h1> You are not Hotel Administrator</h1>
+    <%end%>
 
-<%= link_to('Logout', destroy_hoteladmin_session_path, :method  => 'delete',  data: { confirm: 'Are you sure?' }) %> </li>
+<md-button href="/hotels/new" class="md-raised">Add Hotel</md-button>
+<h2>My Hotels</h2>
+
+<%if @hotel.nil? %>
+<h3> You dont have a Hotel registred</h3>
+<%else%>
+
+<%=@hotel.name%>
+<md-button class="md-raised">Add rooms</md-button>
+<%end%>
+
+
