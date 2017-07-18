@@ -73,13 +73,11 @@
         <md-option value="1">One</md-option>
         <md-option value="2">Two</md-option>
       </md-select>
-    {{myModel}}
+ 
   <md-button ng-click="clear()">Reset</md-button>
 </div>
-
-
      <div class="col-md-4">
-            <md-button id="search" class="md-raised" ng-click="validation(startDate,endDate)">Go
+            <md-button id="search" class="md-raised" onclick="go()">Go
               <md-tooltip>Find Destination</md-tooltip>
               </md-button>
              </div>
@@ -88,7 +86,6 @@
                      </div>
                 </div>
                 </div>
-
                 <md-toolbar class="md-hue-2">
 <div class="md-toolbar-tools">
  <h2 flex md-truncate>Most popular hotels</h2>

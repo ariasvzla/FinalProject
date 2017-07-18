@@ -1,5 +1,14 @@
 <h1>Site#bookingpage</h1>
 <p>Find me in app/views/site/bookingpage.html.erb</p>
+
+<% for hotel in @hotels %>
+
+<%if hotel.name == dest%>
+macth
+<%else%>
+hote not found
+<%end%>
+<%end%>
 <%= link_to('Logout', destroy_user_session_path, :method  => 'delete',  data: { confirm: 'Are you sure?' }) %> </li>
 
 

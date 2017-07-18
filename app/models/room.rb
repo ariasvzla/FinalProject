@@ -1,3 +1,5 @@
 class Room < ApplicationRecord
-	belogns_to :hotels
+	 belongs_to :hotels
+
+	has_many :avaibilities
 end

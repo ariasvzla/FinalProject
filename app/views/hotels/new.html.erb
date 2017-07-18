@@ -1,7 +1,9 @@
-<%if current_user_signed_in?%>
+<%if user_signed_in? %>
     <h1> You are not allowed to see this page</h1>
     <%end%>
-    <%if current_flightadmin_signed_in?%>
+
+
+    <%if flightadmin_signed_in?%>
     <h1> You are not allowed to see this page</h1>
      <%end%>
      

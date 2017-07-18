@@ -10,13 +10,14 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+
   end
 def userprofile
  profile = Profile.find_by_user_id(current_user.id)
   if profile.nil?
         redirect_to new_profile_path(profile)
   else
-    @profile = Profile.find_by_user_id(current_user.id)
+    profile = Profile.find_by_user_id(current_user.id)
     redirect_to userprofile_path
   end
 end
@@ -77,7 +78,7 @@ end
       if profile.nil?
          redirect_to "/profiles/new"
       else
-         redirect_to  "/profiles/userprofile"
+         redirect_to home_path
       end
    end
 
