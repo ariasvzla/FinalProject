@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+
+  <div class="field">
+    <%= f.hidden_field :hotels_id, :value => @hotel.id  %>
+  </div>
+
   <div class="field">
     <%= f.label :roomtype %>
     <%= f.text_field :roomtype %>

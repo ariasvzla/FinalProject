@@ -16,7 +16,7 @@ class HotelsController < ApplicationController
   # GET /hotels/new
   def new
     @hotel = Hotel.new
-  hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)
+    hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)
   end
 
   # GET /hotels/1/edit

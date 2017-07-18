@@ -1,6 +1,3 @@
-<%if user_signed_in? %>
-    <h1> You are not Hotel Administrator</h1>
-    <%end%>
 
 <md-button href="/hotels/new" class="md-raised">Add Hotel</md-button>
 <h2>My Hotels</h2>
@@ -9,8 +6,15 @@
 <h3> You dont have a Hotel registred</h3>
 <%else%>
 
-<%=@hotel.name%>
-<md-button class="md-raised">Add rooms</md-button>
+<%=@hotel.name%> <%=@hotel.id%>
+<md-button class="md-raised" href="/rooms/new">Add rooms</md-button>
+<%if @room.nil? %>
+No rooms added yet...
+<%else%>
+You have <%=Room.count%> in this hotel.
+<md-button class="md-raised" href="/availbility/new">Set Availbility</md-button>
+<%end%>
+
 <%end%>
 
 

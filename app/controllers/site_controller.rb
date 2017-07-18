@@ -21,6 +21,7 @@ before_action :authenticate_user!, :except => [:home, :aboutus, :contactus, :air
 
   def hotelprofile
       @hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)
+   
   end
 
 

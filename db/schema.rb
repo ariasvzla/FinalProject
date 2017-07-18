@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717171049) do
+ActiveRecord::Schema.define(version: 20170718205917) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20170717171049) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "avaibilities", force: :cascade do |t|
+    t.datetime "datefrom"
+    t.datetime "dateto"
+    t.decimal  "pricepn"
+    t.boolean  "available"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "rooms_id"
+    t.index ["rooms_id"], name: "index_avaibilities_on_rooms_id"
   end
 
   create_table "bookings", force: :cascade do |t|
@@ -132,8 +143,9 @@ ActiveRecord::Schema.define(version: 20170717171049) do
     t.decimal  "pricepn"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "hotels_id"
     t.integer  "quantity"
+    t.integer  "hotels_id"
+    t.         "hotel"
     t.index ["hotels_id"], name: "index_rooms_on_hotels_id"
   end
 

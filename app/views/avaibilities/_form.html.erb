@@ -1,0 +1,39 @@
+<%= form_for(avaibility) do |f| %>
+  <% if avaibility.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(avaibility.errors.count, "error") %> prohibited this avaibility from being saved:</h2>
+
+      <ul>
+      <% avaibility.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="field">
+    <%= f.hidden_field :room_id, :value => current_room.id  %>
+  </div>
+  <div class="field">
+    <%= f.label :datefrom %>
+    <%= f.datetime_select :datefrom %>
+  </div>
+
+  <div class="field">
+    <%= f.label :dateto %>
+    <%= f.datetime_select :dateto %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pricepn %>
+    <%= f.text_field :pricepn %>
+  </div>
+
+  <div class="field">
+    <%= f.label :available %>
+    <%= f.check_box :available %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
