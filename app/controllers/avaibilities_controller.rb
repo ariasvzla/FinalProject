@@ -14,7 +14,9 @@ class AvaibilitiesController < ApplicationController
 
   # GET /avaibilities/new
   def new
-     room = Room.find_by_hotel_id(current_hoteladmin.id)
+      @hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)
+      @room = Room.find_by_hotel_id(@hotel.id)
+      avaibility = Avaibility.find_by_room_id(@room.id)
     @avaibility = Avaibility.new
   end
 

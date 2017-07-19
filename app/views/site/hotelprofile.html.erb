@@ -8,11 +8,13 @@
 
 <%=@hotel.name%> <%=@hotel.id%>
 <md-button class="md-raised" href="/rooms/new">Add rooms</md-button>
-<%if @room.nil? %>
+
+
+<%if @hotelid==@hotel.id %>
 No rooms added yet...
 <%else%>
-You have <%=Room.count%> in this hotel.
-<md-button class="md-raised" href="/availbility/new">Set Availbility</md-button>
+You have <%=@hotel.rooms.count%> in this hotel.
+<md-button class="md-raised" href="/avaibilities/new">Set Availbility</md-button>
 <%end%>
 
 <%end%>
