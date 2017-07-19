@@ -1,5 +1,5 @@
 class AddRefToAvaibilities < ActiveRecord::Migration[5.0]
   def change
-    add_reference :avaibilities, :rooms, foreign_key: true
+    add_reference :avaibilities, :room, foreign_key: true
   end
 end
