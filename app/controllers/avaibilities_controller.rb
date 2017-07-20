@@ -4,34 +4,45 @@ class AvaibilitiesController < ApplicationController
   # GET /avaibilities
   # GET /avaibilities.json
   def index
-    @avaibilities = Avaibility.all
+ 
+      @room = Room.find(params[:room_id])
+       @avaibilities = @room.avaibilities
+   
   end
 
   # GET /avaibilities/1
   # GET /avaibilities/1.json
   def show
+      @room = Room.find(params[:room_id])
+      @avaibility = @room.avaibilities.find(params[:id])
   end
 
   # GET /avaibilities/new
   def new
+     @room = Room.find(params[:room_id])
       @hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)
-      @room = Room.find_by_hotel_id(@hotel.id)
-      avaibility = Avaibility.find_by_room_id(@room.id)
-    @avaibility = Avaibility.new
+      @avaibility = @room.avaibilities.build
+     
+      @avaibility = Avaibility.new
   end
 
   # GET /avaibilities/1/edit
   def edit
+      @hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)
+      @room = Room.find_by_hotel_id(@hotel.id)
+      avaibility = Avaibility.find_by_room_id(@room.id)
   end
 
   # POST /avaibilities
   # POST /avaibilities.json
   def create
+    @room = Room.find(params[:room_id])
     @avaibility = Avaibility.new(avaibility_params)
-
+    @avaibility = @room.avaibilities.build(params.require(:avaibility).permit!)
+    @avaibility = @room.avaibilities.build(params.require(:avaibility).permit(:datefrom, :dateto, :pricepn, :available, :room_id))
     respond_to do |format|
       if @avaibility.save
-        format.html { redirect_to @avaibility, notice: 'Avaibility was successfully created.' }
+        format.html { redirect_to hotelprofile_path, notice: 'Avaibility was successfully created.' }
         format.json { render :show, status: :created, location: @avaibility }
       else
         format.html { render :new }
@@ -43,9 +54,12 @@ class AvaibilitiesController < ApplicationController
   # PATCH/PUT /avaibilities/1
   # PATCH/PUT /avaibilities/1.json
   def update
+      @room = Room.find(params[:room_id])
+      @avaibility = Avaibility.find(params[:id])
     respond_to do |format|
+      
       if @avaibility.update(avaibility_params)
-        format.html { redirect_to @avaibility, notice: 'Avaibility was successfully updated.' }
+        format.html { redirect_to hotelprofile_path, notice: 'Avaibility was successfully updated.' }
         format.json { render :show, status: :ok, location: @avaibility }
       else
         format.html { render :edit }
@@ -57,9 +71,11 @@ class AvaibilitiesController < ApplicationController
   # DELETE /avaibilities/1
   # DELETE /avaibilities/1.json
   def destroy
+     @room = Room.find(params[:room_id])
+     @avaibility = Avaibility.find(params[:id])
     @avaibility.destroy
     respond_to do |format|
-      format.html { redirect_to avaibilities_url, notice: 'Avaibility was successfully destroyed.' }
+      format.html { redirect_to hotelprofile_path, notice: 'Avaibility was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

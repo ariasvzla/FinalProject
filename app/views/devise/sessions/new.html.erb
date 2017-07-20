@@ -1,12 +1,12 @@
- 
-<h2 ng-controller="dateController">Log in</h2>
 
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <md-input-container >
      <label>Email</label>
     
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, class: 'form-control', autofocus: true %>
     </md-input-container>
   </div>
 
@@ -15,7 +15,7 @@
      <label>Password</label>
     
     <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
     </md-input-container>
   </div>
 
@@ -27,9 +27,7 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class: "btn btn-primary" %>
   </div>
 <% end %>
 
-
-<%= render "devise/shared/links" %>

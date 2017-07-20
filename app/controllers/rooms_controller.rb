@@ -15,10 +15,10 @@ class RoomsController < ApplicationController
   # GET /rooms/new
   def new
 
-    @room = Room.new
-    @hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)
-    room = Room.find_by_hotel_id(@hotel.id)
 
+    @hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)
+    @room = Room.find_by_hotel_id(@hotel.id)
+    @room = Room.new
   end
 
   # GET /rooms/1/edit
@@ -32,7 +32,7 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       if @room.save
-        format.html { redirect_to @room, notice: 'Room was successfully created.' }
+        format.html { redirect_to hotelprofile_path, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class RoomsController < ApplicationController
   def update
     respond_to do |format|
       if @room.update(room_params)
-        format.html { redirect_to @room, notice: 'Room was successfully updated.' }
+        format.html { redirect_to hotelprofile_path, notice: 'Room was successfully updated.' }
         format.json { render :show, status: :ok, location: @room }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class RoomsController < ApplicationController
   def destroy
     @room.destroy
     respond_to do |format|
-      format.html { redirect_to rooms_url, notice: 'Room was successfully destroyed.' }
+      format.html { redirect_to hotelprofile_path, notice: 'Room was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -73,6 +73,6 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:roomtype, :romnum, :pricepn,:hotel_id)
+      params.require(:room).permit(:roomtype, :romnum, :pricepn,:hotel_id,:quantity)
     end
 end

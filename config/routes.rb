@@ -1,19 +1,28 @@
 Rails.application.routes.draw do
-  resources :avaibilities
-  resources :transactions
-  resources :bookings
-  resources :rooms
+      resources :profiles
+     resources :avaibilities
+    resources :hotels do
+     resources :rooms
+   end
 
+  resources :rooms do
+    resources :avaibilities 
+  end
+
+    resources :transactions do 
+  resources :bookings
+end
+ 
   resources :places
   resources :flights
-  resources :hotels
+
+
+
      devise_for :users, :admins, :hoteladmins, :flightadmins, controllers: {
         registrations: 'sessions/registrations',
         sessions: 'sessions/sessions'
      }  
     root to: 'site#home'
-  resources :profiles
-
   get '/booking' => 'site#bookingpage'
   get '/aboutus' => 'site#aboutus'
   get '/contactus' => 'site#contactus'

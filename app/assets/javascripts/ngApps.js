@@ -123,9 +123,6 @@ $scope.adults= 1;
 
 
 
-
-
-
 });
 var go = function(){
 

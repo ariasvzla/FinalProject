@@ -14,15 +14,13 @@
   </thead>
 
   <tbody>
-    <% @avaibilities.each do |avaibility| %>
+   <% for avaibility in @avaibilities %>
       <tr>
         <td><%= avaibility.datefrom %></td>
         <td><%= avaibility.dateto %></td>
         <td><%= avaibility.pricepn %></td>
         <td><%= avaibility.available %></td>
-        <td><%= link_to 'Show', avaibility %></td>
-        <td><%= link_to 'Edit', edit_avaibility_path(avaibility) %></td>
-        <td><%= link_to 'Destroy', avaibility, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +28,3 @@
 
 <br>
 
-<%= link_to 'New Avaibility', new_avaibility_path %>

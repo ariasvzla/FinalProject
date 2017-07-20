@@ -112,16 +112,18 @@
 <%if current_page?(new_user_session_path)%>
 <h2 flex md-truncate>Log in</h2>
 <%end%>
-
+<%if current_page?(new_room_path)%>
+<h2 flex md-truncate>Add Rooms</h2>
+<%end%>
 
 <% if user_signed_in?%>
-<%= link_to('Logout', destroy_user_session_path, :class => "btn-danger", :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
+<%= link_to('Logout', destroy_user_session_path, :class => "btn btn-default btn-red", :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
 <%elsif%>
 <% if hoteladmin_signed_in?%>
-<%= link_to('Logout', destroy_hoteladmin_session_path, :class => "btn-danger", :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
+<%= link_to('Logout', destroy_hoteladmin_session_path, :class => "btn btn-default btn-red", :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
 <%elsif%>
 <% if flightadmin_signed_in?%>
-<%= link_to('Logout', destroy_flightadmin_session_path, :class => "btn-danger", :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
+<%= link_to('Logout', destroy_flightadmin_session_path, :class => "btn btn-default btn-red", :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
 <%elsif%>
 <% if current_page?(partner_path)%>
 <h2 flex md-truncate>Who are you?</h2>
