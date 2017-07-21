@@ -1,4 +1,4 @@
-<%= form_for(avaibility) do |f| %>
+<%= form_for([@room,@avaibility], :html => {:name=>"f", :onsubmit => "return validate()"}) do |f| %>
   <% if avaibility.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(avaibility.errors.count, "error") %> prohibited this avaibility from being saved:</h2>
@@ -10,30 +10,39 @@
       </ul>
     </div>
   <% end %>
-<div class="field">
-    <%= f.hidden_field :room_id, :value => current_room.id  %>
-  </div>
-  <div class="field">
-    <%= f.label :datefrom %>
-    <%= f.datetime_select :datefrom %>
-  </div>
 
   <div class="field">
-    <%= f.label :dateto %>
-    <%= f.datetime_select :dateto %>
+    <%= f.label :datefrom %>
+    <%= f.datetime_select :datefrom,  prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year' }, :discard_hour => true , order: [:day, :month, :year], :class => "form-control" %>
   </div>
+
+<div class="field">
+    <%= f.label :dateto %>
+    <%= f.datetime_select :dateto, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year' }, :discard_hour => true , order: [:day, :month, :year] ,:discard_hour => true, :class => "form-control"%>
+  </div>
+
 
   <div class="field">
     <%= f.label :pricepn %>
     <%= f.text_field :pricepn %>
   </div>
 
+
   <div class="field">
     <%= f.label :available %>
     <%= f.check_box :available %>
   </div>
 
+ <div class="errorHand"></div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Set", class: "btn btn-default", id: 'btn-sign-up'  %>
+
+        <md-button class="md-accent md-raised md-hue-3" href="/hotelprofile">Back</md-button>
+
   </div>
+
+ 
 <% end %>
+<script>
+$(".errorHand").hide();
+</script>

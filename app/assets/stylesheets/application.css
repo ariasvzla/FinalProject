@@ -132,3 +132,6 @@ nav {
   padding: 7px 11px 4px;
   margin-left: 10px; /* distance between error tip and element it points to */
 }
+
+.toolbardemoBasicUsage md-toolbar md-icon.md-default-theme {
+  color: white; }

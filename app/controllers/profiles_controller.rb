@@ -40,7 +40,7 @@ end
 
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to userprofile_path, notice: 'Profile was successfully created.' }
+        format.html { redirect_to home_path, notice: 'Profile was successfully created.' }
         format.json { render :show, status: :created, location: @profile }
       else
         format.html { render :new }

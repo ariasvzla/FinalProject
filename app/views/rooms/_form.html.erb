@@ -11,30 +11,26 @@
     </div>
   <% end %>
 
-
   <div class="field">
     <%= f.hidden_field :hotel_id, :value => @hotel.id  %>
   </div>
-   <div class="field">
-    <%= f.hidden_field :quantity, :value => 23 %>
-  </div>
 
   <div class="field">
-    <%= f.label :roomtype %>
-    <%= f.text_field :roomtype %>
+   <label>Room Type</label>
+    <%=f.select :roomtype, ['Single', 'Double', 'Triple', 'Family', 'Suite', 'VIP'], class: 'form-control'  %>
   </div>
 
+<md-input-container >
   <div class="field">
-    <%= f.label :romnum %>
-    <%= f.number_field :romnum %>
+    <label>Room Number</label>
+    <%= f.number_field :romnum,  class: 'form-control' %>
   </div>
-
-  <div class="field">
-    <%= f.label :pricepn %>
-    <%= f.text_field :pricepn %>
-  </div>
+  </md-input-container>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add room" , class: "btn btn-default" %>
+    <md-button class="md-accent md-raised md-hue-3" href="/hotelprofile">Back</md-button>
   </div>
+
+
 <% end %>

@@ -1,13 +1,10 @@
 class SiteController < ApplicationController
-before_action :authenticate_user!, :except => [:home, :aboutus, :contactus, :airlineprofile, :adminpage, :hotelprofile, :partner]
+before_action :authenticate_user!, :except => [:home, :aboutus, :contactus, :airlineprofile, :hotelprofile, :partner]
  before_action :authenticate_hoteladmin!, :except => [:home, :aboutus, :contactus, :bookingpage, :airlineprofile, :adminpage, :partner, :memberprofile]
  before_action :authenticate_flightadmin!, :except => [:home, :aboutus, :contactus, :bookingpage, :adminpage, :hotelprofile,:partner, :memberprofile]
   def home
   end
 
-
-  def adminprofile
-  end
 
   def bookingpage
     @hotel= Hotels.all
@@ -20,9 +17,11 @@ before_action :authenticate_user!, :except => [:home, :aboutus, :contactus, :air
   end
 
   def hotelprofile
-      @hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)
-      
-   
+
+  @hotels=Hotel.all
+ @rooms =Room.all
+ @avaibilities= Avaibility.all
+ 
   end
 
 
@@ -30,6 +29,8 @@ before_action :authenticate_user!, :except => [:home, :aboutus, :contactus, :air
   end
 
   def adminpage
+
+
   end
   def partner
   end

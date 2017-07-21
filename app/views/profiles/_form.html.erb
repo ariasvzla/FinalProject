@@ -13,36 +13,43 @@
  <div class="field">
     <%= f.hidden_field :user_id, :value => current_user.id%>
   </div>
+<md-input-container >
 
   <div class="field">
     <%= f.label :firstname %>
-    <%= f.text_field :firstname %>
+    <%= f.text_field :firstname, class: 'form-control'  %>
   </div>
-
+  </md-input-container>
+<md-input-container >
   <div class="field">
     <%= f.label :lastname %>
-    <%= f.text_field :lastname %>
+    <%= f.text_field :lastname, class: 'form-control'  %>
   </div>
-
+  </md-input-container>
+<md-input-container >
   <div class="field">
     <%= f.label :address %>
-    <%= f.text_field :address %>
+    <%= f.text_field :address, class: 'form-control'  %>
   </div>
-
+  </md-input-container>
+<md-input-container >
   <div class="field">
     <%= f.label :phone %>
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, class: 'form-control'  %>
   </div>
+</md-input-container>
 
   <div class="field">
     <%= f.label :gender %>
-    <%= f.text_field :gender %>
+    <%= f.select :gender, ['Male', 'Female'], class: 'form-control'  %>
   </div>
 
+
   <div class="field">
-    <%= f.label :dob %>
-    <%= f.datetime_select :dob %>
+    <label>Date of Birth</label>
+    <%= f.datetime_select :dob,  prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year' }, :discard_hour => true , order: [:day, :month, :year] ,:discard_hour => true, :class => "form-control"  %>
   </div>
+
 
   <div class="actions">
     <%= f.submit %>

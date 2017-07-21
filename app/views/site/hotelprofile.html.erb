@@ -1,22 +1,109 @@
+  <%hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)%>
 
-<md-button href="/hotels/new" class="md-raised">Add Hotel</md-button>
-<h2>My Hotels</h2>
+<%room = Room.find_by_hotel_id(hotel)%>
 
-<%if @hotel.nil? %>
+
+  <%if hotel.nil? %>
 <h3> You dont have a Hotel registred</h3>
+<md-button href="/hotels/new" class="md-raised">Click here to add your Hotel</md-button>
+
 <%else%>
 
-<%=@hotel.name%> <%=@hotel.id%>
-<md-button class="md-raised" href="/rooms/new">Add rooms</md-button>
+<%if current_hoteladmin.id== hotel.hoteladmin_id%>
+<md-toolbar md-colors="::{background: '{{default}}-primary-700'}"  >
+      <div class="md-toolbar-tools">
+        <h2 flex md-truncate><%=hotel.name%> Hotel</h2>
+      </div>
+    </md-toolbar>
+
+<%end%>
+<%end%>
 
 
-<%if @hotelid==@hotel.id %>
-No rooms added yet...
+
+<%if room.nil? %>
+<md-button class="md-accent md-raised md-hue-3" href="/rooms/new">Add rooms</md-button>
 <%else%>
-You have <%=@hotel.rooms.count%> in this hotel.
-<md-button class="md-raised" href="/avaibilities/new">Set Availbility</md-button>
-<%end%>
+
+<div class="alert alert-success" role="alert" id="roomtT">
+  You have  <strong><%=hotel.rooms.count%> Room</strong> available.
+</div>
+
+<md-button class="md-accent md-raised md-hue-3" ng-click="showAv();">See Avaibilities</md-button>
+
+
+<table class="table" id="roomT">
+  <thead>
+    <tr>
+      <th>Room #</th>
+      <th>Room Type</th>
+      <th>Availablity</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+
+<% @rooms.each do |room| %>
+<%if hotel.id== room.hotel_id%>
+    <tr>
+      <th scope="row"><%= room.romnum%></th>
+      <td><%= room.roomtype %></td>
+      <td><%= link_to 'Set avaibility', new_room_avaibility_path(room), class: "btn btn-default" %>
+      <%= link_to 'View avaibility',  room_avaibilities_path(room), class: "btn btn-default" %></td>
+       <td><%= link_to 'Delete', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <%end%>
+    <%end%>
+  </tbody>
+</table>
+
+<div class="alert alert-success" role="alert" id="titleAv">
+  <strong>All Availabilities</strong>
+</div>
+<table class="table" id="avaibilities">
+
+  <thead>
+    <tr>
+      <th>Room #</th>
+      <th>Available From</th>
+      <th>To</th>
+      <th>Price</th>
+      <th>Avaibility</th>
+    </tr>
+  </thead>
+  <tbody>
+   <%(0..hotel.rooms.count).each do |i|%>
+     <%@avaibilities.each do |h|%>
+     <% if  hotel.rooms.ids[i] == h.room_id %>
+            <%avaibility = Avaibility.find_by_room_id(hotel.rooms.ids[i])%>
+            <%@var=h.id%>
+            <% for avaibility in @avaibilities %>
+            <% if  @var == avaibility.id %>
+           <tr>
+             <th scope="row"><%=avaibility.room.romnum%></th>
+             <% if avaibility.datefrom.nil? || avaibility.dateto.nil?%>
+               <td> <%=avaibility.datefrom%></td>
+                 <td> <%=avaibility.dateto%></td>
+                 <%else%>
+
+             <td> <%=avaibility.datefrom.strftime("%B %d, %Y")%></td>
+             <td> <%=avaibility.dateto.strftime("%B %d, %Y") %></td>
+             <%end%>
+             <td> <%=avaibility.pricepn%></td>
+              <td> <%=avaibility.available%></td>
+           </tr>
+              <%end%>
+              <%end%>
+              <%end%>
+              <%end%>
+              <%end%>
+          </tbody>
+      </table>
+      <md-button class="md-accent md-raised md-hue-3" ng-click="backAv()" id="back">Back</md-button>
 
 <%end%>
-
-
+<script type="text/javascript">
+	$("#avaibilities").hide();
+	$("#titleAv").hide();
+	 $("#back").hide();
+</script>

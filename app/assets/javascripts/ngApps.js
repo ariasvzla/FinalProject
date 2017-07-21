@@ -119,11 +119,46 @@ $scope.adults= 1;
   };
 
 
+$scope.showAv= function(){
+       $("#roomT").hide();
+       $("#roomtT").hide();
+  $("#titleAv").show();
+  $("#titleAv").addClass('animated fadeIn');
+  $("#titleAv").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+ function (e){
+       $("#titleAv").removeClass('fadeIn');
+}); 
 
+  $("#avaibilities").show();
+  $("#avaibilities").addClass('animated fadeIn');
+  $("#avaibilities").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+ function (e){
+       $("#avaibilities").removeClass('fadeIn');
+}); 
+$("#back").show();
 
+}
 
+$scope.backAv= function (){
+  $("#avaibilities").hide();
+  $("#titleAv").hide();
+  $("#back").hide();
+  $("#roomT").show();
+  $("#roomT").addClass('animated fadeIn');
+  $("#roomT").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+ function (e){
+       $("#roomT").removeClass('fadeIn');
+}); 
+  $("#roomtT").show();
+$("#roomtT").addClass('animated fadeIn');
+  $("#roomtT").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+ function (e){
+       $("#roomtT").removeClass('fadeIn');
+}); 
 
+};
 
+$scope.dateto="ferereererwerw";
 
 
 });
@@ -131,6 +166,52 @@ var go = function(){
 
     window.location.href = "/home";
  
+}
+
+var validate = function(){
+
+
+ if (document.getElementById('avaibility_datefrom_2i').value =="" || document.getElementById('avaibility_datefrom_1i').value =="" || document.getElementById('avaibility_datefrom_3i').value =="")
+ {
+$(".errorHand").html("Dates cannot be blank");
+    $(".errorHand").show();
+    $(".errorHand").addClass('animated tada');
+    $(".errorHand").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+    function (e){
+       $(".errorHand").removeClass('tada');
+   }); 
+$("#btn-sign-up").removeAttr('data-disable-with');
+    return false;
+}
+
+if (document.getElementById('avaibility_dateto_2i').value =="" || document.getElementById('avaibility_dateto_1i').value =="" || document.getElementById('avaibility_dateto_3i').value =="")
+{ 
+$(".errorHand").html("Dates cannot be blank");
+    $(".errorHand").show();
+    $(".errorHand").addClass('animated tada');
+    $(".errorHand").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+    function (e){
+       $(".errorHand").removeClass('tada');
+   }); 
+
+$("#btn-sign-up").removeAttr('data-disable-with');
+   return false;
+  }
+
+if (document.getElementById('avaibility_datefrom_1i').value > document.getElementById('avaibility_dateto_1i').value && document.getElementById('avaibility_datefrom_2i').value> document.getElementById('avaibility_dateto_2i').value && document.getElementById('avaibility_datefrom_3i').value>document.getElementById('avaibility_dateto_3i').value)
+{
+$(".errorHand").html("Invalid dates");
+   $(".errorHand").show();
+    $(".errorHand").addClass('animated tada');
+    $(".errorHand").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+    function (e){
+       $(".errorHand").removeClass('tada');
+   }); 
+   $("#btn-sign-up").removeAttr('data-disable-with');
+    return false;
+}else{
+  return true;
+  }
 }
 
 
