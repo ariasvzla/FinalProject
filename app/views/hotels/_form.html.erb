@@ -13,42 +13,30 @@
  <div class="field">
     <%= f.hidden_field :hoteladmin_id, :value => current_hoteladmin.id  %>
   </div>
+   <md-input-container>
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
-
+</md-input-container>
+  <md-input-container>
   <div class="field">
     <%= f.label :location %>
-    <%= f.text_field :location %>
+    <%= f.text_field :location, class: 'form-control' %>
   </div>
+  </md-input-container>
 
-  <div class="field">
-    <%= f.label :roomtype %>
-    <%= f.text_field :roomtype %>
-  </div>
 
-  <div class="field">
-    <%= f.label :numroom %>
-    <%= f.number_field :numroom %>
-  </div>
 
-  <div class="field">
-    <%= f.label :avaibility %>
-    <%= f.check_box :avaibility %>
-  </div>
-
+<md-input-container>
   <div class="field">
     <%= f.label :hotelimg %>
-    <%= f.text_field :hotelimg %>
+    <%= f.text_field :hotelimg , class: 'form-control'%>
   </div>
+</md-input-container>
 
-  <div class="field">
-    <%= f.label :pricepn %>
-    <%= f.text_field :pricepn %>
-  </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add" %>
   </div>
 <% end %>

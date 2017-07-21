@@ -29,7 +29,7 @@ end
   get '/home' => 'site#home'
   get '/hotelprofile' => 'site#hotelprofile'
   get '/airlineprofile' => 'site#airlineprofile'
-  get '/adminpage' => 'site#adminpage'
+  get '/adminpage' => 'site#adminprofile'
   get '/userprofile' => 'profiles#userprofile'
   get '/memberprofile' => 'site#memberprofile'
   get '/partner' => 'site#partner'

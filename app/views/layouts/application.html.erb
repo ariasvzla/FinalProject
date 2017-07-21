@@ -117,7 +117,7 @@
 <%end%>
 
 <% if user_signed_in?%>
-<%= link_to('Logout', destroy_user_session_path, :class => "btn btn-default btn-red", :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
+<%= link_to('Logout', destroy_user_session_path, :class => "btn btn-default ", :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
 <%elsif%>
 <% if hoteladmin_signed_in?%>
 <%= link_to('Logout', destroy_hoteladmin_session_path, :class => "btn btn-default btn-red", :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>

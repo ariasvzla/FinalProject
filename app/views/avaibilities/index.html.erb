@@ -1,23 +1,35 @@
+<script>
+$("#avaibilities").hide();
+</script>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Avaibilities</h1>
+<div class="alert alert-success" role="alert">
+  <strong>Availabilities for Room # <%=@room.romnum%></strong>
+  </div>
 
-<table>
+
+<%if  @avaibilities.ids.empty?%>
+Not avaibilities set yet for this room
+<%= link_to 'Set avaibility?', new_room_avaibility_path(@room), class: "btn btn-default" %>
+ <md-button class="md-accent md-raised md-hue-3" href="/hotelprofile">Back</md-button>
+
+<%else%>
+
+<table class="table" >
   <thead>
     <tr>
-      <th>Datefrom</th>
-      <th>Dateto</th>
-      <th>Pricepn</th>
-      <th>Available</th>
-      <th colspan="3"></th>
+      <th>Available From</th>
+      <th>To</th>
+      <th>Price</th>
+      <th>Avaibility</th>
     </tr>
   </thead>
-
   <tbody>
    <% for avaibility in @avaibilities %>
       <tr>
-        <td><%= avaibility.datefrom %></td>
-        <td><%= avaibility.dateto %></td>
+        <td><%= avaibility.datefrom.strftime("%B %d, %Y")%></td>
+        <td><%= avaibility.dateto.strftime("%B %d, %Y") %></td>
         <td><%= avaibility.pricepn %></td>
         <td><%= avaibility.available %></td>
       
@@ -27,4 +39,5 @@
 </table>
 
 <br>
-
+ <md-button class="md-accent md-raised md-hue-3" href="/hotelprofile">Back</md-button>
+<%end%>
