@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
       resources :profiles
      resources :avaibilities
+     
     resources :hotels do
      resources :rooms
    end

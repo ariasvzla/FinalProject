@@ -38,8 +38,11 @@ class AvaibilitiesController < ApplicationController
   def create
     @room = Room.find(params[:room_id])
     @avaibility = Avaibility.new(avaibility_params)
+
+
     @avaibility = @room.avaibilities.build(params.require(:avaibility).permit!)
     @avaibility = @room.avaibilities.build(params.require(:avaibility).permit(:datefrom, :dateto, :pricepn, :available, :room_id))
+
     respond_to do |format|
       if @avaibility.save
         format.html { redirect_to hotelprofile_path, notice: 'Avaibility was successfully created.' }

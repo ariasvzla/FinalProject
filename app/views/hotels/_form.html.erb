@@ -34,9 +34,15 @@
     <%= f.text_field :hotelimg , class: 'form-control'%>
   </div>
 </md-input-container>
+<md-input-container>
+  <div class="field">
+    <%= f.label :Description %>
+    <%= f.text_area :description , size: "35x2",class: 'form-control'%>
+  </div>
+</md-input-container>
 
 
   <div class="actions">
-    <%= f.submit "Add" %>
+    <%= f.submit %>
   </div>
 <% end %>

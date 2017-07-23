@@ -117,28 +117,28 @@
 <%end%>
 
 <% if user_signed_in?%>
-<%= link_to('Logout', destroy_user_session_path, :class => "btn btn-default ", :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
+<%= link_to('Logout', destroy_user_session_path, :class => "btn btn-default ", :style =>'color:red;', :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
 <%elsif%>
 <% if hoteladmin_signed_in?%>
-<%= link_to('Logout', destroy_hoteladmin_session_path, :class => "btn btn-default btn-red", :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
+<%= link_to('Logout', destroy_hoteladmin_session_path, :class => "btn btn-default ", :style =>'color:red;',:method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
 <%elsif%>
 <% if flightadmin_signed_in?%>
-<%= link_to('Logout', destroy_flightadmin_session_path, :class => "btn btn-default btn-red", :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
+<%= link_to('Logout', destroy_flightadmin_session_path, :class => "btn btn-default ",:style =>'color:red;', :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
 <%elsif%>
 <% if current_page?(partner_path)%>
 <h2 flex md-truncate>Who are you?</h2>
 <%elsif%>
 <% if current_page?(new_hoteladmin_session_path) or current_page?(new_hoteladmin_registration_path)%>
-<md-button class=" md-raised" href="/hoteladmins/sign_in">Log In</md-button>
-<md-button class="md-accent md-raised md-hue-4" href="/hoteladmins/sign_up">Sgn Up</md-button>
+<md-button class=" md-accent md-raised md-hue-2" href="/hoteladmins/sign_in">Log In</md-button>
+<md-button class="md-accent md-raised md-hue-2" href="/hoteladmins/sign_up">Sign Up</md-button>
 <%elsif%>
 <% if current_page?(new_flightadmin_session_path) or current_page?(new_flightadmin_registration_path)%>
-<md-button class=" md-raised" href="/flightadmins/sign_in">Log In</md-button>
-<md-button class="md-accent md-raised md-hue-4" href="/flightadmins/sign_up">Sgn Up</md-button>
+<md-button class=" md-accent md-raised md-hue-2" href="/flightadmins/sign_in">Log In</md-button>
+<md-button class="md-accent md-raised md-hue-2" href="/flightadmins/sign_up">Sign Up</md-button>
 <%else%>
 
-<md-button class=" md-raised" href="/users/sign_in">Log In</md-button>
-<md-button class="md-accent md-raised md-hue-4" href="/users/sign_up">Sgn Up</md-button>
+<md-button class="md-accent md-raised md-hue-2" href="/users/sign_in">Log In</md-button>
+<md-button class="md-accent md-raised md-hue-2" href="/users/sign_up">Sign Up</md-button>
 
 <%end%>
 <%end%>
@@ -160,24 +160,22 @@
 <div class="flex" style="width: 320px; float: right;" >
 <br>
 <br>
-<md-toolbar class="md-hue-2">
+<md-toolbar class="md-warn">
       <div class="md-toolbar-tools" >
-<h2 flex md-truncate>Menu</h2>
+<h2 flex md-truncate>Become our partner</h2>
+
+
+  
 </div>
-</md-toolbar>
-<md-button class="md-raised" href="/users/sign_up" style="width: 310px;">Home</md-button>
-<md-button class="md-raised" href="/users/sign_up" style="width: 310px;">Home</md-button>
-<md-button class="md-raised" href="/users/sign_up" style="width: 310px;">Home</md-button>
-<md-button class="md-raised" href="/users/sign_up" style="width: 310px;">Home</md-button>
-<md-button class="md-raised" href="/users/sign_up" style="width: 310px;">Home</md-button>
-<md-button class="md-raised" href="/users/sign_up" style="width: 310px;">Home</md-button>
+
+<md-button class=" md-raised" href="/hoteladmins/sign_up">Hotel Owner? </md-button>
+<md-button class="md-raised " href="/flightadmins/sign_up">Airline Owner?</md-button>
+<md-button class="md-raised md-hue-4" href="/users/sign_up">New member?</md-button>
+
+
 </div>
 
 
-
- 
-</div>
-</div>
  <br>
  <div class="panel panel-primary" style="height: 100%; width: 740px;">
 

@@ -44,7 +44,7 @@ class HotelsController < ApplicationController
   def update
     respond_to do |format|
       if @hotel.update(hotel_params)
-        format.html { redirect_to @hotel, notice: 'Hotel was successfully updated.' }
+        format.html { redirect_to hotelprofile_path notice: 'Hotel was successfully updated.' }
         format.json { render :show, status: :ok, location: @hotel }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class HotelsController < ApplicationController
   def destroy
     @hotel.destroy
     respond_to do |format|
-      format.html { redirect_to hotels_url, notice: 'Hotel was successfully destroyed.' }
+      format.html { redirect_to hotelprofile_path, notice: 'Hotel was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -71,6 +71,6 @@ class HotelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hotel_params
-      params.require(:hotel).permit(:hoteladmin_id,:name, :location, :roomtype, :numroom, :avaibility, :hotelimg, :pricepn)
+      params.require(:hotel).permit(:hoteladmin_id,:name, :location, :roomtype, :numroom, :avaibility, :hotelimg, :pricepn,:description)
     end
 end
