@@ -158,7 +158,10 @@ $("#roomtT").addClass('animated fadeIn');
 
 };
 
-$scope.dateto="ferereererwerw";
+
+
+ $scope.face = 'http://95tvdbxmdo-flywheel.netdna-ssl.com/wp-content/uploads/2014/06/content.jpg';
+ 
 
 
 });
