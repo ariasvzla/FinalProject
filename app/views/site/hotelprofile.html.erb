@@ -8,14 +8,14 @@
 <md-button href="/hotels/new" class="md-raised">Click here to add your Hotel</md-button>
 
 <%else%>
-
+  
 <%if current_hoteladmin.id== hotel.hoteladmin_id%>
 <md-toolbar md-colors="::{background: '{{default}}-primary-700'}"  >
       <div class="md-toolbar-tools">
         <h2 flex md-truncate><%=hotel.name%> Hotel</h2>
       </div>
     </md-toolbar>
-
+ <%= link_to 'Edit Hotel',  edit_hotel_path(hotel), class: "btn btn-default" %>
 <%end%>
 <%end%>
 
@@ -30,6 +30,7 @@
 </div>
 
 <md-button class="md-accent md-raised md-hue-3" ng-click="showAv();">See Avaibilities</md-button>
+<md-button class="md-accent md-raised md-hue-3" href="/rooms/new">Add rooms</md-button>
 
 
 <table class="table" id="roomT">

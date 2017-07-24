@@ -1,3 +1,7 @@
+  <%if !current_hoteladmin.nil?%>
+  <%hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)%>
+<%room = Room.find_by_hotel_id(hotel)%>
+<%end%>
 <div class="col-md-4">
 <md-input-container >
         <label>Origin</label>
@@ -91,14 +95,18 @@
  <h2 flex md-truncate>Most popular hotels</h2>
        </div>
 </md-toolbar>
+      
+         <%@hotels.each do |h|%>
         
  <div flex-xs flex-gt-xs="100" layout="column">
       <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-      <img src="https://images.trvl-media.com/media/content/expus/graphics/launch/hotel1320x742.jpg" class="md-card-image" alt="image caption">
+      <!-- <img src=<%=(image_tag h.hotelimg)%> class="md-card-image" alt="image caption"> -->
+      <%= (image_tag h.hotelimg,  :class =>"md-card-image")%>
         <md-card-title>
           <md-card-title-text>
-            <span class="md-headline">Hotel Name here</span>
-            <span class="md-subhead">Description here</span>
+            <span class="md-headline"><%=h.name%></span>
+            <span class="md-subhead"><%=h.description%></span>
+        
           </md-card-title-text>
           <md-card-title-media>
             <div class="md-media-lg card-media"></div>
@@ -110,42 +118,10 @@
         </md-card-actions>
       </md-card>
       </div>
-      <div flex-xs flex-gt-xs="100" layout="column">
-      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-      <img src="https://exp.cdn-hotels.com/hotels/1000000/150000/140600/140596/140596_275_z.jpg" class="md-card-image" alt="image caption">
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Hotel Name here</span>
-            <span class="md-subhead">Description here</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-lg card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>Book now</md-button>
-          <md-button>See details</md-button>
-        </md-card-actions>
-      </md-card>
-      </div>
-      <div flex-xs flex-gt-xs="100" layout="column">
-      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-      <img src="https://www.barcelo.com/en-gb/images/385-swimming-pool-4-hotel-barcelo-royal-hideaway-playacar-resort_tcm20-34268_w1600_h611_n.jpg" class="md-card-image" alt="image caption">
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Hotel Name here</span>
-            <span class="md-subhead">Description here</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-lg card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>Book now</md-button>
-          <md-button>See details</md-button>
-        </md-card-actions>
-      </md-card>
-      </div>
+<%end%>
+
+
+<%= link_to('Book now', booking_path(hotel) )%> </li>
       </div>
 <script>
  $(".errorHand").hide();

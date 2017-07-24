@@ -133,5 +133,20 @@ nav {
   margin-left: 10px; /* distance between error tip and element it points to */
 }
 
-.toolbardemoBasicUsage md-toolbar md-icon.md-default-theme {
-  color: white; }
+
+
+
+
+.gridListdemoBasicUsage md-grid-list {
+  margin: 8px; }
+
+.gridListdemoBasicUsage .gray {
+  background: #f5f5f5; }
+  
+
+.toolbardemoScrollShrink .face {
+  width: 48px;
+  margin: 16px;
+  border-radius: 48px;
+  border: 1px solid #ddd; }
+
