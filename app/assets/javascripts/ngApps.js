@@ -161,13 +161,13 @@ $("#roomtT").addClass('animated fadeIn');
 
 
  $scope.face = 'http://95tvdbxmdo-flywheel.netdna-ssl.com/wp-content/uploads/2014/06/content.jpg';
- 
+
 
 
 });
 var go = function(){
 
-    window.location.href = "/home";
+    window.location.href = "<%=booking_path(param1.param2.param3.param4. param5)%>";
  
 }
 

@@ -1,5 +1,7 @@
 class Booking < ApplicationRecord
-	belongs_to :transactions
-	belongs_to :hotels
-	belongs_to :rooms
+	belongs_to :room
+
+	belongs_to :hotel
+
+
 end

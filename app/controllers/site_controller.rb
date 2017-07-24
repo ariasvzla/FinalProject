@@ -5,11 +5,13 @@ before_action :authenticate_user!, :except => [:home, :aboutus, :contactus, :air
   def home
     @hotels= Hotel.all
      @rooms =Room.all
+     @avaibilities= Avaibility.all
   end
 
 
   def bookingpage
-    @hotels= Hotel.all
+    @hotel = Hotel.find(params[:hotel_id])
+    @booking = @room.bookings.find(params[:id])
   end
 
   def aboutus
@@ -19,23 +21,19 @@ before_action :authenticate_user!, :except => [:home, :aboutus, :contactus, :air
   end
 
   def hotelprofile
-
   @hotels=Hotel.all
- @rooms =Room.all
- @avaibilities= Avaibility.all
- 
+  @rooms =Room.all
+  @avaibilities= Avaibility.all
   end
-
-
   def airlineprofile
   end
 
   def adminpage
-
-
   end
+
   def partner
   end
+
   def memberprofile
          @profile = Profile.find_by_user_id(current_user.id)
  

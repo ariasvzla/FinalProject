@@ -15,6 +15,7 @@
       </md-input-container>
       </div>
 <div class="col-md-4">
+
 <md-input-container >
         <label>Budget (Euros)</label>
         <input ng-model="budget" id="exampleInputAmount"  onkeypress="return isNumber(event)" required  >
@@ -74,8 +75,11 @@
                  <div class="col-md-5">
 
 <md-select placeholder="Select Interests" ng-model="interests" multiple>
-        <md-option value="1">One</md-option>
-        <md-option value="2">Two</md-option>
+        <md-option value="1">Socialising</md-option>
+        <md-option value="2">Sports</md-option>
+        <md-option value="3">History</md-option>
+         <md-option value="4">Music</md-option>
+          <md-option value="5">Technology</md-option>
       </md-select>
  
   <md-button ng-click="clear()">Reset</md-button>
@@ -106,14 +110,30 @@
           <md-card-title-text>
             <span class="md-headline"><%=h.name%></span>
             <span class="md-subhead"><%=h.description%></span>
-        
           </md-card-title-text>
           <md-card-title-media>
             <div class="md-media-lg card-media"></div>
           </md-card-title-media>
         </md-card-title>
+
+        <% @rooms.each do |room| %>
+            <%if room.hotel_id == h.id%>
+                 <%@avaibilities.each do |a| %>
+                     <%if a.room_id == room.id%>
+                           <%if a.available ==true%>
+                             <td><%= room.roomtype %> Room Available</td>
+                             <li><%= link_to('Book now', new_room_booking_path(room.id))%> </li>
+
+                            <%else%>
+                             <div id="norooms"> No rooms availble</div>
+                            <%end%>   
+                      <%end%>   
+                  <%end%>
+           <%end%>
+          <%end%>
+      
         <md-card-actions layout="row" layout-align="end center">
-          <md-button>Book now</md-button>
+      
           <md-button>See details</md-button>
         </md-card-actions>
       </md-card>
@@ -121,7 +141,6 @@
 <%end%>
 
 
-<%= link_to('Book now', booking_path(hotel) )%> </li>
       </div>
 <script>
  $(".errorHand").hide();
