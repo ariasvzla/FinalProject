@@ -178,9 +178,9 @@
         <span>Timeline</span>
       </h3>
     </div>
-  </md-toolbar>
- <md-content flex>
-
+    </md-toolbar>
+<% (0..2).each do %>
+ <md-content class="flex" style="width: 320px; float: right;">
     <md-list>
 
       <md-list-item class="md-3-line" >
@@ -200,13 +200,13 @@
     </md-list>
 
   </md-content>
-   
+   <%end%>
 
 </div>
 
 
  <br>
- <div class="panel panel-primary" style="height: 100%; width: 740px;">
+ <div class="panel panel-primary" style="height: 30%; width: 740px;">
 
 <%= yield %> 
 </div>
