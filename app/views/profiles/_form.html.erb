@@ -47,7 +47,7 @@
 
   <div class="field">
     <label>Date of Birth</label>
-    <%= f.datetime_select :dob,  prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year' }, :discard_hour => true , order: [:day, :month, :year] ,:discard_hour => true, :class => "form-control"  %>
+    <%= f.datetime_select :dob,  prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year' }, :discard_hour => true , order: [:day, :month, :year] ,:discard_hour => true, :class => "form-control", :start_year => 1948, :end_year => 1999  %>
   </div>
 
 

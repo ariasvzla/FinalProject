@@ -217,4 +217,3 @@ $(".errorHand").html("Invalid dates");
   }
 }
 
-

@@ -2,7 +2,17 @@
   <%hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)%>
 <%room = Room.find_by_hotel_id(hotel)%>
 <%end%>
-<div class="col-md-4">
+
+ <div class="panel panel-primary" style="height: 100%; width: 740px;">
+
+
+<%= form_tag(memberprofile_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
+    <%= submit_tag "Search", :location => nil %>
+<% end %>
+
+
+<!-- <div class="col-md-4">
 <md-input-container >
         <label>Origin</label>
         <input ng-model="origin" id="origin" required class="cities-comp">
@@ -22,7 +32,7 @@
       </md-input-container>
 
 </div>
-        <div class="row">
+ 
                              <div class="col-md-4">  
                              <md-input-container >
                             <label><Strong>Departure</Strong></label>
@@ -45,13 +55,13 @@
                                <md-input-container>
                                <label><Strong>Adults</Strong></label>
                         <md-select ng-model="adults" placeholder="Adults" >
-          <md-option value="cloth">1</md-option>
-          <md-option value="leather">2</md-option>
-          <md-option value="chain">3</md-option>
-          <md-option value="plate">4</md-option>
-           <md-option value="plate">5</md-option>
-            <md-option value="plate">6</md-option>
-             <md-option value="plate">7</md-option>
+          <md-option value="1">1</md-option>
+          <md-option value="2">2</md-option>
+          <md-option value="3">3</md-option>
+          <md-option value="4">4</md-option>
+           <md-option value="5">5</md-option>
+            <md-option value="6">6</md-option>
+             <md-option value="7">7</md-option>
         </md-select>
         </md-input-container>
                          
@@ -61,13 +71,13 @@
           <label><Strong>Kids</Strong></label>
                         <md-select ng-model="kids" placeholder="Kids" >
                         <md-option value="cloth">0</md-option>
-          <md-option value="cloth">1</md-option>
-          <md-option value="leather">2</md-option>
-          <md-option value="chain">3</md-option>
-          <md-option value="plate">4</md-option>
-           <md-option value="plate">5</md-option>
-            <md-option value="plate">6</md-option>
-             <md-option value="plate">7</md-option>
+          <md-option value="1">1</md-option>
+          <md-option value="2">2</md-option>
+          <md-option value="3">3</md-option>
+          <md-option value="4">4</md-option>
+           <md-option value="5">5</md-option>
+            <md-option value="6">6</md-option>
+             <md-option value="7">7</md-option>
         </md-select>
         </md-input-container>
 
@@ -86,33 +96,37 @@
 </div>
      <div class="col-md-4">
             <md-button id="search" class="md-raised" onclick="go()">Go
-              <md-tooltip>Find Destination</md-tooltip>
+              <label>Find Destination</label>
               </md-button>
              </div>
              <div class="col-md-4">
                      <div class="errorHand" > 
                      </div>
                 </div>
-                </div>
+                </div> -->
                 <md-toolbar class="md-hue-2">
 <div class="md-toolbar-tools">
  <h2 flex md-truncate>Most popular hotels</h2>
        </div>
 </md-toolbar>
       
-         <%@hotels.each do |h|%>
-        
- <div flex-xs flex-gt-xs="100" layout="column">
-      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-      <!-- <img src=<%=(image_tag h.hotelimg)%> class="md-card-image" alt="image caption"> -->
-      <%= (image_tag h.hotelimg,  :class =>"md-card-image")%>
+         <%@hotels.limit(3).each do |h|%>
+       
+ <div flex-xs flex-gt-xs="100" layout="column" >
+      <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
         <md-card-title>
           <md-card-title-text>
             <span class="md-headline"><%=h.name%></span>
             <span class="md-subhead"><%=h.description%></span>
           </md-card-title-text>
           <md-card-title-media>
-            <div class="md-media-lg card-media"></div>
+            <div class="md-media-lg card-media"> <%= (image_tag h.hotelimg)%></div>
+       <br>
+          </md-card-title-media>
+
+          <md-card-title-media>
+            <div class="md-media-lg card-media"> <%= (image_tag h.hotelimg)%></div>
+         
           </md-card-title-media>
         </md-card-title>
 
@@ -142,6 +156,10 @@
 
 
       </div>
+</div>
+
+
+
 <script>
  $(".errorHand").hide();
   $(document).ready(function(){

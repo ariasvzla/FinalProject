@@ -1,9 +1,10 @@
-<% if user_signed_in?%>
+<% if hoteladmin_signed_in? %>
+You must bee logged in as User please log out
+and register as a User
+<%else%>
 
 <h1>New Booking</h1>
 
 <%= render 'form', booking: @booking %>
 
-<%= link_to 'Back', bookings_path %>
-<%else%>
-
+<%end%>

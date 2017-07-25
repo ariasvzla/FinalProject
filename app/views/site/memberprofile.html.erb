@@ -1,4 +1,114 @@
-<h1>Site#userprofile</h1>
-<p>Find me in app/views/site/userprofile.html.erb</p>
+  <%if !current_hoteladmin.nil?%>
+  <%hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)%>
+<%room = Room.find_by_hotel_id(hotel)%>
+<%end%>
 
-Hello <%=@profile.firstname%>
+<% if @hotels.blank? %>
+  <h4>There are no Hotels available in <%= params[:search] %>.</h4>
+<% end %>
+Hello <%=@profile.firstname%> we found this for you in <%= params[:search] %></h2>
+
+      
+         <%@hotels.each do |h|%>
+       
+ <div flex-xs flex-gt-xs="100" layout="column" >
+      <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline"><%=h.name%></span>
+            <span class="md-subhead"><%=h.description%></span>
+            <span><%= h.location %></span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media"> <%= (image_tag h.hotelimg)%></div>
+       <br>
+          </md-card-title-media>
+        </md-card-title>
+
+        <% @rooms.each do |room| %>
+            <%if room.hotel_id == h.id%>
+                 <%@avaibilities.each do |a| %>
+                     <%if a.room_id == room.id%>
+                           <%if a.available ==true%>
+                             <td><%= room.roomtype %> Room Available</td>
+                             <li><%= link_to('Book now', new_room_booking_path(room.id))%> </li>
+
+                            <%else%>
+                             <div id="norooms"> No rooms availble</div>
+                            <%end%>   
+                      <%end%>   
+                  <%end%>
+           <%end%>
+          <%end%>
+      
+        <md-card-actions layout="row" layout-align="end center">
+      
+          <md-button>See details</md-button>
+        </md-card-actions>
+      </md-card>
+      </div>
+<%end%>
+
+
+      </div>
+</div>
+
+
+
+<h1>Rooms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Roomtype</th>
+      <th>Romnum</th>
+      <th>Pricepn</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.roomtype %></td>
+        <td><%= room.romnum %></td>
+        <td><%= room.pricepn %></td>
+        <td><%= link_to 'Show', room %></td>
+        <td><%= link_to 'Edit', edit_room_path(room) %></td>
+        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+<table class="table" >
+  <thead>
+    <tr>
+      <th>Available From</th>
+      <th>To</th>
+      <th>Price</th>
+      <th>Avaibility</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% for avaibility in @avaibilities %>
+      <tr>
+         <% if avaibility.datefrom.nil? || avaibility.dateto.nil?%>
+               <td> <%=avaibility.datefrom%></td>
+                 <td> <%=avaibility.dateto%></td>
+                 <%else%>
+
+             <td> <%=avaibility.datefrom.strftime("%B %d, %Y")%></td>
+             <td> <%=avaibility.dateto.strftime("%B %d, %Y") %></td>
+             <%end%>
+        <td><%= avaibility.pricepn %></td>
+        <td><%= avaibility.available %></td>
+      
+      </tr>
+    <% end %>
+  </tbody>
+</table>

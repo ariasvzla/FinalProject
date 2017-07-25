@@ -3,3 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
 //= require bootstrap
+html, body, .ng-scope {
+  height: 100%;
+}

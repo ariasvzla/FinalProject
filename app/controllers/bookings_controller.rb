@@ -35,7 +35,6 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @room = Room.find(params[:room_id])
-  
     @booking =Booking.new(booking_params)
     @booking = @room.bookings.build(params.require(:booking).permit!)
     @booking = @room.bookings.build(params.require(:booking).permit(:totalcost, :start,:end, :numpeople, :room_id, :user_id, :hotel_id))
