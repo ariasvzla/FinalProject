@@ -162,7 +162,17 @@ $("#roomtT").addClass('animated fadeIn');
 
  $scope.face = 'http://95tvdbxmdo-flywheel.netdna-ssl.com/wp-content/uploads/2014/06/content.jpg';
 
+$scope.showH= function(){
 
+  $("#hideH").show(500);
+
+$("#hideH").addClass('animated bounceIn');
+  $("#hideH").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+ function (e){
+       $("#hideH").removeClass('bounceIn');
+}); 
+
+}
 
 });
 var go = function(){

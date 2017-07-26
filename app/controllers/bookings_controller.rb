@@ -22,6 +22,7 @@ class BookingsController < ApplicationController
       @room = Room.find(params[:room_id])
       @booking = @room.bookings.build
       @booking = Booking.new
+      
   end
 
   # GET /bookings/1/edit

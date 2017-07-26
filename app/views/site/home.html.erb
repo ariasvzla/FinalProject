@@ -6,9 +6,14 @@
  <div class="panel panel-primary" style="height: 100%; width: 740px;">
 
 
+
 <%= form_tag(memberprofile_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
-    <%= submit_tag "Search", :location => nil %>
+
+    <%= text_field_tag :search, params[:search], placeholder: "Type your Destination",  class: 'form-control'  %>
+
+
+    <%= submit_tag "Search", :location => nil,  class: 'form-control'  %>
+
 <% end %>
 
 
@@ -109,15 +114,30 @@
  <h2 flex md-truncate>Most popular hotels</h2>
        </div>
 </md-toolbar>
-      
-         <%@hotels.limit(3).each do |h|%>
-       
+      <%totalB=0%>
+         <%@hotels.each do |h|%>
+         <%count=0%>
+               <%@bookings.each do |b|%>
+                      <% if b.hotel_id == h.id%>
+                          <%count=count+1%>
+
+                        <%end%>
+                        <%totalB=totalB+1%>
+                  <%end%>           
+                        
+                         <%next if count<1%>
+
+
+                   
  <div flex-xs flex-gt-xs="100" layout="column" >
       <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
         <md-card-title>
           <md-card-title-text>
             <span class="md-headline"><%=h.name%></span>
+
             <span class="md-subhead"><%=h.description%></span>
+               <md-subheader class="md-primary"> This hotel has been booking <%=count%> times</md-subheader>
+
           </md-card-title-text>
           <md-card-title-media>
             <div class="md-media-lg card-media"> <%= (image_tag h.hotelimg)%></div>
@@ -135,11 +155,12 @@
                  <%@avaibilities.each do |a| %>
                      <%if a.room_id == room.id%>
                            <%if a.available ==true%>
-                             <td><%= room.roomtype %> Room Available</td>
+                           <md-subheader class="md-primary"><%= room.roomtype %> Room Available</md-subheader>
+                         
                              <li><%= link_to('Book now', new_room_booking_path(room.id))%> </li>
 
                             <%else%>
-                             <div id="norooms"> No rooms availble</div>
+                             <div id="norooms"> </div>
                             <%end%>   
                       <%end%>   
                   <%end%>

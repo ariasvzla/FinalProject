@@ -25,24 +25,31 @@
   <%end%>
   <%end%>
 
+<%@avaibilities.each do |a|%>
+   <%if a.room_id == @room.id%>
   <div class="field">
-    <%= f.label :totalcost %>
-    <%= f.text_field :totalcost %>
+     <md-subheader class="md-primary">Price per night : <%=a.pricepn%> euros</md-subheader>
+    <%= f.hidden_field :totalcost, :value => a.pricepn%>
+  </div>
+  <%end%>
+<%end%>
+  <div class="field">
+   <md-subheader class="md-primary">Arriving </md-subheader>
+    <%= f.datetime_select :start, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year' }, :discard_hour => true , order: [:day, :month, :year] ,:discard_hour => true, :class => "form-control"%>
   </div>
 
+
+ <md-subheader class="md-primary">Departure </md-subheader>
   <div class="field">
-    <%= f.label :start %>
-    <%= f.datetime_select :start %>
+
+    <%= f.datetime_select :end, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year' }, :discard_hour => true , order: [:day, :month, :year] ,:discard_hour => true, :class => "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :end %>
-    <%= f.datetime_select :end %>
-  </div>
+
 
   <div class="field">
-    <%= f.label :numpeople %>
-    <%= f.number_field :numpeople %>
+  <md-subheader class="md-primary">How many people? </md-subheader>
+    <%= f.number_field :numpeople, class: 'form-control' %>
   </div>
 
   <div class="actions">

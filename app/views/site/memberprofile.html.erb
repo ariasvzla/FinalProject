@@ -4,10 +4,48 @@
 <%end%>
 
 <% if @hotels.blank? %>
-  <h4>There are no Hotels available in <%= params[:search] %>.</h4>
-<% end %>
-Hello <%=@profile.firstname%> we found this for you in <%= params[:search] %></h2>
+<md-toolbar class="md-warn">
+      <div class="md-toolbar-tools" >
+<h2 flex md-truncate>Sorry <%=@profile.firstname%> There are no Hotels available in <%= params[:search] %>!!</h2>
+     </div>
+</md-toolbar>
+<% else %>
 
+<br>
+<md-toolbar class="md-warn">
+      <div class="md-toolbar-tools" >
+<h2 flex md-truncate>Congratulations <%=@profile.firstname%> We found Hotels Available in <%= params[:search] %>!!</h2>
+     </div>
+</md-toolbar>
+
+<%end%>
+<%priceS=0%>
+<%count=0%>
+<%@hotels.each do |h|%>
+     <%@rooms.each do |r|%>
+        <% if r.hotel_id == h.id%>
+             <%@avaibilities.each do |a|%>
+                <%if a.room_id == r.id%>
+                     <%priceS=priceS+ a.pricepn%>
+                   
+                  <%end%>
+              <%end%>       
+        <%end%>    
+    <%end%> 
+    <%count=count+1%>
+<%end%>
+<%if count>0%>
+<div class="alert alert-success" role="alert">
+  <strong>We suugest!</strong> you that have a budget of <%=(priceS/count)+100 %> per day to enjoy your trip in <%= params[:search] %>!
+</div>
+<md-button class="md-accent md-raised md-hue-3" ng-click="showH()">Book now</md-button>
+
+<%end%>
+
+<md-button class="md-accent md-raised md-hue-3" href="/home">Back</md-button>
+
+
+<div id="hideH">
       
          <%@hotels.each do |h|%>
        
@@ -49,14 +87,13 @@ Hello <%=@profile.firstname%> we found this for you in <%= params[:search] %></h
       </div>
 <%end%>
 
-
-      </div>
 </div>
 
 
+<div id="hideR">
+
 
 <h1>Rooms</h1>
-
 <table>
   <thead>
     <tr>
@@ -69,6 +106,8 @@ Hello <%=@profile.firstname%> we found this for you in <%= params[:search] %></h
 
   <tbody>
     <% @rooms.each do |room| %>
+
+
       <tr>
         <td><%= room.roomtype %></td>
         <td><%= room.romnum %></td>
@@ -80,35 +119,9 @@ Hello <%=@profile.firstname%> we found this for you in <%= params[:search] %></h
     <% end %>
   </tbody>
 </table>
+</div>
 
-
-
-
-
-<table class="table" >
-  <thead>
-    <tr>
-      <th>Available From</th>
-      <th>To</th>
-      <th>Price</th>
-      <th>Avaibility</th>
-    </tr>
-  </thead>
-  <tbody>
-   <% for avaibility in @avaibilities %>
-      <tr>
-         <% if avaibility.datefrom.nil? || avaibility.dateto.nil?%>
-               <td> <%=avaibility.datefrom%></td>
-                 <td> <%=avaibility.dateto%></td>
-                 <%else%>
-
-             <td> <%=avaibility.datefrom.strftime("%B %d, %Y")%></td>
-             <td> <%=avaibility.dateto.strftime("%B %d, %Y") %></td>
-             <%end%>
-        <td><%= avaibility.pricepn %></td>
-        <td><%= avaibility.available %></td>
-      
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<script>
+$("#hideR").hide();
+$("#hideH").hide();
+</script>
