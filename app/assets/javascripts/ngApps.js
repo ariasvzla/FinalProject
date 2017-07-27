@@ -24,7 +24,7 @@ if ($("#dest").val()=="") {
      $(".errorHand").show();
      $(".errorHand").addClass('animated tada');
      $(".errorHand").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-    function (e){
+    function (e){s
        $(".errorHand").removeClass('tada');
    }); 
      return false;
@@ -190,7 +190,7 @@ var validate = function(){
    var d3 = new Date( $('#sdate').datepicker('getDate'));
    // ---------check out user------------------------
    var d4 = new Date($('#edate').datepicker('getDate'));
-   
+
  var valu= Math.abs(d3.getTime() - d4.getTime());
 alert(valu);
  if (d3<d1 || d3>d2){
