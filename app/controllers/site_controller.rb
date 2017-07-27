@@ -43,8 +43,10 @@ before_action :authenticate_user!, :except => [:home, :aboutus, :contactus, :air
     @profile = Profile.find_by_user_id(current_user.id)
       @hotels=Hotel.all
     @users= User.all
+    
 
     if params[:search] 
+
     @hotels = Hotel.search(params[:search]).order("created_at DESC")
   else
     @hotels = Hotel.all.order("created_at DESC")

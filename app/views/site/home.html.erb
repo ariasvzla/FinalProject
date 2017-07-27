@@ -125,7 +125,7 @@
                         <%totalB=totalB+1%>
                   <%end%>           
                         
-                         <%next if count<1%>
+                         <!-- %next if count<1%> -->
 
 
                    
@@ -157,7 +157,7 @@
                            <%if a.available ==true%>
                            <md-subheader class="md-primary"><%= room.roomtype %> Room Available</md-subheader>
                          
-                             <li><%= link_to('Book now', new_room_booking_path(room.id))%> </li>
+                             <%= link_to('Book now', new_room_booking_path(room.id), class: 'form-control')%>
 
                             <%else%>
                              <div id="norooms"> </div>

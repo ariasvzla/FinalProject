@@ -1,7 +1,17 @@
+  <% profile = Profile.find_by_user_id(current_user.id)%>
+  <% if profile.nil?%>
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>You cannot continue!</strong> Please create a profile
+</div>
+ <%= link_to('Create a profile ', new_profile_path(current_user.id), class: 'form-control') %></li>
+  <%else%>
+
   <%if !current_hoteladmin.nil?%>
   <%hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)%>
 <%room = Room.find_by_hotel_id(hotel)%>
 <%end%>
+
 
 <% if @hotels.blank? %>
 <md-toolbar class="md-warn">
@@ -45,10 +55,12 @@
 <md-button class="md-accent md-raised md-hue-3" href="/home">Back</md-button>
 
 
+
+
 <div id="hideH">
       
          <%@hotels.each do |h|%>
-       
+         
  <div flex-xs flex-gt-xs="100" layout="column" >
       <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
         <md-card-title>
@@ -64,27 +76,31 @@
         </md-card-title>
 
         <% @rooms.each do |room| %>
-            <%if room.hotel_id == h.id%>
+
+            <% if room.hotel_id == h.id%>
+                 
                  <%@avaibilities.each do |a| %>
                      <%if a.room_id == room.id%>
-                           <%if a.available ==true%>
-                             <td><%= room.roomtype %> Room Available</td>
-                             <li><%= link_to('Book now', new_room_booking_path(room.id))%> </li>
-
-                            <%else%>
-                             <div id="norooms"> No rooms availble</div>
-                            <%end%>   
-                      <%end%>   
-                  <%end%>
-           <%end%>
-          <%end%>
-      
+                          <%if a.available ==true%>
+                             <td><%= room.roomtype %> Room</td>
+                             <td> <strong>Available from: <%=a.datefrom.strftime("%d %B, %Y")%> To:  <%=a.dateto.strftime("%d %B, %Y")%></strong></td>
+                             <td> <strong>Price per night <%=a.pricepn%>€</strong> </td>
+                             <%= link_to('Book now', new_room_booking_path(room.id), class: 'form-control')%>
+                           <%end%>
+                      <%end%>
+                  <%end%>   
+             <%else%>
+         
+              <%end%>
+         <%end%>   
         <md-card-actions layout="row" layout-align="end center">
       
           <md-button>See details</md-button>
         </md-card-actions>
       </md-card>
       </div>
+
+
 <%end%>
 
 </div>
@@ -120,7 +136,7 @@
   </tbody>
 </table>
 </div>
-
+<%end%>
 <script>
 $("#hideR").hide();
 $("#hideH").hide();

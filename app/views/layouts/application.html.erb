@@ -6,7 +6,8 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
   $('ul.nav li.dropdown').hover(function() {
   $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
@@ -15,9 +16,12 @@
 });
  
 </script>
+  <script>
+  $( function() {
+    $( ".datepicker" ).datepicker({ dateFormat: "dd/mm/yy" });
+  } );
+  </script>
 
-
-  <!-- Compiled and minified JavaScript -->
  
   </head>
   <body ng-app="firstApplication" ng-controller="dateController" ng-cloak>
@@ -110,6 +114,19 @@
 
     <h2 flex md-truncate>  Airline Admin Sing Up</h2>
     <%end%>
+
+<%if user_signed_in?%>
+    <%if current_page?(new_profile_path(current_user.id))%>
+     <h2 flex md-truncate>  New Profile</h2>
+     <%end%>
+     <%end%>
+     <%if current_page?(memberprofile_path)%>
+      <h2 flex md-truncate>  Member Area</h2>
+      <%end%>
+        
+      
+     
+
 <!-- <h5> <%= notice %> </h5>
     <h5> <%= alert %></h5> -->
 <%if current_page?(new_user_session_path)%>
@@ -165,21 +182,70 @@
 <br>
 <md-toolbar class="md-warn">
       <div class="md-toolbar-tools" >
-<h2 flex md-truncate>Become our partner</h2>
+<h2 flex md-truncate>Menu</h2>
      </div>
 
-<md-button class=" md-raised" href="/hoteladmins/sign_up">Hotel Owner? </md-button>
-<md-button class="md-raised " href="/flightadmins/sign_up">Airline Owner?</md-button>
-<md-button class="md-raised md-hue-4" href="/users/sign_up">New member?</md-button>
+     <%count=0%>
+<%if user_signed_in?%>
+<%@hotels=Hotel.all%>
+<%@bookings=Booking.all%>
+<% profile = Profile.find_by_user_id(current_user.id)%>
+<% if profile.nil?%>
+<md-subheader class="md-primary"> Welcome <%=current_user.email%></md-subheader>
+ 
+  <!-- <li><%= link_to('Create a profile before ', new_profile_path(current_user.id)) %></li> -->
+  <%else%>
+  <md-subheader class="md-primary">Welcome <%=profile.firstname%></md-subheader>
 
+<%@bookings.each do |b|%>
+    <%if b.user_id == current_user.id%>
+       <%count=count+1%>
+        <%end%>
+  <%end%><br>
+  <%if count>0%>
+   <md-subheader class="md-primary">You have booked <%=count%> times</md-subheader>
+ 
+ <%else%>
+  <md-subheader class="md-primary">You have not booked yet Why not Book a room now ! </md-subheader>
+  
+  <%end%>
+       
+
+   <%@bookings.each do |b|%>
+    <%if b.user_id == current_user.id%>
+          <%@hotels.each do |h|%>
+             <%if h.id == b.hotel_id %>
+             
+                  <md-subheader class="md-primary">You recently visited <%=h.location%> </md-subheader>
+                 
+               <%end%> 
+               
+             <%end%> 
+             <%break%>   
+    <%end%>
+   <%end%>       
+
+<%end%>
+
+
+
+<%else%>
+<%if hoteladmin_signed_in?%>
+Welcom
+<%else%>
+<md-button class="md-raised md-hue-4" href="/users/sign_up">New member?</md-button>
+<md-button class=" md-raised" href="/hoteladmins/sign_up">Hotel Owner? </md-button>
+<%end%>
+<%end%>
 </md-toolbar>
 
 
-<md-toolbar class="md-theme-light">
+<md-toolbar class="md-warn">
     <h2 class="md-toolbar-tools">
       <span>Timeline</span>
     </h2>
   </md-toolbar>
+     <md-progress-linear md-mode="indeterminate" ></md-progress-linear>
 <% (0..4).each do %>
  <md-content class="flex" style="width: 320px; float: right;">
     <md-subheader class="md-primary">Book now</md-subheader>
@@ -196,17 +262,14 @@
             Valid for all members!
           </p>
         </div>
-          <md-divider md-inset ng-if="!$last"></md-divider>
+
     
       </md-list-item>
-
+<md-divider ng-if="!$last"></md-divider>
     </md-list>
 
   </md-content>
    <%end%>
-
-
-
 
 
 

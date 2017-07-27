@@ -1,4 +1,4 @@
-<%= form_for([@room,@booking]) do |f| %>
+<%= form_for([@room,@booking],:html => {:name=>"f", :onsubmit => "return validate()"}) do |f| %>
   <% if booking.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
@@ -31,13 +31,27 @@
      <md-subheader class="md-primary">Price per night : <%=a.pricepn%> euros</md-subheader>
     <%= f.hidden_field :totalcost, :value => a.pricepn%>
   </div>
-  <%end%>
-<%end%>
-  <div class="field">
-   <md-subheader class="md-primary">Arriving </md-subheader>
-    <%= f.datetime_select :start, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year' }, :discard_hour => true , order: [:day, :month, :year] ,:discard_hour => true, :class => "form-control"%>
-  </div>
+ 
 
+ Room Available from: <%=d1=a.datefrom.strftime("%d/%m/%Y")%>
+ To: <%=d2=a.dateto.strftime("%d/%m/%Y")%>
+
+<input value=<%=d1%> type="date"  id="d1" />
+
+<input value=<%=a.dateto%> type="date"  id="d2" />
+
+
+
+        <p>Check In <input type="text"  class="datepicker" id=sdate></p> 
+              
+     
+        <p>Check Out  <input type="text"  class="datepicker" id="edate"></p> 
+   
+                                     
+<div class="field">
+   <md-subheader class="md-primary">Arriving </md-subheader>
+    <%= f.datetime_select :start,prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year' }, :discard_hour => true , order: [:day, :month, :year] ,:discard_hour => true, :class => "form-control"%>
+  </div>
 
  <md-subheader class="md-primary">Departure </md-subheader>
   <div class="field">
@@ -45,14 +59,17 @@
     <%= f.datetime_select :end, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year' }, :discard_hour => true , order: [:day, :month, :year] ,:discard_hour => true, :class => "form-control" %>
   </div>
 
-
-
+<%break%>
+ <%end%>
+<%end%>
   <div class="field">
   <md-subheader class="md-primary">How many people? </md-subheader>
     <%= f.number_field :numpeople, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit id: 'btn-sign-up'%>
   </div>
+
+
 <% end %>
