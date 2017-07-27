@@ -4,10 +4,8 @@ class AvaibilitiesController < ApplicationController
   # GET /avaibilities
   # GET /avaibilities.json
   def index
- 
       @room = Room.find(params[:room_id])
-       @avaibilities = @room.avaibilities
-   
+      @avaibilities = @room.avaibilities
   end
 
   # GET /avaibilities/1
@@ -19,10 +17,9 @@ class AvaibilitiesController < ApplicationController
 
   # GET /avaibilities/new
   def new
-     @room = Room.find(params[:room_id])
+      @room = Room.find(params[:room_id])
       @hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)
       @avaibility = @room.avaibilities.build
-     
       @avaibility = Avaibility.new
   end
 

@@ -6,6 +6,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :profile
-  has_many :bikes, through: :bookings
+  has_many :rooms, through: :bookings
   has_many :bookings
 end

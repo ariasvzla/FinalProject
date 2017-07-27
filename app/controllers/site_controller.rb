@@ -5,11 +5,14 @@ before_action :authenticate_user!, :except => [:home, :aboutus, :contactus, :air
   def home
     @hotels= Hotel.all
      @rooms =Room.all
+     @avaibilities= Avaibility.all
+     @bookings= Booking.all
   end
 
 
   def bookingpage
-    @hotels= Hotel.all
+    @hotel = Hotel.find(params[:hotel_id])
+    @booking = @room.bookings.find(params[:id])
   end
 
   def aboutus
@@ -19,27 +22,48 @@ before_action :authenticate_user!, :except => [:home, :aboutus, :contactus, :air
   end
 
   def hotelprofile
-
   @hotels=Hotel.all
- @rooms =Room.all
- @avaibilities= Avaibility.all
- 
+  @rooms =Room.all
+  @avaibilities= Avaibility.all
+  @bookings= Booking.all
   end
-
-
   def airlineprofile
   end
 
   def adminpage
-
-
   end
+
   def partner
   end
+
   def memberprofile
-         @profile = Profile.find_by_user_id(current_user.id)
- 
+    @hotels= Hotel.all
+     @rooms =Room.all
+     @avaibilities= Avaibility.all
+    @profile = Profile.find_by_user_id(current_user.id)
+      @hotels=Hotel.all
     @users= User.all
+    
+
+    if params[:search] 
+
+    @hotels = Hotel.search(params[:search]).order("created_at DESC")
+  else
+    @hotels = Hotel.all.order("created_at DESC")
+  end
+
+
+  #  if params[:search2]
+  #   @rooms = Room.search(params[:search2]).order("created_at DESC")
+  # else
+  #   @rooms = Room.all.order("created_at DESC")
+  # end
+
+  #  if params[:search2]
+  #   @avaibilities = Avaibility.search(params[:search2]).order("created_at DESC")
+  # else
+  #   @avaibilities = Avaibility.all.order("created_at DESC")
+  # end
   end
 
 end
