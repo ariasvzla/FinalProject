@@ -175,11 +175,11 @@ $("#hideH").addClass('animated bounceIn');
 }
 
 });
-var go = function(){
+// var go = function(){
 
-    window.location.href = "<%=booking_path(param1.param2.param3.param4. param5)%>";
+//     window.location.href = "<%=booking_path(param1.param2.param3.param4. param5)%>";
  
-}
+// }
 
 var validate = function(){
 // ---------startdate room avaibility----------------
