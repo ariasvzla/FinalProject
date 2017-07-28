@@ -5,6 +5,7 @@ class RatesController < ApplicationController
   # GET /rates.json
   def index
     @rates = Rate.all
+
   end
 
   # GET /rates/1
@@ -14,6 +15,7 @@ class RatesController < ApplicationController
 
   # GET /rates/new
   def new
+     @rate = Rate.find_by_hotel_id(hotel.id)
     @rate = Rate.new
   end
 

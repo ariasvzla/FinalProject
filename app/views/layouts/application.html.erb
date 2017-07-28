@@ -580,6 +580,30 @@ $("#btn-sign-up").removeAttr('data-disable-with');
     return true;
   }
 }
+
+var validate1 = function(){
+
+     // ----------Date from--------------------------
+   var d3 = new Date( $('#avaibility_datef').datepicker('getDate'));
+   // ---------check out user------------------------
+   var d4 = new Date($('#avaibility_datet').datepicker('getDate'));
+   
+//  var valu= Math.abs(d3.getTime() - d4.getTime());
+// var timeDiff= Math.abs(d4.getTime() - d3.getTime());
+// var diffDays = Math.ceil(timeDiff/(1000*3600*24));
+// alert(diffDays);
+
+  if ( d3>d4){
+alert("Date from date must come before Date to date");
+$("#btn-sign-up").removeAttr('data-disable-with');
+ return false;
+  }
+
+  else {
+   $("#btn-sign-up").removeAttr('data-disable-with');
+    return true;
+  }
+}
 // if (d3<d1 || d3>d2){
 //  alert("The room is not availbale in that date range");
 //   $("#btn-sign-up").removeAttr('data-disable-with');

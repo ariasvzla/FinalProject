@@ -38,7 +38,7 @@ class AvaibilitiesController < ApplicationController
 
 
     @avaibility = @room.avaibilities.build(params.require(:avaibility).permit!)
-    @avaibility = @room.avaibilities.build(params.require(:avaibility).permit(:datefrom, :dateto, :pricepn, :available, :room_id))
+    @avaibility = @room.avaibilities.build(params.require(:avaibility).permit(:datef,:datet,:datefrom, :dateto, :pricepn, :available, :room_id))
 
     respond_to do |format|
       if @avaibility.save
@@ -88,6 +88,6 @@ class AvaibilitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def avaibility_params
-      params.require(:avaibility).permit(:datefrom, :dateto, :pricepn, :available, :room_id)
+      params.require(:avaibility).permit(:datef,:datet,:datefrom, :dateto, :pricepn, :available, :room_id)
     end
 end

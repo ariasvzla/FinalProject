@@ -33,12 +33,12 @@
   </div>
  
 
- <strong><%=@room.roomtype%> room</strong> Available from: <strong><%=d1=a.datefrom.strftime("%d/%m/%Y")%></strong>
- To: <strong><%=d2=a.dateto.strftime("%d/%m/%Y")%></strong>
+ <strong><%=@room.roomtype%> room</strong> Available from: <strong><%=d1=a.datef.strftime("%d/%m/%Y")%></strong>
+ To: <strong><%=d2=a.datet%></strong>
 
-<input value=<%=a.datefrom%> type="hidden"  id="d1" />
+<input value=<%=a.datef%> type="hidden"  id="d1" />
 
-<input value=<%=a.dateto%> type="hidden"  id="d2" />
+<input value=<%=a.datet%> type="hidden"  id="d2" />
 
 
 <%if @room.roomtype== "Family"%>
@@ -59,12 +59,16 @@
 
 
 <%if @room.roomtype== "Suite"%>
- <%= f.hidden_field :rewardp, :value => 200%>
+ <%= f.hidden_field :rewardp, :value => 250%>
 <%end%>
 
-  <md-subheader class="md-primary">Check In </md-subheader><input type="text"  class="datepicker" name="booking[stdate]" id="booking_stdate"></p> 
+<%if @room.roomtype== "VIP"%>
+ <%= f.hidden_field :rewardp, :value => 500%>
+<%end%>
+
+  <md-subheader class="md-primary">Check In </md-subheader><input type="text"  class="datepicker" name="booking[stdate]" id="booking_stdate" required></p> 
               
-        <md-subheader class="md-primary">Check Out </md-subheader> <input type="text" name="booking[endate]"  class="datepicker" id="booking_endate"></p> 
+        <md-subheader class="md-primary">Check Out </md-subheader> <input type="text" name="booking[endate]"  class="datepicker" id="booking_endate" required></p> 
    
 <%break%>
  <%end%>

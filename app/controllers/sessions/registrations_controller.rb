@@ -7,10 +7,17 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 def after_sign_up_path_for(resource)
-    if user_signed_in? or hoteladmin_signed_in? or fligthadmin_signed_in?
+    if user_signed_in?  
       session.clear
-      root_path
+      new_user_session_path
+    else if hoteladmin_signed_in?
+       session.clear
+ new_hoteladmin_session_path
+    else
+       session.clear
+      home_path
   end
+end
 end
   # POST /resource
   # def create
