@@ -33,32 +33,39 @@
   </div>
  
 
- Room Available from: <%=d1=a.datefrom.strftime("%d/%m/%Y")%>
- To: <%=d2=a.dateto.strftime("%d/%m/%Y")%>
+ <strong><%=@room.roomtype%> room</strong> Available from: <strong><%=d1=a.datefrom.strftime("%d/%m/%Y")%></strong>
+ To: <strong><%=d2=a.dateto.strftime("%d/%m/%Y")%></strong>
 
-<input value=<%=d1%> type="date"  id="d1" />
+<input value=<%=a.datefrom%> type="hidden"  id="d1" />
 
-<input value=<%=a.dateto%> type="date"  id="d2" />
+<input value=<%=a.dateto%> type="hidden"  id="d2" />
 
 
+<%if @room.roomtype== "Family"%>
+ <%= f.hidden_field :rewardp, :value => 100%>
+<%end%>
 
-        <p>Check In <input type="text"  class="datepicker" id=sdate></p> 
+<%if @room.roomtype== "Single"%>
+ <%= f.hidden_field :rewardp, :value => 30%>
+<%end%>
+
+<%if @room.roomtype== "Double"%>
+ <%= f.hidden_field :rewardp, :value => 50%>
+<%end%>
+
+<%if @room.roomtype== "Triple"%>
+ <%= f.hidden_field :rewardp, :value => 100%>
+<%end%>
+
+
+<%if @room.roomtype== "Suite"%>
+ <%= f.hidden_field :rewardp, :value => 200%>
+<%end%>
+
+  <md-subheader class="md-primary">Check In </md-subheader><input type="text"  class="datepicker" name="booking[stdate]" id="booking_stdate"></p> 
               
-     
-        <p>Check Out  <input type="text"  class="datepicker" id="edate"></p> 
+        <md-subheader class="md-primary">Check Out </md-subheader> <input type="text" name="booking[endate]"  class="datepicker" id="booking_endate"></p> 
    
-                                     
-<div class="field">
-   <md-subheader class="md-primary">Arriving </md-subheader>
-    <%= f.datetime_select :start,prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year' }, :discard_hour => true , order: [:day, :month, :year] ,:discard_hour => true, :class => "form-control"%>
-  </div>
-
- <md-subheader class="md-primary">Departure </md-subheader>
-  <div class="field">
-
-    <%= f.datetime_select :end, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year' }, :discard_hour => true , order: [:day, :month, :year] ,:discard_hour => true, :class => "form-control" %>
-  </div>
-
 <%break%>
  <%end%>
 <%end%>

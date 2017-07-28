@@ -38,7 +38,7 @@ class BookingsController < ApplicationController
     @room = Room.find(params[:room_id])
     @booking =Booking.new(booking_params)
     @booking = @room.bookings.build(params.require(:booking).permit!)
-    @booking = @room.bookings.build(params.require(:booking).permit(:stdate,:totalcost, :start,:end, :numpeople, :room_id, :user_id, :hotel_id, :rewardp))
+    @booking = @room.bookings.build(params.require(:booking).permit(:stdate,:endate,:totalcost, :start,:end, :numpeople, :room_id, :user_id, :hotel_id, :rewardp))
     
     respond_to do |format|
       if @booking.save
@@ -83,6 +83,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:stdate,:totalcost, :start, :end, :numpeople,:room_id,:user_id, :hotel_id, :rewardp)
+      params.require(:booking).permit(:stdate,:totalcost, :endate,:start, :end, :numpeople,:room_id,:user_id, :hotel_id, :rewardp)
     end
 end

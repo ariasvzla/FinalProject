@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :rates
+  resources :timelines
       resources :profiles
      resources :avaibilities
      resources :bookings

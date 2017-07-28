@@ -123,6 +123,8 @@
      <%end%>
      <%if current_page?(memberprofile_path)%>
       <h2 flex md-truncate>  Member Area</h2>
+
+    
       <%end%>
         
       
@@ -187,9 +189,12 @@
      </div>
 
      <%count=0%>
+   <%points1=0%>
+   <%points=0%>
 <%if user_signed_in?%>
 <%@hotels=Hotel.all%>
 <%@bookings=Booking.all%>
+
 <% profile = Profile.find_by_user_id(current_user.id)%>
 <% if profile.nil?%>
 <md-subheader class="md-primary"> Welcome <%=current_user.email%></md-subheader>
@@ -201,16 +206,24 @@
 <%@bookings.each do |b|%>
     <%if b.user_id == current_user.id%>
        <%count=count+1%>
-        <%end%>
-  <%end%><br>
+          <%if !b.rewardp.nil?%>
+       <%points+=b.rewardp%>
+       <%end%>
+    <%end%>
+   
+  <%end%>
+
   <%if count>0%>
    <md-subheader class="md-primary">You have booked <%=count%> times</md-subheader>
- 
+  
+
+
  <%else%>
+
   <md-subheader class="md-primary">You have not booked yet Why not Book a room now ! </md-subheader>
   
   <%end%>
-       
+         <md-subheader class="md-primary">Your points <%=points%></md-subheader>
 
    <%@bookings.each do |b|%>
     <%if b.user_id == current_user.id%>
@@ -232,7 +245,9 @@
 
 <%else%>
 <%if hoteladmin_signed_in?%>
-Welcom
+  <md-subheader class="md-primary">Welcome Hotel administrator</md-subheader>
+    <md-subheader class="md-primary">Manage your hotel</md-subheader>
+
 <%else%>
 <md-button class="md-raised md-hue-4" href="/users/sign_up">New member?</md-button>
 <md-button class=" md-raised" href="/hoteladmins/sign_up">Hotel Owner? </md-button>
@@ -488,43 +503,72 @@ var validate = function(){
   // -------end date room avibility---------------
   var d2 = new Date($("#d2").val());
      // ----------check in user--------------------------
-   var d3 = new Date( $('#sdate').datepicker('getDate'));
+   var d3 = new Date( $('#booking_stdate').datepicker('getDate'));
    // ---------check out user------------------------
-   var d4 = new Date($('#edate').datepicker('getDate'));
+   var d4 = new Date($('#booking_endate').datepicker('getDate'));
    
- var valu= Math.abs(d3.getTime() - d4.getTime());
-alert(valu);
- if (d3<d1 || d3>d2){
+//  var valu= Math.abs(d3.getTime() - d4.getTime());
+
+
+ if (d3<d1){
 alert("The room is not availbale in that date range");
  $("#btn-sign-up").removeAttr('data-disable-with');
  return false;
- }else if (d4<d1 || d4>d2){
+ } 
 
+
+ if  (d3>d2){
+alert("The room is not availbale in that date range");
+ $("#btn-sign-up").removeAttr('data-disable-with');
+ return false;
+ }
+
+
+  if (d4<d1){
 alert("The room is not availbale in that date range");
 $("#btn-sign-up").removeAttr('data-disable-with');
  return false;
- }else  if ( d3>d4){
+} 
 
+if (d4>d2){
+  alert("The room is not availbale in that date range");
+$("#btn-sign-up").removeAttr('data-disable-with');
+ return false;
+ }
+
+
+  if ( d3>d4){
 alert("Check in date must come before check out date");
 $("#btn-sign-up").removeAttr('data-disable-with');
  return false;
-  }else if (d4< d3){
+  }
+
+  if (d4< d3){
 alert("Check out date must come after check in date");
 $("#btn-sign-up").removeAttr('data-disable-with');
  return false;
-  }else  if (d4== undefined && d3==undefined){
+  } 
+
+  if (d4== undefined && d3==undefined){
 alert("Dates cannot be blank");
 $("#btn-sign-up").removeAttr('data-disable-with');
  return false;
-  }else if (d4 == undefined){
+  } 
+
+
+  if (d4 == undefined){
 alert("Check out date is empty");
 $("#btn-sign-up").removeAttr('data-disable-with');
  return false;
-  }else if (d3== undefined){
+  } 
+
+  if (d3== undefined){
 alert("Check in date is empty");
 $("#btn-sign-up").removeAttr('data-disable-with');
  return false;
-  }else {
+  }
+
+  else {
    $("#btn-sign-up").removeAttr('data-disable-with');
     return true;
   }
