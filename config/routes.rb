@@ -1,10 +1,21 @@
 Rails.application.routes.draw do
- devise_for :users, :admins, :hoteladmins, :flightadmins, controllers: {
+ devise_for  :flightadmins, controllers: {
         registrations: 'sessions/registrations',
         sessions: 'sessions/sessions'
      }  
-    
-
+    devise_for :users, controllers: {
+       registrations: 'users/registrations',
+        sessions: 'users/sessions'
+     }  
+       devise_for :hoteladmins, controllers: {
+         registrations: 'hoteladmins/registrations',
+        sessions: 'hoteladmins/sessions'
+     }  
+          devise_for :admins, controllers: {
+        registrations: 'admins/registrations',
+        sessions: 'admins/sessions'
+     }  
+ 
   resources :rates
   resources :timelines
       resources :profiles

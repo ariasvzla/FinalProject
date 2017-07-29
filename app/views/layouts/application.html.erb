@@ -24,7 +24,7 @@
   } );
   </script>
 
- 
+
   </head>
   <body ng-app="firstApplication" ng-controller="dateController" ng-cloak>
  <div  id="ng-scope" >
@@ -48,7 +48,7 @@
   </md-nav-item>
 
             <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Admin</a></li>
+            <li><a href="/adminpage">Admin</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Affiliates<b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -159,8 +159,10 @@
 <% if current_page?(new_flightadmin_session_path) or current_page?(new_flightadmin_registration_path)%>
 <md-button class=" md-accent md-raised md-hue-2" href="/flightadmins/sign_in">Log In</md-button>
 <md-button class="md-accent md-raised md-hue-2" href="/flightadmins/sign_up">Sign Up</md-button>
+<%elsif%>
+<% if admin_signed_in?%>
+<%= link_to('Logout', destroy_admin_session_path, :class => "btn btn-default ",:style =>'color:red;', :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
 <%else%>
-
 <md-button class="md-accent md-raised md-hue-2" href="/users/sign_in">Log In</md-button>
 <md-button class="md-accent md-raised md-hue-2" href="/users/sign_up">Sign Up</md-button>
 
@@ -170,7 +172,7 @@
 <%end%>
 <%end%>
 <%end%>
-
+<%end%>
 
       </div>
 </md-toolbar>
@@ -260,10 +262,10 @@
     </h2>
   </md-toolbar>
      <md-progress-linear md-mode="indeterminate" ></md-progress-linear>
-<% (0..4).each do %>
+     <%@timelines.limit(@timelines.count).each do |t|%>
  <md-content class="flex" style="width: 320px; float: right;">
-     <%@timelines.limit(3).each do |t|%>
-    <md-subheader class="md-primary">t.title</md-subheader>
+
+    <md-subheader class="md-primary"><%=t.title%></md-subheader>
     <md-list>
 
       <md-list-item class="md-3-line" >
@@ -271,20 +273,17 @@
       <!--   <img ng-src=class= > -->
       
         <div class="md-list-item-text" >
-          <h5>t.desc</h5>
+          <h5><%=t.desc%></h5>
         </div>
 
     
       </md-list-item>
-      <%end%>
+
 <md-divider ng-if="!$last"></md-divider>
     </md-list>
 
   </md-content>
    <%end%>
-
-
-
 
 </div>
 

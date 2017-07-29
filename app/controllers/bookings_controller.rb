@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
+
     before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   # GET /bookings
@@ -13,6 +14,8 @@ class BookingsController < ApplicationController
   # GET /bookings/1.json
   def show
    @bookings = Booking.all
+   @avaibilities =Avaibility.all
+   @hotels =Hotel.all
     @room = Room.find(params[:room_id])
     @booking = @room.bookings.find(params[:id])
 

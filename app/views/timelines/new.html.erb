@@ -1,5 +1,5 @@
-<%if current_user_signed_in?%>
-     <%if user.admin==true%>
+<%if admin_signed_in?%>
+   
 <h1>New Timeline</h1>
 
 
@@ -10,5 +10,4 @@
 <div class="alert alert-success" role="alert">
   <strong>You are not allowed to see this page</strong>
 </div>
-<%end%>
 <%end%>

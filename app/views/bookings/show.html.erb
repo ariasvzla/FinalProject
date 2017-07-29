@@ -1,35 +1,76 @@
+
+
 <p id="notice"><%= notice %></p>
-<h1>Bookings</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Start</th>
-      <th>Return</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <%# transverse the booking table to display data stored in it%>
- 
-      <tr>
-     
          <%@var=DateTime.parse(@booking.stdate)%>
          <%@var2=DateTime.parse(@booking.endate)%>
       
-        
-    
-        <td><%= link_to 'Edit', edit_room_booking_path(@booking, @room) %></td>
-        <td><%= link_to 'Destroy', @booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <%@c=@var2-@var%>
 
 
-     <%@c=@var2-@var%>
-     <%=@c.to_i%>
-  </tbody>
-</table>
-<div id="total"></div>
+        <div class="well col-xs-12 col-sm-10 col-md-8 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <address>
+                        <strong><%=@room.hotel.name%> Hotel</strong>
+                     
+                    </address>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                    <p>
+                        <em>Date: <%=Date.today.strftime("%B %d, %Y")%></em>
+                    </p>
+                    <p>
+                        <em>Receipt #: <%=@booking.id%></em>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-center">
+                    <h1>Receipt</h1>
+                </div>
+                </span>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Room Type</th>
+                            <th>Nights</th>
+                            <th>Points earned </th>
+                            <th class="text-center">Price per Nigth</th>
+                            <th class="text-center">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <%@avaibilities.each do |a|%>
+                                <%if a.room_id == @room.id%>
+                                    <%@ppn=a.pricepn%>
+                                    <%break%>
+                                    <%end%>
+                         <%end%>           
+                            <td class="col-md-9"><em><%=@room.roomtype%></em></h4></td>
+                            <td class="col-md-1" style="text-align: center"> <%=@c.to_i%> </td>
+                            <td class="col-md-1" style="text-align: center"> <%=@c.to_i%> </td>
+                            <td class="col-md-1 text-center">€<%=@booking.rewardp%></td>
+                            <td class="col-md-1 text-center">€<%=@booking.totalcost*@c%></td>
+                        </tr>
+                        
+                    
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td class="text-right"><h4><strong>Total: </strong></h4></td>
+                            <td class="text-center text-danger"><h4><strong>
+ €<%=@booking.totalcost*@c%></strong></h4></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-success btn-lg btn-block">
+                    Pay Now   <span class="glyphicon glyphicon-chevron-right"></span>
+                </button></td>
+            </div>
+  </div>
+     
 
-<%= link_to 'Edit', edit_booking_path(@booking) %> |
-<%= link_to 'Back', bookings_path %>
+
+

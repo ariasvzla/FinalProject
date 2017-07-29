@@ -1,6 +1,7 @@
 class TimelinesController < ApplicationController
-   before_action :authenticate_user!
-  before_action :set_timeline, only: [:show, :edit, :update, :destroy]
+   before_action :authenticate_admin!
+ 
+    before_action :set_timeline, only: [:show, :edit, :update, :destroy]
 
   # GET /timelines
   # GET /timelines.json
@@ -29,7 +30,7 @@ class TimelinesController < ApplicationController
 
     respond_to do |format|
       if @timeline.save
-        format.html { redirect_to @timeline, notice: 'Timeline was successfully created.' }
+        format.html { redirect_to adminpage_path, notice: 'Timeline was successfully created.' }
         format.json { render :show, status: :created, location: @timeline }
       else
         format.html { render :new }

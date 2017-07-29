@@ -1,13 +1,8 @@
-<%if user_signed_in?%>
-     <%if current_user.admin?%>
+<%if admin_signed_in?%>
+   
 <h1>Site#adminprofile</h1>
 <p>Find me in app/views/site/adminprofile.html.erb</p>
 
-<%else%>
-<div class="alert alert-success" role="alert">
-  <strong>You are not allowed to see this page</strong>
-</div>
-<%end%>
 <%else%>
 <div class="alert alert-success" role="alert">
   <strong>You are not allowed to see this page</strong>
