@@ -31,14 +31,14 @@
      <md-subheader class="md-primary">Price per night : <%=a.pricepn%> euros</md-subheader>
     <%= f.hidden_field :totalcost, :value => a.pricepn%>
   </div>
- 
 
- <strong><%=@room.roomtype%> room</strong> Available from: <strong><%=d1=a.datef.strftime("%d/%m/%Y")%></strong>
- To: <strong><%=d2=a.datet%></strong>
 
-<input value=<%=a.datef%> type="hidden"  id="d1" />
+ <strong><%=@room.roomtype%> room</strong> Available from: <strong><%=a.datef%></strong>
+ To: <strong><%=a.datet%></strong>
 
-<input value=<%=a.datet%> type="hidden"  id="d2" />
+<input value=<%=a.datef%> type="hidden" class="datepicker" id="d1" />
+
+<input value=<%=a.datet%> type="hidden" class="datepicker" id="d2" />
 
 
 <%if @room.roomtype== "Family"%>
@@ -73,7 +73,10 @@
 <%break%>
  <%end%>
 <%end%>
-  <div class="field">
+ <%= f.hidden_field :rewardp, :value => 500%>
+<div id="totalPrice" ></div>
+
+ <div class="field">
   <md-subheader class="md-primary">How many people? </md-subheader>
     <%= f.number_field :numpeople, class: 'form-control' %>
   </div>

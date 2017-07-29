@@ -1,6 +1,14 @@
+<%if current_user_signed_in?%>
+     <%if user.admin==true%>
 <h1>Editing Timeline</h1>
 
 <%= render 'form', timeline: @timeline %>
 
 <%= link_to 'Show', @timeline %> |
 <%= link_to 'Back', timelines_path %>
+<%else%>
+<div class="alert alert-success" role="alert">
+  <strong>You are not allowed to see this page</strong>
+</div>
+<%end%>
+<%end%>

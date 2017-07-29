@@ -14,12 +14,13 @@ class ProfilesController < ApplicationController
   end
 def userprofile
  profile = Profile.find_by_user_id(current_user.id)
-  if profile.nil?
+
+    if profile.nil?
         redirect_to new_profile_path(profile)
-  else
+     else
     profile = Profile.find_by_user_id(current_user.id)
-    redirect_to userprofile_path
-  end
+    redirect_to home_path
+end
 end
   # GET /profiles/new
   def new

@@ -63,13 +63,12 @@
             <%if room.hotel_id == h.id%>
                  <%@avaibilities.each do |a| %>
                      <%if a.room_id == room.id%>
-                           <%if a.available ==true%>
+                           <%if a.available == true %>
                            <md-subheader class="md-primary"><%= room.roomtype %> Room Available</md-subheader>
-                         
                              <%= link_to('Book now', new_room_booking_path(room.id), class: 'form-control')%>
 
                             <%else%>
-                             <div id="norooms"> </div>
+                             <div id="norooms"> no</div>
                             <%end%>   
                       <%end%>   
                   <%end%>

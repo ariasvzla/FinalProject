@@ -188,7 +188,6 @@ var validate = function(){
    
 //  var valu= Math.abs(d3.getTime() - d4.getTime());
 // alert($('#booking_endate').val());
-alert(d4).getDate();
  if (d3<d1){
 alert("The room is not availbale in that date range");
  $("#btn-sign-up").removeAttr('data-disable-with');

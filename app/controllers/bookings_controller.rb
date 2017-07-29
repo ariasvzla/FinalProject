@@ -12,8 +12,10 @@ class BookingsController < ApplicationController
   # GET /bookings/1
   # GET /bookings/1.json
   def show
+   @bookings = Booking.all
     @room = Room.find(params[:room_id])
     @booking = @room.bookings.find(params[:id])
+
   end
 
   # GET /bookings/new
@@ -22,14 +24,15 @@ class BookingsController < ApplicationController
       @room = Room.find(params[:room_id])
       @booking = @room.bookings.build
       @booking = Booking.new
-
+  
   end
 
   # GET /bookings/1/edit
   def edit
-      @hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)
-      @room = Room.find_by_hotel_id(@hotel.id)
-      booking = Booking.find_by_room_id(@room.id)
+
+      # @hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)
+       @hotels = Hotel.all
+      booking = Booking.find_by_room_id(@room)
   end
 
   # POST /bookings
@@ -42,7 +45,7 @@ class BookingsController < ApplicationController
     
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to home_path, notice: 'Booking was successfully created.' }
+        format.html { redirect_to room_booking_path(@room,@booking), notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
         format.html { render :new }
@@ -54,6 +57,8 @@ class BookingsController < ApplicationController
   # PATCH/PUT /bookings/1
   # PATCH/PUT /bookings/1.json
   def update
+      @room = Room.find(params[:room_id])
+       @booking = Booking.find(params[:id])
     respond_to do |format|
       if @booking.update(booking_params)
         format.html { redirect_to home_path, notice: 'Booking was successfully updated.' }
@@ -68,6 +73,8 @@ class BookingsController < ApplicationController
   # DELETE /bookings/1
   # DELETE /bookings/1.json
   def destroy
+      @room = Room.find(params[:room_id])
+       @booking = Booking.find(params[:id])
     @booking.destroy
     respond_to do |format|
       format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }

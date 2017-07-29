@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 tripflexadmin = User.new
-tripflexadmin.email = "triplex@tripflex.com"
+tripflexadmin.email = "admin@admin.com"
 tripflexadmin.password = "password"
 tripflexadmin.password_confirmation = "password"
 tripflexadmin.admin = "true"

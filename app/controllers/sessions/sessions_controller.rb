@@ -21,19 +21,20 @@ class Sessions::SessionsController < Devise::SessionsController
   #   super
   # end
   def after_sign_in_path_for(resource)
-    if user_signed_in?
-           userprofile_path(current_user.id)
-        else if hoteladmin_signed_in?
-           hotelprofile_path
-        else if fligthadmin_signed_in?
-           airlineprofile_path
-          else
-            adminpage_path
-          end 
-        end 
-       end
-    end
+
+          if current_user.email=="admin@admin.com"
+              '/home'
+      else
+         userprofile_path(current_user.id)
+            
+            end
   
+ if  hoteladmin_signed_in?
+          hotelprofile_path
+  end
+       
+ 
+end
  def after_sign_out_path_for(resource)
   home_path
 end
