@@ -177,10 +177,9 @@ $("#hideH").addClass('animated bounceIn');
 });
 
 var validate = function(){
-// ---------startdate room avaibility----------------
-  var d1 = new Date($("#d1").val());
+  var d1 = new Date($("#d1").datepicker('getDate'));
   // -------end date room avibility---------------
-  var d2 = new Date($("#d2").val());
+  var d2 = new Date($("#d2").datepicker('getDate'));
      // ----------check in user--------------------------
    var d3 = new Date( $('#booking_stdate').datepicker('getDate'));
    // ---------check out user------------------------
