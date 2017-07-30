@@ -18,6 +18,7 @@ class BookingsController < ApplicationController
       @booking = @room.bookings.build
       @booking = Booking.new
   
+  
   end
   def show
    @bookings = Booking.all
@@ -27,22 +28,7 @@ class BookingsController < ApplicationController
     @booking = @room.bookings.find(params[:id])
 
 
-  @amount = 500
-  customer = Stripe::Customer.create(
-    :email => params[:stripeEmail],
-    :source  => params[:stripeToken]
-  )
 
-  charge = Stripe::Charge.create(
-    :customer    => customer.id,
-    :amount      => @amount,
-    :description => 'Rails Stripe customer',
-    :currency    => 'usd'
-  )
-
-rescue Stripe::CardError => e
-  flash[:error] = e.message
-  redirect_to room_booking_path(@room,@booking)
   end
 
 
