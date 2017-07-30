@@ -83,7 +83,7 @@
                      <%if a.room_id == room.id%>
                           <%if a.available ==true%>
                              <td><%= room.roomtype %> Room</td>
-                             <td> <strong>Available from: <%=a.datefrom.strftime("%d %B, %Y")%> To:  <%=a.dateto.strftime("%d %B, %Y")%></strong></td>
+                             <td> <strong>Available from: <%=a.datef%> To:  <%=a.datet%></strong></td>
                              <td> <strong>Price per night <%=a.pricepn%>€</strong> </td>
                              <%= link_to('Book now', new_room_booking_path(room.id), class: 'form-control')%>
                            <%end%>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170726222017) do
+ActiveRecord::Schema.define(version: 20170729102209) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20170726222017) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "room_id"
+    t.string   "datef"
+    t.string   "datet"
     t.index ["room_id"], name: "index_avaibilities_on_room_id"
   end
 
@@ -52,6 +54,7 @@ ActiveRecord::Schema.define(version: 20170726222017) do
     t.integer  "hotel_id"
     t.integer  "rewardp"
     t.string   "stdate"
+    t.string   "endate"
     t.index ["hotel_id"], name: "index_bookings_on_hotel_id"
     t.index ["room_id"], name: "index_bookings_on_room_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
@@ -147,6 +150,15 @@ ActiveRecord::Schema.define(version: 20170726222017) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "rates", force: :cascade do |t|
+    t.integer  "star"
+    t.string   "coments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "hotel_id"
+    t.index ["hotel_id"], name: "index_rates_on_hotel_id"
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.string   "roomtype"
     t.integer  "romnum"
@@ -155,7 +167,16 @@ ActiveRecord::Schema.define(version: 20170726222017) do
     t.datetime "updated_at", null: false
     t.integer  "quantity"
     t.integer  "hotel_id"
+    t.string   "image"
     t.index ["hotel_id"], name: "index_rooms_on_hotel_id"
+  end
+
+  create_table "timelines", force: :cascade do |t|
+    t.string   "title"
+    t.string   "desc"
+    t.string   "avatar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transactions", force: :cascade do |t|

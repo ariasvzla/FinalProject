@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_hoteladmin!
   before_action :set_room, only: [:show, :edit, :update, :destroy]
 
   # GET /rooms
@@ -73,6 +74,6 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:roomtype, :romnum, :pricepn,:hotel_id,:quantity)
+      params.require(:room).permit(:roomtype,:image, :romnum, :pricepn,:hotel_id,:quantity)
     end
 end

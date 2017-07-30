@@ -28,14 +28,10 @@ Not avaibilities set yet for this room
   <tbody>
    <% for avaibility in @avaibilities %>
       <tr>
-         <% if avaibility.datefrom.nil? || avaibility.dateto.nil?%>
-               <td> <%=avaibility.datefrom%></td>
-                 <td> <%=avaibility.dateto%></td>
-                 <%else%>
+   
+             <td> <%=avaibility.datef%></td>
+             <td> <%=avaibility.datet%></td>
 
-             <td> <%=avaibility.datefrom.strftime("%B %d, %Y")%></td>
-             <td> <%=avaibility.dateto.strftime("%B %d, %Y") %></td>
-             <%end%>
         <td><%= avaibility.pricepn %></td>
         <td><%= avaibility.available %></td>
       

@@ -1,0 +1,13 @@
+<%if admin_signed_in?%>
+   
+<h1>New Timeline</h1>
+
+
+<%= render 'form', timeline: @timeline %>
+
+<%= link_to 'Back', timelines_path %>
+<%else%>
+<div class="alert alert-success" role="alert">
+  <strong>You are not allowed to see this page</strong>
+</div>
+<%end%>

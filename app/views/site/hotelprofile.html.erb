@@ -1,3 +1,5 @@
+  <%if hoteladmin_signed_in?%>
+
   <%hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)%>
 
 <%room = Room.find_by_hotel_id(hotel)%>
@@ -82,14 +84,9 @@
             <% if  @var == avaibility.id %>
            <tr>
              <th scope="row"><%=avaibility.room.romnum%></th>
-             <% if avaibility.datefrom.nil? || avaibility.dateto.nil?%>
-               <td> <%=avaibility.datefrom%></td>
-                 <td> <%=avaibility.dateto%></td>
-                 <%else%>
-
-             <td> <%=avaibility.datefrom.strftime("%B %d, %Y")%></td>
-             <td> <%=avaibility.dateto.strftime("%B %d, %Y") %></td>
-             <%end%>
+          
+               <td> <%=avaibility.datef%></td>
+                 <td> <%=avaibility.datet%></td>
              <td> <%=avaibility.pricepn%></td>
               <td> <%=avaibility.available%></td>
            </tr>
@@ -102,6 +99,11 @@
       </table>
       <md-button class="md-accent md-raised md-hue-3" ng-click="backAv()" id="back">Back</md-button>
 
+<%end%>
+<%else%>
+<div class="alert alert-success" role="alert">
+  <strong>You are not allowed to see this page</strong>
+</div>
 <%end%>
 <script type="text/javascript">
 	$("#avaibilities").hide();

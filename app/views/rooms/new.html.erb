@@ -1,4 +1,10 @@
+<%if hoteladmin_signed_in?%>
 <h1>New Room</h1>
 
 <%= render 'form', room: @room%>
 
+<%else%>
+<div class="alert alert-success" role="alert">
+  <strong>You are not allowed to see this page</strong>
+</div>
+<%end%>

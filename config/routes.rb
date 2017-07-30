@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+ devise_for  :flightadmins, controllers: {
+        registrations: 'sessions/registrations',
+        sessions: 'sessions/sessions'
+     }  
+    devise_for :users, controllers: {
+       registrations: 'users/registrations',
+        sessions: 'users/sessions'
+     }  
+       devise_for :hoteladmins, controllers: {
+         registrations: 'hoteladmins/registrations',
+        sessions: 'hoteladmins/sessions'
+     }  
+          devise_for :admins, controllers: {
+        registrations: 'admins/registrations',
+        sessions: 'admins/sessions'
+     }  
+ 
+  resources :rates
+  resources :timelines
       resources :profiles
      resources :avaibilities
      resources :bookings
@@ -21,11 +40,7 @@ end
 
 
 
-     devise_for :users, :admins, :hoteladmins, :flightadmins, controllers: {
-        registrations: 'sessions/registrations',
-        sessions: 'sessions/sessions'
-     }  
-    
+     
  
     root to: 'site#home'
   get '/booking' => 'site#bookingpage'
@@ -38,8 +53,9 @@ end
   get '/userprofile' => 'profiles#userprofile'
   get '/memberprofile' => 'site#memberprofile'
   get '/partner' => 'site#partner'
+  get '/bookingpage' => 'site#bookingpage'
 
-  
+   
    
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

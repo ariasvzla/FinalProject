@@ -24,7 +24,7 @@ if ($("#dest").val()=="") {
      $(".errorHand").show();
      $(".errorHand").addClass('animated tada');
      $(".errorHand").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-    function (e){
+    function (e){s
        $(".errorHand").removeClass('tada');
    }); 
      return false;
@@ -175,11 +175,6 @@ $("#hideH").addClass('animated bounceIn');
 }
 
 });
-var go = function(){
-
-    window.location.href = "<%=booking_path(param1.param2.param3.param4. param5)%>";
- 
-}
 
 var validate = function(){
 // ---------startdate room avaibility----------------
@@ -187,46 +182,70 @@ var validate = function(){
   // -------end date room avibility---------------
   var d2 = new Date($("#d2").val());
      // ----------check in user--------------------------
-   var d3 = new Date( $('#sdate').datepicker('getDate'));
+   var d3 = new Date( $('#booking_stdate').datepicker('getDate'));
    // ---------check out user------------------------
-   var d4 = new Date($('#edate').datepicker('getDate'));
+   var d4 = new Date($('#booking_endate').datepicker('getDate'));
    
- var valu= Math.abs(d3.getTime() - d4.getTime());
-alert(valu);
- if (d3<d1 || d3>d2){
+//  var valu= Math.abs(d3.getTime() - d4.getTime());
+// alert($('#booking_endate').val());
+ if (d3<d1){
 alert("The room is not availbale in that date range");
  $("#btn-sign-up").removeAttr('data-disable-with');
  return false;
- }else if (d4<d1 || d4>d2){
+ } 
 
+
+ if  (d3>d2){
+alert("The room is not availbale in that date range");
+ $("#btn-sign-up").removeAttr('data-disable-with');
+ return false;
+ }
+
+
+  if (d4<d1){
 alert("The room is not availbale in that date range");
 $("#btn-sign-up").removeAttr('data-disable-with');
  return false;
- }else  if ( d3>d4){
+} 
 
+if (d4>d2){
+  alert("The room is not availbale in that date range");
+$("#btn-sign-up").removeAttr('data-disable-with');
+ return false;
+ }
+
+
+  if ( d3>d4){
 alert("Check in date must come before check out date");
 $("#btn-sign-up").removeAttr('data-disable-with');
  return false;
-  }else if (d4< d3){
+  }
+
+  if (d4< d3){
 alert("Check out date must come after check in date");
 $("#btn-sign-up").removeAttr('data-disable-with');
  return false;
-  }else  if (d4== undefined && d3==undefined){
+  } 
+
+  if ( $('#booking_endate').val()== "" &&  $('#booking_stdate').val()== " " ){
 alert("Dates cannot be blank");
 $("#btn-sign-up").removeAttr('data-disable-with');
  return false;
-  }else if (d4 == undefined){
+  } 
+
+
+  if (d4 == ""){
 alert("Check out date is empty");
 $("#btn-sign-up").removeAttr('data-disable-with');
  return false;
-  }else if (d3== undefined){
+  } 
+
+  if (d3== ""){
 alert("Check in date is empty");
 $("#btn-sign-up").removeAttr('data-disable-with');
  return false;
-  }else {
-   $("#btn-sign-up").removeAttr('data-disable-with');
-    return true;
   }
+
 }
 // if (d3<d1 || d3>d2){
 //  alert("The room is not availbale in that date range");
