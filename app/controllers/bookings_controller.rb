@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
-
     before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   # GET /bookings
@@ -12,6 +11,15 @@ class BookingsController < ApplicationController
 
   # GET /bookings/1
   # GET /bookings/1.json
+   # GET /bookings/new
+  def new
+   
+      @room = Room.find(params[:room_id])
+      @booking = @room.bookings.build
+      @booking = Booking.new
+  
+  
+  end
   def show
    @bookings = Booking.all
    @avaibilities =Avaibility.all
@@ -19,16 +27,13 @@ class BookingsController < ApplicationController
     @room = Room.find(params[:room_id])
     @booking = @room.bookings.find(params[:id])
 
+
+
   end
 
-  # GET /bookings/new
-  def new
-   
-      @room = Room.find(params[:room_id])
-      @booking = @room.bookings.build
-      @booking = Booking.new
-  
-  end
+
+
+ 
 
   # GET /bookings/1/edit
   def edit

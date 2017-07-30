@@ -28,13 +28,17 @@
 <%@avaibilities.each do |a|%>
    <%if a.room_id == @room.id%>
   <div class="field">
-     <md-subheader class="md-primary">Price per night : <%=a.pricepn%> euros</md-subheader>
+     <md-subheader class="md-primary">Price per night : <%=a.pricepn%> euros
+          <strong><%=@room.roomtype%> room</strong> Available from: <strong><%=a.datef%></strong>
+ To: <strong><%=a.datet%></strong>
+
+
+     </md-subheader>
     <%= f.hidden_field :totalcost, :value => a.pricepn%>
   </div>
 
 
- <strong><%=@room.roomtype%> room</strong> Available from: <strong><%=a.datef%></strong>
- To: <strong><%=a.datet%></strong>
+
 
 <input value=<%=a.datef%> type="hidden" class="datepicker" id="d1" />
 
@@ -77,11 +81,17 @@
   <md-subheader class="md-primary">How many people? </md-subheader>
     <%= f.number_field :numpeople, class: 'form-control' %>
   </div>
+
+
+
   <%end%>
+
 
   <div class="actions">
     <%= f.submit id: 'btn-sign-up'%>
   </div>
+
+
 
 
 <% end %>

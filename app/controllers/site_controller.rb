@@ -1,7 +1,7 @@
 class SiteController < ApplicationController
-  before_action :authenticate_user!, :except => [:home, :aboutus, :adminprofile, :hotelprofile]
-before_action :authenticate_admin!, :except => [:home, :aboutus,:contactus, :hotelprofile,:memberprofile ]
-before_action :authenticate_hoteladmin!, :except => [:home, :aboutus,:contactus, :memberprofile,:adminprofile ]
+  before_action :authenticate_user!, :except => [:home, :aboutus, :adminprofile, :hotelprofile,:partner]
+before_action :authenticate_admin!, :except => [:home, :aboutus,:contactus, :hotelprofile,:memberprofile, :bookingpage,:partner ]
+before_action :authenticate_hoteladmin!, :except => [:home, :aboutus,:contactus, :memberprofile,:adminprofile, :bookingpage,:partner ]
   def home
     @hotels= Hotel.all
      @rooms =Room.all
@@ -11,10 +11,25 @@ before_action :authenticate_hoteladmin!, :except => [:home, :aboutus,:contactus,
 
 
   def bookingpage
- booking = Booking.find_by_user_id(current_user.id)
- # @totalprice=params[:total1]
+      @amount=23
+  customer = Stripe::Customer.create(
+    :email => params[:stripeEmail],
+    :source  => params[:stripeToken]
+  )
 
-  end
+  charge = Stripe::Charge.create(
+    :customer    => customer.id,
+    :amount      => @amount,
+    :description => 'Rails Stripe customer',
+    :currency    => 'usd'
+  )
+
+rescue Stripe::CardError => e
+  flash[:error] = e.message
+  redirect_to '/partner'
+
+end
+
 
   def aboutus
   end
@@ -35,7 +50,17 @@ before_action :authenticate_hoteladmin!, :except => [:home, :aboutus,:contactus,
   end
 
   def partner
+  # customer = Stripe::Customer.create(
+  #   :email => params[:stripeEmail],
+  #   :source  => params[:stripeToken]
+  # )
 
+  # charge = Stripe::Charge.create(
+  #   :customer    => customer.id,
+  #   :amount      => @amount,
+  #   :description => 'Rails Stripe customer',
+  #   :currency    => 'usd'
+  # )
 
   end
 

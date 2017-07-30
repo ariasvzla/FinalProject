@@ -105,6 +105,42 @@
   <strong>You are not allowed to see this page</strong>
 </div>
 <%end%>
+
+<h1>Bookings</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Date</th>
+      <th>Room Type</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@bookings.each do |i|%>
+       <%if i.hotel== current_hoteladmin.id%>
+
+    <tr>
+      <th scope="row">h.id</th>
+      <td><%=i.created_at%></td>
+      <td><%=i.room.roomtype%></td>
+    
+          <%profile=Profile.find_user_by_id(i.user_id)%>
+      <td> <%=profile.firstname%></td>
+      <%end%>
+      
+    </tr>
+<%end%>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
 <script type="text/javascript">
 	$("#avaibilities").hide();
 	$("#titleAv").hide();

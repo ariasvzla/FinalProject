@@ -15,13 +15,13 @@ Rails.application.routes.draw do
         registrations: 'admins/registrations',
         sessions: 'admins/sessions'
      }  
- 
+
   resources :rates
   resources :timelines
       resources :profiles
      resources :avaibilities
      resources :bookings
-     
+     resources :bookingpage
     resources :hotels do
      resources :rooms
    end
@@ -31,10 +31,8 @@ Rails.application.routes.draw do
     resources :bookings
   end
 
-    resources :transactions do 
-  resources :bookings
-end
 
+resources :booking
   resources :places
   resources :flights
 
@@ -43,7 +41,7 @@ end
      
  
     root to: 'site#home'
-  get '/booking' => 'site#bookingpage'
+
   get '/aboutus' => 'site#aboutus'
   get '/contactus' => 'site#contactus'
   get '/home' => 'site#home'
@@ -53,7 +51,8 @@ end
   get '/userprofile' => 'profiles#userprofile'
   get '/memberprofile' => 'site#memberprofile'
   get '/partner' => 'site#partner'
-  get '/bookingpage' => 'site#bookingpage'
+  get '/booking' => 'site#bookingpage'
+ 
 
    
    

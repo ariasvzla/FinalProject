@@ -30,7 +30,8 @@ gem 'jquery-ui-rails'
 gem 'rspec-rails'
 gem 'bower-rails'
 gem 'rails_12factor'
-
+gem 'stripe'
+gem 'rest-client'
  #gem "factory_girl_rails"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
