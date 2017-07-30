@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
-
     before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   # GET /bookings
@@ -12,16 +11,7 @@ class BookingsController < ApplicationController
 
   # GET /bookings/1
   # GET /bookings/1.json
-  def show
-   @bookings = Booking.all
-   @avaibilities =Avaibility.all
-   @hotels =Hotel.all
-    @room = Room.find(params[:room_id])
-    @booking = @room.bookings.find(params[:id])
-
-  end
-
-  # GET /bookings/new
+   # GET /bookings/new
   def new
    
       @room = Room.find(params[:room_id])
@@ -29,6 +19,35 @@ class BookingsController < ApplicationController
       @booking = Booking.new
   
   end
+  def show
+   @bookings = Booking.all
+   @avaibilities =Avaibility.all
+   @hotels =Hotel.all
+    @room = Room.find(params[:room_id])
+    @booking = @room.bookings.find(params[:id])
+
+
+  @amount = 500
+  customer = Stripe::Customer.create(
+    :email => params[:stripeEmail],
+    :source  => params[:stripeToken]
+  )
+
+  charge = Stripe::Charge.create(
+    :customer    => customer.id,
+    :amount      => @amount,
+    :description => 'Rails Stripe customer',
+    :currency    => 'usd'
+  )
+
+rescue Stripe::CardError => e
+  flash[:error] = e.message
+  redirect_to room_booking_path(@room,@booking)
+  end
+
+
+
+ 
 
   # GET /bookings/1/edit
   def edit

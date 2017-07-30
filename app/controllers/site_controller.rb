@@ -1,7 +1,7 @@
 class SiteController < ApplicationController
   before_action :authenticate_user!, :except => [:home, :aboutus, :adminprofile, :hotelprofile]
-before_action :authenticate_admin!, :except => [:home, :aboutus,:contactus, :hotelprofile,:memberprofile ]
-before_action :authenticate_hoteladmin!, :except => [:home, :aboutus,:contactus, :memberprofile,:adminprofile ]
+before_action :authenticate_admin!, :except => [:home, :aboutus,:contactus, :hotelprofile,:memberprofile, :bookingpage ]
+before_action :authenticate_hoteladmin!, :except => [:home, :aboutus,:contactus, :memberprofile,:adminprofile, :bookingpage ]
   def home
     @hotels= Hotel.all
      @rooms =Room.all
@@ -11,10 +11,9 @@ before_action :authenticate_hoteladmin!, :except => [:home, :aboutus,:contactus,
 
 
   def bookingpage
- booking = Booking.find_by_user_id(current_user.id)
- # @totalprice=params[:total1]
 
-  end
+end
+
 
   def aboutus
   end
