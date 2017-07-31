@@ -36,7 +36,8 @@
   <div class="flex">
     
   <md-nav-bar md-selected-nav-item="currentNavItem">
-  <md-nav-item md-nav-href=<%=root_path%>>
+  <md-nav-item md-nav-href=<%=root_path%> >
+  <%=(image_tag "tf.ico", size: "18x20", :class => "md-avatar")%> 
     TripFlex
   </md-nav-item>
   <md-nav-item md-nav-href="#page2" name="page3">How Works</md-nav-item>
@@ -569,11 +570,7 @@ var validate1 = function(){
    var d3 = new Date( $('#avaibility_datef').datepicker('getDate'));
    // ---------check out user------------------------
    var d4 = new Date($('#avaibility_datet').datepicker('getDate'));
-   
-//  var valu= Math.abs(d3.getTime() - d4.getTime());
-// var timeDiff= Math.abs(d4.getTime() - d3.getTime());
-// var diffDays = Math.ceil(timeDiff/(1000*3600*24));
-// alert(diffDays);
+
 
   if ( d3>d4){
 alert("Date from date must come before Date to date");
@@ -586,62 +583,5 @@ $("#btn-sign-up").removeAttr('data-disable-with');
     return true;
   }
 }
-// if (d3<d1 || d3>d2){
-//  alert("The room is not availbale in that date range");
-//   $("#btn-sign-up").removeAttr('data-disable-with');
-//  return false;
-// }else if (d4<d3 || d4>d2){
-//  alert("The room is not availbale in that date range");
-//    $("#btn-sign-up").removeAttr('data-disable-with');
-//   return false;
-// }else {
-//   $("#btn-sign-up").removeAttr('data-disable-with');
-// return true;
-// }
-
-
-
-//  if (document.getElementById('avaibility_datefrom_2i').value =="" || document.getElementById('avaibility_datefrom_1i').value =="" || document.getElementById('avaibility_datefrom_3i').value =="")
-//  {
-// $(".errorHand").html("Dates cannot be blank");
-//     $(".errorHand").show();
-//     $(".errorHand").addClass('animated tada');
-//     $(".errorHand").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-//     function (e){
-//        $(".errorHand").removeClass('tada');
-//    }); 
-// $("#btn-sign-up").removeAttr('data-disable-with');
-//     return false;
-// }
-
-// if (document.getElementById('avaibility_dateto_2i').value =="" || document.getElementById('avaibility_dateto_1i').value =="" || document.getElementById('avaibility_dateto_3i').value =="")
-// { 
-// $(".errorHand").html("Dates cannot be blank");
-//     $(".errorHand").show();
-//     $(".errorHand").addClass('animated tada');
-//     $(".errorHand").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-//     function (e){
-//        $(".errorHand").removeClass('tada');
-//    }); 
-
-// $("#btn-sign-up").removeAttr('data-disable-with');
-//    return false;
-//   }
-
-// if (document.getElementById('avaibility_datefrom_1i').value > document.getElementById('avaibility_dateto_1i').value && document.getElementById('avaibility_datefrom_2i').value> document.getElementById('avaibility_dateto_2i').value && document.getElementById('avaibility_datefrom_3i').value>document.getElementById('avaibility_dateto_3i').value)
-// {
-// $(".errorHand").html("Invalid dates");
-//    $(".errorHand").show();
-//     $(".errorHand").addClass('animated tada');
-//     $(".errorHand").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-//     function (e){
-//        $(".errorHand").removeClass('tada');
-//    }); 
-//    $("#btn-sign-up").removeAttr('data-disable-with');
-//     return false;
-// }else{
-//   return true;
-//   }
-// }
 
 </script>
