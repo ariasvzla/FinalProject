@@ -1,0 +1,22 @@
+<%= form_for(setv) do |f| %>
+  <% if setv.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(setv.errors.count, "error") %> prohibited this setv from being saved:</h2>
+
+      <ul>
+      <% setv.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label>Number f bookings</label>
+    <%= f.number_field :set %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Set view"%>
+  </div>
+<% end %>

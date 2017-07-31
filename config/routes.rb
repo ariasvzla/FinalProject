@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :setvs
  devise_for  :flightadmins, controllers: {
         registrations: 'sessions/registrations',
         sessions: 'sessions/sessions'

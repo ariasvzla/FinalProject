@@ -11,6 +11,12 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+
+     @room = Room.find(params[:room_id])
+        profile = Profile.find_by_user_id(current_user.id)
+     if @room.roomtype== "Single"
+      profile.update_attributes(:rewardp => 0)
+    end
   end
 
   # GET /rooms/new
