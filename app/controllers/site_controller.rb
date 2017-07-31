@@ -47,6 +47,9 @@ end
   end
 
   def adminprofile
+    @bookings=Booking.all
+      @users=Booking.all
+        @hotels=Booking.all
   end
 
   def partner

@@ -207,8 +207,8 @@
   <%else%>
   <md-subheader class="md-primary">Welcome <%=profile.firstname%></md-subheader>
 
-<%@bookings.each do |b|%>
-    <%if b.user_id == current_user.id%>
+    <%@bookings.each do |b|%>
+      <%if b.user_id == current_user.id%>
        <%count=count+1%>
           <%if !b.rewardp.nil?%>
        <%points+=b.rewardp%>
@@ -227,8 +227,8 @@
   <%end%>
          <md-subheader class="md-primary">Your points <%=points%></md-subheader>
 
-   <%@bookings.each do |b|%>
-    <%if b.user_id == current_user.id%>
+        <%@bookings.each do |b|%>
+        <%if b.user_id == current_user.id%>
           <%@hotels.each do |h|%>
              <%if h.id == b.hotel_id %>
              

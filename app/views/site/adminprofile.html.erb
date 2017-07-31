@@ -1,7 +1,102 @@
 <%if admin_signed_in?%>
    
-<h1>Site#adminprofile</h1>
-<p>Find me in app/views/site/adminprofile.html.erb</p>
+<h1>Welcome Administrator</h1>
+
+
+<%countb=0%>
+<h1>Bookings</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Made on</th>
+      <th>Check in</th>
+      <th>Check out</th>
+      <th>Points Given</th>
+      <th>Username</th>
+      <th>Total Paid</th>
+      <th>Earned</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%income=0%>
+    <%@bookings.each do |i|%>
+    <%countb=countb+1%>
+
+    <tr>
+    <th scope="row"><%=i.id%></th>
+    <td><%=i.created_at.strftime("%B %d, %Y")%></td>
+     <td><%=i.stdate%></td>  
+    <td><%=i.endate%></td> 
+    <td><%=i.rewardp%></td>  
+    <%profile= Profile.find_by_user_id(i.user_id)%>
+    <td><%=profile.firstname%></td> 
+       <%@var=DateTime.parse(i.stdate)%>
+         <%@var2=DateTime.parse(i.endate)%>
+        <%@c=@var2-@var+1%>
+     <td><%=i.totalcost*@c%></td>
+     <%@p1=i.totalcost*@c%>
+       <td><%=@p1*10/100%></td>
+    </tr>
+
+          <%if !i.totalcost.nil?%>
+          <%income+=i.totalcost%>
+          <%end%>
+
+<%end%>
+  </tbody>
+</table>
+
+
+<h1>Statics</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Total income</th>
+      <th>Users registred</th>
+      <th>Hotel registred</th>
+      <th>Total Bookings</th>
+    </tr>
+  </thead>
+  <tbody>
+
+
+
+    <tr>
+    <th scope="row">  <strong><%=income*10/100%></strong></th>
+   
+      <th scope="row">  <strong><%=User.all.length%></strong></th>
+
+        <th scope="row">  <strong><%=Hotel.all.length%></strong></th>
+
+         <th scope="row">  <strong><%=Booking.all.length%></strong></th>
+ 
+    </tr>
+
+  </tbody>
+  
+</table>
+
+
+        
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <%else%>
 <div class="alert alert-success" role="alert">
