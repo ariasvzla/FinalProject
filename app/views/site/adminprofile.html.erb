@@ -1,9 +1,12 @@
 <%if admin_signed_in?%>
    
 <h1>Welcome Administrator</h1>
-
-
-<%countb=0%>
+<md-button class="md-accent md-raised md-hue-3" href="/timelines/new">Add new timeline</md-button>
+<md-button class="md-accent md-raised md-hue-3" href="/timelines/new">Add Places</md-button>
+<md-button class="md-accent md-raised md-hue-3" href="/timelines/new">Add Hotel</md-button>
+<md-button class="md-accent md-raised md-hue-3" href="/timelines/new">Set Hotel View</md-button>
+<%countgf=0%>
+<%countg=0%>
 <h1>Bookings</h1>
 <table class="table">
   <thead>
@@ -21,7 +24,7 @@
   <tbody>
   <%income=0%>
     <%@bookings.each do |i|%>
-    <%countb=countb+1%>
+
 
     <tr>
     <th scope="row"><%=i.id%></th>
@@ -36,17 +39,20 @@
         <%@c=@var2-@var+1%>
      <td><%=i.totalcost*@c%></td>
      <%@p1=i.totalcost*@c%>
-       <td><%=@p1*10/100%></td>
+       <td><%=@ti=@p1*10/100%></td>
     </tr>
-
+<%@f=@ti++%>
           <%if !i.totalcost.nil?%>
           <%income+=i.totalcost%>
           <%end%>
-
+          <%if profile.gender == 'Male'%>
+             <%countg=countg+1%>
+             <%else%>
+              <%countgf=countgf+1%>
+              <%end%>
 <%end%>
   </tbody>
 </table>
-
 
 <h1>Statics</h1>
 <table class="table">
@@ -63,7 +69,7 @@
 
 
     <tr>
-    <th scope="row">  <strong><%=income*10/100%></strong></th>
+    <th scope="row">  <strong><%=@f%></strong></th>
    
       <th scope="row">  <strong><%=User.all.length%></strong></th>
 
@@ -74,15 +80,15 @@
     </tr>
 
   </tbody>
-  
+
+
+
 </table>
 
 
         
- 
 
-
-
+ <div id="container" style="min-width: 210px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 
 
 
@@ -103,3 +109,50 @@
   <strong>You are not allowed to see this page</strong>
 </div>
 <%end%>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<script>
+$(document).ready(function () {
+
+    // Build the chart
+    Highcharts.chart('container', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Booking Gender Statics'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.y}</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Bookings',
+            colorByPoint: true,
+            data: [{
+                name: 'Male',
+                y: <%=countg%>
+            }, {
+                name: 'Female',
+                y:<%=countgf%>,
+                sliced: true,
+                selected: true
+            }]
+        }]
+    });
+});
+</script>

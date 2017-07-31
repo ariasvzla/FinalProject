@@ -37,7 +37,7 @@
                             <th>Nights</th>
                             <th>Points earned </th>
                             <th class="text-center">Price per Nigth</th>
-                            <th class="text-center">Total</th>
+                         
                         </tr>
                     </thead>
                     <tbody>
@@ -52,7 +52,8 @@
                             <td class="col-md-1" style="text-align: center"> <%=@c.to_i%> </td>
                            
                             <td class="col-md-1 text-center"><%=@booking.rewardp%></td>
-                            <td class="col-md-1 text-center">€<%=@booking.totalcost*@c%></td>
+                            <td class="col-md-1 text-center">€<%=@ppn%></td>
+                            
                         </tr>
                         
                         <tr>
@@ -66,7 +67,7 @@
                 </table>
 
            
-                
+                <h4>Pay with points</h4>
 <%= form_tag  '/partner', :method => 'get' do %>
   <article>
     <% if flash[:error].present? %>
