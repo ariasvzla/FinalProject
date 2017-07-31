@@ -1,5 +1,5 @@
 class AvaibilitiesController < ApplicationController
-
+# verify if the hotel administrator is signed in
   before_action :authenticate_hoteladmin!
   before_action :set_avaibility, only: [:show, :edit, :update, :destroy]
 
@@ -19,6 +19,7 @@ class AvaibilitiesController < ApplicationController
 
   # GET /avaibilities/new
   def new
+    # get the room id and pass onto hotel table to verify the room match with the hotel
       @room = Room.find(params[:room_id])
       @hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)
       @avaibility = @room.avaibilities.build

@@ -12,25 +12,30 @@
       </ul>
     </div>
   <% end %>
+<md-input-container >
 
   <div class="field">
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'form-control'%>
   </div>
-
+</md-input-container>
+<md-input-container >
   <div class="field">
     <%= f.label :desc %>
-    <%= f.text_field :desc %>
+    <%= f.text_field :desc, class: 'form-control'%>
   </div>
-
+</md-input-container>
+<md-input-container >
   <div class="field">
-    <%= f.label :avatar %>
-    <%= f.text_field :avatar %>
+    <label>Image</label>
+    <%= f.text_field :avatar , class: 'form-control'%>
   </div>
+</md-input-container>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
+
 <% end %>
 <%else%>
 <div class="alert alert-success" role="alert">
