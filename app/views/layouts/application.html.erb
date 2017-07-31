@@ -201,6 +201,7 @@
   <md-subheader class="md-primary">You have not booked yet Why not Book a room now ! </md-subheader>
   
   <%end%>
+  <%if !profile.rewardp.nil?%>
   <%if profile.rewardp >= 10000%>
    <md-subheader class="md-primary">Congratulations you can book a Single room with your points!</md-subheader>
      <md-subheader class="md-primary">Your points <%=profile.rewardp%></md-subheader>
@@ -208,7 +209,7 @@
 
          <md-subheader class="md-primary">Your points <%=profile.rewardp%></md-subheader>
          <%end%>
-
+<%end%>
         <%@bookings.each do |b|%>
         <%if b.user_id == current_user.id%>
           <%@hotels.each do |h|%>
