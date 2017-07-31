@@ -1,4 +1,5 @@
 <% profile = Profile.find_by_user_id(current_user.id)%>
+<%points=0%>
 <p id="notice"><%= notice %></p>
 
          <%@var=DateTime.parse(@booking.stdate)%>
@@ -65,6 +66,17 @@
                     </tbody>
                 </table>
 
+
+  <%@bookings.each do |b|%>
+      <%if b.user_id == current_user.id%>
+          <%if !b.rewardp.nil?%>
+       <%points+=b.rewardp%>
+       <%end%>
+    <%end%>
+   
+  <%end%>
+<% profile.update_attributes(:rewardp => points)%>
+
          
 <%= form_tag  '/partner', :method => 'get' do %>
   <article>
@@ -86,9 +98,9 @@
           data-locale="auto"></script>
 
            <%if profile.rewardp>=10000%>
-             <md-button class="md-accent md-raised md-hue-3" href="#" onclick="reward();"">Pay with points</md-button>
+            <md-button class="md-accent md-raised md-hue-3" href="/reward">Pay with points</md-button>
              <%end%>
-   <md-button class="md-accent md-raised md-hue-3" href="/partner">Pay with points</md-button>
+
 
 <% end %>
 
@@ -97,3 +109,9 @@
             </div>
   </div>
      
+<script>
+
+
+
+
+</script>

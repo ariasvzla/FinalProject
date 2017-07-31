@@ -92,6 +92,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:firstname, :lastname, :address, :phone, :gender, :dob,:user_id)
+      params.require(:profile).permit(:rewardp,:firstname, :lastname, :address, :phone, :gender, :dob,:user_id)
     end
 end

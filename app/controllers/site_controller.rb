@@ -1,16 +1,17 @@
 class SiteController < ApplicationController
-  before_action :authenticate_user!, :except => [:home, :aboutus, :adminprofile, :hotelprofile,:partner]
-before_action :authenticate_admin!, :except => [:home, :aboutus,:contactus, :hotelprofile,:memberprofile, :bookingpage,:partner ]
-before_action :authenticate_hoteladmin!, :except => [:home, :aboutus,:contactus, :memberprofile,:adminprofile, :bookingpage,:partner ]
+  before_action :authenticate_user!, :except => [:home, :aboutus, :adminprofile, :hotelprofile]
+before_action :authenticate_admin!, :except => [:home, :aboutus,:contactus, :hotelprofile,:memberprofile, :bookingpage,:partner, :discpoints ]
+before_action :authenticate_hoteladmin!, :except => [:home, :aboutus,:contactus, :memberprofile,:adminprofile, :bookingpage,:partner, :discpoints ]
   def home
      @hotels= Hotel.all
      @rooms =Room.all
      @avaibilities= Avaibility.all
      @bookings= Booking.all
-    profile = Profile.find_by_user_id(1)
+  
   end
 
-
+def discpoints
+end
   def bookingpage
 
 
@@ -41,8 +42,7 @@ end
   end
 
   def partner
-        profile = Profile.find_by_user_id(current_user.id)
-        profile.update_attributes(:rewardp => 0)
+     
     # @amount=
    customer = Stripe::Customer.create(
     :email => params[:stripeEmail],

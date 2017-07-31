@@ -206,16 +206,9 @@
   <%else%>
   <md-subheader class="md-primary">Welcome <%=profile.firstname%></md-subheader>
 <!-- calculate points base on room type  -->
-    <%@bookings.each do |b|%>
-      <%if b.user_id == current_user.id%>
-       <%count=count+1%>
-          <%if !b.rewardp.nil?%>
-       <%points+=b.rewardp%>
-       <%end%>
-    <%end%>
-   
-  <%end%>
-<% profile.update_attributes(:rewardp => points)%>
+  
+
+
   <%if count>0%>
    <md-subheader class="md-primary">You have booked <%=count%> times</md-subheader>
 

@@ -38,9 +38,6 @@ resources :booking
   resources :flights
 
 
-
-     
- 
     root to: 'site#home'
 
   get '/aboutus' => 'site#aboutus'
@@ -53,6 +50,7 @@ resources :booking
   get '/memberprofile' => 'site#memberprofile'
   get '/partner' => 'site#partner'
   get '/booking' => 'site#bookingpage'
+   get '/rewards' => 'site#discpoints'
  
 
    
