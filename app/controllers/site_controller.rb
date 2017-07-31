@@ -80,9 +80,10 @@ rescue Stripe::CardError => e
     if params[:search] 
 
     @hotels = Hotel.search(params[:search]).order("created_at DESC")
-  else
+   else
     @hotels = Hotel.all.order("created_at DESC")
-  end
+    
+   end
 
    if params[:search]
     @places = Place.search(params[:search]).order("created_at DESC")
