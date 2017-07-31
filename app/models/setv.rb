@@ -1,0 +1,2 @@
+class Setv < ApplicationRecord
+end

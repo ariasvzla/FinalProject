@@ -198,7 +198,6 @@
 
 <%@hotels=Hotel.all%>
 <%@bookings=Booking.all%>
-
 <% profile = Profile.find_by_user_id(current_user.id)%>
 <% if profile.nil?%>
 <md-subheader class="md-primary"> Welcome <%=current_user.email%></md-subheader>
@@ -206,16 +205,9 @@
   <!-- <li><%= link_to('Create a profile before ', new_profile_path(current_user.id)) %></li> -->
   <%else%>
   <md-subheader class="md-primary">Welcome <%=profile.firstname%></md-subheader>
+<!-- calculate points base on room type  -->
+  
 
-    <%@bookings.each do |b|%>
-      <%if b.user_id == current_user.id%>
-       <%count=count+1%>
-          <%if !b.rewardp.nil?%>
-       <%points+=b.rewardp%>
-       <%end%>
-    <%end%>
-   
-  <%end%>
 
   <%if count>0%>
    <md-subheader class="md-primary">You have booked <%=count%> times</md-subheader>
@@ -225,7 +217,13 @@
   <md-subheader class="md-primary">You have not booked yet Why not Book a room now ! </md-subheader>
   
   <%end%>
-         <md-subheader class="md-primary">Your points <%=points%></md-subheader>
+  <%if profile.rewardp >= 10000%>
+   <md-subheader class="md-primary">Congratulations you can book a Single room with your points!</md-subheader>
+     <md-subheader class="md-primary">Your points <%=profile.rewardp%></md-subheader>
+   <%else%>
+
+         <md-subheader class="md-primary">Your points <%=profile.rewardp%></md-subheader>
+         <%end%>
 
         <%@bookings.each do |b|%>
         <%if b.user_id == current_user.id%>

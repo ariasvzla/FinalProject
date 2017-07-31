@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Setvs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Set</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @setvs.each do |setv| %>
+      <tr>
+        <td><%= setv.set %></td>
+        <td><%= link_to 'Show', setv %></td>
+        <td><%= link_to 'Edit', edit_setv_path(setv) %></td>
+        <td><%= link_to 'Destroy', setv, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Setv', new_setv_path %>
