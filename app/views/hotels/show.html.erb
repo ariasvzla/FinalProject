@@ -1,33 +1,20 @@
-<p id="notice"><%= notice %></p>
+ <div flex-xs flex-gt-xs="100" layout="column" >
+      <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline"><%=@hotel.name%></span>
 
-<p>
-  <strong>Name:</strong>
-  <%= @hotel.name %>
-</p>
+            <span class="md-subhead"><%=@hotel.description%></span>
+              
 
-<p>
-  <strong>Location:</strong>
-  <%= @hotel.location %>
-</p>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media"> <%= (image_tag @hotel.hotelimg)%></div>
+       <br>
+          </md-card-title-media>
 
-<p>
-  <strong>Roomtype:</strong>
-  <%= @hotel.roomtype %>
-</p>
-
-<p>
-  <strong>Numroom:</strong>
-  <%= @hotel.numroom %>
-</p>
-
-
-
-<p>
-  <strong>Hotelimg:</strong>
-  <%= @hotel.hotelimg %>
-</p>
-
-<p>
-  <strong>Pricepn:</strong>
-  <%= @hotel.pricepn %>
-</p>
+          <md-card-title-media>
+            <div class="md-media-lg card-media"> <%= (image_tag @hotel.hotelimg)%></div>
+         
+          </md-card-title-media>
+        </md-card-title>
