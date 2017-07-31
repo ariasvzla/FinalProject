@@ -28,7 +28,7 @@ class SetvsController < ApplicationController
 
     respond_to do |format|
       if @setv.save
-        format.html { redirect_to @setv, notice: 'Setv was successfully created.' }
+        format.html { redirect_to adminpage_path, notice: 'Setv was successfully created.' }
         format.json { render :show, status: :created, location: @setv }
       else
         format.html { render :new }
