@@ -88,15 +88,16 @@
 
     <tr>
     <th scope="row">  <strong><%=@f%></strong></th>
-   
+   <%if !User.nil? %>
       <th scope="row">  <strong><%=User.all.length%></strong></th>
-
+<%end%>
       <th scope="row">  <strong><%=@agvg/Profile.all.length%></strong></th>
-
+<% if !Profile.nil?%>
         <th scope="row">  <strong><%=Hotel.all.length%></strong></th>
-
+<%end%>
+<%if !Booking.nil?
          <th scope="row">  <strong><%=Booking.all.length%></strong></th>
- 
+ <%end%>
     </tr>
 
   </tbody>
