@@ -94,7 +94,7 @@
    <%if !User.nil? %>
       <th scope="row">  <strong><%=User.all.length%></strong></th>
 <%end%>
-<% if !Profile.nil?%>
+<% if !Profile.nil? and !@agvg.nil?%>
       <th scope="row">  <strong><%=@agvg/Profile.all.length%></strong></th>
 <%end%>
 <% if !Hotel.nil?%>
