@@ -30,6 +30,10 @@
   <div class="actions">
 
     <%= f.submit "Sign up", class: "btn btn-primary" %>
+   
+    <%- if controller_name != 'sessions' %>
+  <md-button class=" md-accent md-raised md-hue-2" href="<%=new_session_path(resource_name)%>">Log In</md-button> 
+<% end -%>
  
   </div>
   </div>

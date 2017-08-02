@@ -7,7 +7,8 @@
 <md-button class="md-accent md-raised md-hue-3" href="setvs/1/edit">Set Hotel View</md-button>
 <%countgf=0%>
 <%countg=0%>
- <%income=0%>
+
+ <%@f=0%>
 
 <h1>Bookings</h1>
 <table class="table">
@@ -27,22 +28,22 @@
  
     <%@bookings.each do |i|%>
 
-
+<%if !i.stdate.nil? and !i.endate.nil?%>
     <tr>
     <th scope="row"><%=i.id%></th>
     <td><%=i.created_at.strftime("%B %d, %Y")%></td>
-     <td><%=i.stdate%></td>  
+    <td><%=i.stdate%></td>  
     <td><%=i.endate%></td> 
     <td><%=i.rewardp%></td>  
-       <%@var=DateTime.parse(i.stdate)%>
+         <%@var=DateTime.parse(i.stdate)%>
          <%@var2=DateTime.parse(i.endate)%>
          <%if !@var.nil? and !@var2.nil? %>
-        <%@c=@var2-@var+1%>
+         <%@c=@var2-@var%>
          <%end%>
-  <%profile= Profile.find_by_user_id(i.user_id)%>
+           <%profile= Profile.find_by_user_id(i.user_id)%>
               <%if !profile.nil?%>
                   <%@age=Date.today.year-profile.dob.year%>
-                  <%@agvg=@age++%>
+                   <%@age++%>
                     <%if profile.gender == 'Male'%>
                      <%countg=countg+1%>
                     <%else%>
@@ -54,19 +55,17 @@
                <td>NO profile</td>
               <%end%>
 
-    
+    <%if !i.totalcost.nil?%>
      <td><%=i.totalcost*@c%></td>
      <%@p1=i.totalcost*@c%>
        <td><%=@ti=@p1*10/100%></td>
     </tr>
-<%@f=@ti++%>
-          <%if !i.totalcost.nil?%>
-          <%income+=i.totalcost%>
-          <%end%>
-         
+    <%end%>
+<%@f+=@ti%>
+       
              
 <%end%>
-
+<%end%>
   </tbody>
 </table>
 
@@ -87,16 +86,21 @@
 
 
     <tr>
+    <%if !@f.nil?%>
     <th scope="row">  <strong><%=@f%></strong></th>
-   
+    <%end%>
+   <%if !User.nil? %>
       <th scope="row">  <strong><%=User.all.length%></strong></th>
-
-      <th scope="row">  <strong><%=@agvg/Profile.all.length%></strong></th>
-
+<%end%>
+<% if !Profile.nil? and !@age.nil?%>
+      <th scope="row">  <strong><%=@age/Profile.all.length%></strong></th>
+<%end%>
+<% if !Hotel.nil?%>
         <th scope="row">  <strong><%=Hotel.all.length%></strong></th>
-
+<%end%>
+<%if !Booking.nil?%>
          <th scope="row">  <strong><%=Booking.all.length%></strong></th>
- 
+ <%end%>
     </tr>
 
   </tbody>

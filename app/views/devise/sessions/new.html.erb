@@ -28,6 +28,10 @@
 
   <div class="actions">
     <%= f.submit "Log in", class: "btn btn-primary" %>
+    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <md-button class=" md-accent md-raised md-hue-2" href="<%=new_registration_path(resource_name)%>">Sign Up</md-button> 
+<% end -%>
   </div>
+
 <% end %>
 

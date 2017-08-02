@@ -142,38 +142,22 @@
 <%end%>
 
 <% if user_signed_in?%>
+
 <%= link_to('Logout', destroy_user_session_path, :class => "btn btn-default ", :style =>'color:red;', :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
-<%elsif%>
+
+
+<%else%>
+
+ <md-button class="md-accent md-raised md-hue-3" href="<%=new_user_session_path%>">members Log in!</md-button>
+ <%end%>
 <% if hoteladmin_signed_in?%>
 <%= link_to('Logout', destroy_hoteladmin_session_path, :class => "btn btn-default ", :style =>'color:red;',:method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
-<%elsif%>
-<% if flightadmin_signed_in?%>
-<%= link_to('Logout', destroy_flightadmin_session_path, :class => "btn btn-default ",:style =>'color:red;', :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
-<%elsif%>
-<% if current_page?(partner_path)%>
-<h2 flex md-truncate>Who are you?</h2>
-<%elsif%>
-<% if current_page?(new_hoteladmin_session_path) or current_page?(new_hoteladmin_registration_path)%>
-<md-button class=" md-accent md-raised md-hue-2" href="/hoteladmins/sign_in">Log In</md-button>
-<md-button class="md-accent md-raised md-hue-2" href="/hoteladmins/sign_up">Sign Up</md-button>
-<%elsif%>
-<% if current_page?(new_flightadmin_session_path) or current_page?(new_flightadmin_registration_path)%>
-<md-button class=" md-accent md-raised md-hue-2" href="/flightadmins/sign_in">Log In</md-button>
-<md-button class="md-accent md-raised md-hue-2" href="/flightadmins/sign_up">Sign Up</md-button>
-<%elsif%>
-<% if admin_signed_in?%>
-<%= link_to('Logout', destroy_admin_session_path, :class => "btn btn-default ",:style =>'color:red;', :method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
-<%else%>
-<md-button class="md-accent md-raised md-hue-2" href="/users/sign_in">Log In</md-button>
-<md-button class="md-accent md-raised md-hue-2" href="/users/sign_up">Sign Up</md-button>
 
 <%end%>
+<% if admin_signed_in?%>
+<%= link_to('Logout', destroy_admin_session_path, :class => "btn btn-default ", :style =>'color:red;',:method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
 <%end%>
-<%end%>
-<%end%>
-<%end%>
-<%end%>
-<%end%>
+
 
       </div>
 </md-toolbar>
@@ -193,8 +177,7 @@
      </div>
 
      <%count=0%>
-   <%points1=0%>
-   <%points=0%>
+  
 <%if user_signed_in?%>
 
 <%@hotels=Hotel.all%>
@@ -218,6 +201,7 @@
   <md-subheader class="md-primary">You have not booked yet Why not Book a room now ! </md-subheader>
   
   <%end%>
+  <%if !profile.rewardp.nil?%>
   <%if profile.rewardp >= 10000%>
    <md-subheader class="md-primary">Congratulations you can book a Single room with your points!</md-subheader>
      <md-subheader class="md-primary">Your points <%=profile.rewardp%></md-subheader>
@@ -225,7 +209,7 @@
 
          <md-subheader class="md-primary">Your points <%=profile.rewardp%></md-subheader>
          <%end%>
-
+<%end%>
         <%@bookings.each do |b|%>
         <%if b.user_id == current_user.id%>
           <%@hotels.each do |h|%>

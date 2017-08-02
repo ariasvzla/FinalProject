@@ -16,14 +16,10 @@
     <%= f.hidden_field :user_id, :value => current_user.id%>
   </div>
 
-   <%@hotels.each do |h|%>
-   <%if @room.hotel_id== h.id%>
-   <%@hid=h.id%>
   <div class="field">
-    <%= f.hidden_field :hotel_id, :value => h.id%>
+    <%= f.hidden_field :hotel_id, :value => @room.hotel_id%>
   </div>
-  <%end%>
-  <%end%>
+
 
 <%@avaibilities.each do |a|%>
    <%if a.room_id == @room.id%>
