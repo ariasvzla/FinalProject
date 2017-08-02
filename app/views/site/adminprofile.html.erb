@@ -31,18 +31,18 @@
     <tr>
     <th scope="row"><%=i.id%></th>
     <td><%=i.created_at.strftime("%B %d, %Y")%></td>
-     <td><%=i.stdate%></td>  
+    <td><%=i.stdate%></td>  
     <td><%=i.endate%></td> 
     <td><%=i.rewardp%></td>  
-       <%@var=DateTime.parse(i.stdate)%>
+         <%@var=DateTime.parse(i.stdate)%>
          <%@var2=DateTime.parse(i.endate)%>
          <%if !@var.nil? and !@var2.nil? %>
-        <%@c=@var2-@var+1%>
+         <%@c=@var2-@var+1%>
          <%end%>
-  <%profile= Profile.find_by_user_id(i.user_id)%>
+           <%profile= Profile.find_by_user_id(i.user_id)%>
               <%if !profile.nil?%>
                   <%@age=Date.today.year-profile.dob.year%>
-                  <%@agvg=@age++%>
+                   <%@age++%>
                     <%if profile.gender == 'Male'%>
                      <%countg=countg+1%>
                     <%else%>
@@ -94,8 +94,8 @@
    <%if !User.nil? %>
       <th scope="row">  <strong><%=User.all.length%></strong></th>
 <%end%>
-<% if !Profile.nil? and !@agvg.nil?%>
-      <th scope="row">  <strong><%=@agvg/Profile.all.length%></strong></th>
+<% if !Profile.nil? and !@age.nil?%>
+      <th scope="row">  <strong><%=@age/Profile.all.length%></strong></th>
 <%end%>
 <% if !Hotel.nil?%>
         <th scope="row">  <strong><%=Hotel.all.length%></strong></th>
