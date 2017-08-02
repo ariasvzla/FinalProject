@@ -191,7 +191,10 @@
   <md-subheader class="md-primary">Welcome <%=profile.firstname%></md-subheader>
 <!-- calculate points base on room type  -->
   
-
+  <%@bookings.each do |b|%>
+  <% if current_user.id == b.user_id %>
+<%count++%>
+<%end%>
 
   <%if count>0%>
    <md-subheader class="md-primary">You have booked <%=count%> times</md-subheader>
