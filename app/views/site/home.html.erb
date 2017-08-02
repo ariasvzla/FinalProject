@@ -50,7 +50,7 @@
 
           </md-card-title-text>
           <md-card-title-media>
-          <%if !h.hotelimg.nil?
+          <%if !h.hotelimg.nil?%>
             <div class="md-media-lg card-media"> <%= (image_tag h.hotelimg)%></div>
             <%else%>
             No image please set an image thanks
@@ -59,7 +59,7 @@
           </md-card-title-media>
 
           <md-card-title-media>
-          <%if !h.hotelimg2.nil?
+          <%if !h.hotelimg2.nil?%>
             <div class="md-media-lg card-media"> <%= (image_tag h.hotelimg2)%></div>
          <%else%>
             No image please set an image thanks
@@ -84,7 +84,7 @@
            <%end%> 
  <%end%>
             <md-card-actions layout="row" layout-align="end center">
-            
+
        <md-subheader > This hotel has been booking <%=count%> times</md-subheader>
           <md-button class="md-accent md-raised md-hue-3"  href="/hotels/<%=h.id%>">See details</md-button>
         </md-card-actions>
