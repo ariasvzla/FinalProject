@@ -70,7 +70,11 @@
             <span><%= h.location %></span>
           </md-card-title-text>
           <md-card-title-media>
+          <% if !h.hotelimg.nil?%>
             <div class="md-media-lg card-media"> <%= (image_tag h.hotelimg)%></div>
+            <%else%>
+            please add an image
+            <%end%>
        <br>
           </md-card-title-media>
         </md-card-title>
