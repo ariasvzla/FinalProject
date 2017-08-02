@@ -37,7 +37,7 @@
          <%@var=DateTime.parse(i.stdate)%>
          <%@var2=DateTime.parse(i.endate)%>
          <%if !@var.nil? and !@var2.nil? %>
-         <%@c=@var2-@var+1%>
+         <%@c=@var2-@var%>
          <%end%>
            <%profile= Profile.find_by_user_id(i.user_id)%>
               <%if !profile.nil?%>
