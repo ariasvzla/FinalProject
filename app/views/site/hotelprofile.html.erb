@@ -118,7 +118,7 @@
   </thead>
   <tbody>
     <%@bookings.each do |i|%>
-       <%if i.hotel== current_hoteladmin.id%>
+       <%if i.id== hotel%>
 
     <tr>
       <th scope="row">h.id</th>
@@ -133,14 +133,6 @@
 <%end%>
   </tbody>
 </table>
-
-
-
-
-
-
-
-
 <script type="text/javascript">
 	$("#avaibilities").hide();
 	$("#titleAv").hide();
