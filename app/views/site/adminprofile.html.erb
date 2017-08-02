@@ -88,7 +88,9 @@
 
 
     <tr>
+    <%if !@f.nil?%>
     <th scope="row">  <strong><%=@f%></strong></th>
+    <%end%>
    <%if !User.nil? %>
       <th scope="row">  <strong><%=User.all.length%></strong></th>
 <%end%>
