@@ -60,9 +60,9 @@
        <td><%=@ti=@p1*10/100%></td>
     </tr>
     <%end%>
-<%@ti++%>
-          <%if !@ti.nil?%>
-          <%income=@ti++%>
+<%@f=@ti++%>
+          <%if !i.totalcost.nil?%>
+          <%income+=i.totalcost%>
           <%end%>
          
              
@@ -88,8 +88,8 @@
 
 
     <tr>
-    <%if !income.nil?%>
-    <th scope="row">  <strong><%=income%></strong></th>
+    <%if !@f.nil?%>
+    <th scope="row">  <strong><%=@f%></strong></th>
     <%end%>
    <%if !User.nil? %>
       <th scope="row">  <strong><%=User.all.length%></strong></th>
