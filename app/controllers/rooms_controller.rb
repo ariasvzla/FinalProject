@@ -24,8 +24,13 @@ class RoomsController < ApplicationController
 
 
     @hotel = Hotel.find_by_hoteladmin_id(current_hoteladmin.id)
+    if @hotel.nil?
+        redirect_to hotelprofile_path, notice: 'Add a hotel please.' 
+      else
     @room = Room.find_by_hotel_id(@hotel.id)
     @room = Room.new
+end
+
   end
 
   # GET /rooms/1/edit
