@@ -118,8 +118,7 @@
   </thead>
   <tbody>
     <%@bookings.each do |i|%>
-       <%if i.id== hotel%>
-
+       <%if i.hotel_id == hotel%>
     <tr>
       <th scope="row">h.id</th>
       <td><%=i.created_at%></td>
