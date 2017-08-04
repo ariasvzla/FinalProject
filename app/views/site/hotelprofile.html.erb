@@ -110,7 +110,9 @@
   </thead>
   <tbody>
   <%@f=0%>
+    <%if !hotel.nil?%>
     <%@bookings.each do |i|%>
+
        <%if i.hotel_id == hotel.id%>
    
  
@@ -148,6 +150,7 @@
  <%end%>
   </tbody>
 </table>
+
 Total income: <%=@f%>
 
 
@@ -156,7 +159,7 @@ Total income: <%=@f%>
   <strong>You are not allowed to see this page</strong>
 </div>
 <%end%>
-
+<%end%>
 
 <script type="text/javascript">
 	$("#avaibilities").hide();
