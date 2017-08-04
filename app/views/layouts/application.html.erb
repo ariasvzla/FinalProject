@@ -195,7 +195,7 @@
   
                               <%@bookings.each do |b|%>
                                   <% if current_user.id == b.user_id %>
-                                        <%count++%>
+                                        <%count=count+1%>
                                   <%end%>
                               <%end%>
 
