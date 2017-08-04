@@ -41,7 +41,7 @@
          <%@c=@var2-@var%>
          <%end%>
            <%profile= Profile.find_by_user_id(i.user_id)%>
-              <%if !profile.nil?%>
+              <%if !profile.nil? and !profile.dob.nil?%>
                   <%@age=Date.today.year-profile.dob.year%>
                    <%@age++%>
                     <%if profile.gender == 'Male'%>
