@@ -92,7 +92,7 @@
    <%if !User.nil? %>
       <th scope="row">  <strong><%=User.all.length%></strong></th>
 <%end%>
-<% if !Profile.nil? and !@age.nil?%>
+<% if Profile.all.length>0 and @age>0%>
       <th scope="row">  <strong><%=@age/Profile.all.length%></strong></th>
 <%end%>
 <% if !Hotel.nil?%>
