@@ -150,6 +150,7 @@
 
  <md-button class="md-accent md-raised md-hue-3" href="<%=new_user_session_path%>">members Log in!</md-button>
  <%end%>
+
 <% if hoteladmin_signed_in?%>
 <%= link_to('Logout', destroy_hoteladmin_session_path, :class => "btn btn-default ", :style =>'color:red;',:method  => 'delete',  data: { confirm: 'Are you sure?' }) %>
 
@@ -180,53 +181,53 @@
   
 <%if user_signed_in?%>
 
-<%@hotels=Hotel.all%>
-<%@bookings=Booking.all%>
-<% profile = Profile.find_by_user_id(current_user.id)%>
-<% if profile.nil?%>
-<md-subheader class="md-primary"> Welcome <%=current_user.email%></md-subheader>
+            <%@hotels=Hotel.all%>
+              <%@bookings=Booking.all%>
+                <% profile = Profile.find_by_user_id(current_user.id)%>
+
+                        <% if profile.nil?%>
+                          <md-subheader class="md-primary"> Welcome <%=current_user.email%></md-subheader>
  
-  <!-- <li><%= link_to('Create a profile before ', new_profile_path(current_user.id)) %></li> -->
-  <%else%>
-  <md-subheader class="md-primary">Welcome <%=profile.firstname%></md-subheader>
-<!-- calculate points base on room type  -->
+                                 <!-- <li><%= link_to('Create a profile before ', new_profile_path(current_user.id)) %></li> -->
+                          <%else%>
+                            <md-subheader class="md-primary">Welcome <%=profile.firstname%></md-subheader>
+                            <!-- calculate points base on room type  -->
   
+                              <%@bookings.each do |b|%>
+                                  <% if current_user.id == b.user_id %>
+                                        <%count=count+1%>
+                                  <%end%>
+                              <%end%>
+
+                        <%if count>0%>
+                           <md-subheader class="md-primary">You have booked <%=count%> times</md-subheader>
+                        <%else%>
+                        <md-subheader class="md-primary">You have not booked yet Why not Book a room now ! </md-subheader>
+                        <%end%>
 
 
-  <%if count>0%>
-   <md-subheader class="md-primary">You have booked <%=count%> times</md-subheader>
+                    <%if !profile.rewardp.nil?%>
+                         <%if profile.rewardp >= 10000%>
+                                 <md-subheader class="md-primary">Congratulations you can book a Room with your points!</md-subheader>
+                                 <md-subheader class="md-primary">Your points <%=profile.rewardp%></md-subheader>
+                          <%else%>
 
- <%else%>
-
-  <md-subheader class="md-primary">You have not booked yet Why not Book a room now ! </md-subheader>
-  
-  <%end%>
-  <%if !profile.rewardp.nil?%>
-  <%if profile.rewardp >= 10000%>
-   <md-subheader class="md-primary">Congratulations you can book a Single room with your points!</md-subheader>
-     <md-subheader class="md-primary">Your points <%=profile.rewardp%></md-subheader>
-   <%else%>
-
-         <md-subheader class="md-primary">Your points <%=profile.rewardp%></md-subheader>
-         <%end%>
-<%end%>
+                                 <md-subheader class="md-primary">Your points <%=profile.rewardp%></md-subheader>
+                          <%end%>
+                    <%end%>
         <%@bookings.each do |b|%>
-        <%if b.user_id == current_user.id%>
-          <%@hotels.each do |h|%>
-             <%if h.id == b.hotel_id %>
-             
-                  <md-subheader class="md-primary">You recently visited <%=h.location%> </md-subheader>
-                 
-               <%end%> 
-               
-             <%end%> 
-             <%break%>   
-    <%end%>
-   <%end%>       
+               <%if b.user_id == current_user.id%>
+                  <%@hotels.each do |h|%>
+                       <%if h.id == b.hotel_id %>
+                           <md-subheader class="md-primary">You recently visited <%=h.location%> </md-subheader>
+                      <%end%>   
+                  <%end%> 
+                 <%break%>   
+               <%end%>
+         <%end%>       
+
 
 <%end%>
-
-<%else%>
 <%if hoteladmin_signed_in?%>
   <md-subheader class="md-primary">Welcome Hotel administrator</md-subheader>
     <md-subheader class="md-primary">Manage your hotel</md-subheader>

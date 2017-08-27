@@ -110,7 +110,9 @@
   </thead>
   <tbody>
   <%@f=0%>
+    <%if !hotel.nil?%>
     <%@bookings.each do |i|%>
+
        <%if i.hotel_id == hotel.id%>
    
  
@@ -148,8 +150,9 @@
  <%end%>
   </tbody>
 </table>
-Total income: <%=@f%>
 
+Total income: <%=@f%>
+<%end%>
 
 <%else%>
 <div class="alert alert-success" role="alert">

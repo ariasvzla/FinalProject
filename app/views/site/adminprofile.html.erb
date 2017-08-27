@@ -7,7 +7,7 @@
 <md-button class="md-accent md-raised md-hue-3" href="setvs/1/edit">Set Hotel View</md-button>
 <%countgf=0%>
 <%countg=0%>
-
+<%@age=0%>
  <%@f=0%>
 
 <h1>Bookings</h1>
@@ -41,7 +41,7 @@
          <%@c=@var2-@var%>
          <%end%>
            <%profile= Profile.find_by_user_id(i.user_id)%>
-              <%if !profile.nil?%>
+              <%if !profile.nil? and !profile.dob.nil?%>
                   <%@age=Date.today.year-profile.dob.year%>
                    <%@age++%>
                     <%if profile.gender == 'Male'%>
@@ -88,19 +88,29 @@
     <tr>
     <%if !@f.nil?%>
     <th scope="row">  <strong><%=@f%></strong></th>
+    <%else%>
+    <th scope="row"> <strong>null</strong></th>
     <%end%>
    <%if !User.nil? %>
       <th scope="row">  <strong><%=User.all.length%></strong></th>
-<%end%>
-<% if !Profile.nil? and !@age.nil?%>
+<%else%>
+  <th scope="row"> <strong>null</strong></th>
+  <%end%>
+<% if Profile.all.length>0 and @age>0%>
       <th scope="row">  <strong><%=@age/Profile.all.length%></strong></th>
-<%end%>
+<%else%>
+  <th scope="row"> <strong>null</strong></th>
+  <%end%>
 <% if !Hotel.nil?%>
         <th scope="row">  <strong><%=Hotel.all.length%></strong></th>
-<%end%>
+<%else%>
+  <th scope="row"> <strong>null</strong></th>
+  <%end%>
 <%if !Booking.nil?%>
          <th scope="row">  <strong><%=Booking.all.length%></strong></th>
- <%end%>
+ <%else%>
+   <th scope="row"> <strong>null</strong></th>
+   <%end%>s
     </tr>
 
   </tbody>
