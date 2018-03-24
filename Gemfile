@@ -24,7 +24,7 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'angularjs-rails'
 gem 'angular-ui-bootstrap-rails'
-# Use jquery as the JavaScript library
+# Use jquery as the JavaScript libraryyyy
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'rspec-rails'
